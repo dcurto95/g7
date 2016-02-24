@@ -6,6 +6,4 @@
 $config['default']				= 'HomeHomeController';
 $config['home']					= 'HomeHomeController';
 
-
-$config['corda']					= 'HomeInstrumentCordaController';
-$config['vent']					= 'HomeInstrumentVentController';
+$config['exercici1']			= 'HomeExercici1Controller';

@@ -31,10 +31,12 @@ $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.ph
 
 // Home Controller
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
-$config['HomeInstrumentCordaController']			= PATH_CONTROLLERS . 'home/instrument_corda.ctrl.php';
-$config['HomeInstrumentVentController']			= PATH_CONTROLLERS . 'home/instrument_vent.ctrl.php';
-
+$config['HomeExercici1Controller']		= PATH_CONTROLLERS . 'home/exercici1.ctrl.php';
 
 // Shared controllers
 $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
+
+
+// Models
+$config['HomeExercici1Model']			= PATH_MODELS . 'home/exercici1.model.php';

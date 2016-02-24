@@ -8,12 +8,11 @@ class HomeHomeController extends Controller
 	protected $view = 'home/home.tpl';
 
 
-	private $ex1_path = '/corda/1';
-	//private $ex2_path = '/exercici2';
+	private $ex1_path = '/exercici1';
+	private $ex2_path = '/exercici2';
 	//private $ex3_path = '/exercici3';
 	//private $ex4_path = '/exercici4';
 
-	private $ex2_path = '#';
 	private $ex3_path = '#';
 	private $ex4_path = '#';
 
