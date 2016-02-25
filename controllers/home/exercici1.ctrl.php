@@ -1,6 +1,6 @@
 <?php
 /**
- * Exercici1 Controller: Controller that shows the instriuments.
+ * Exercici1 Controller: Controller that shows the instriuments. Also is linked to the DB.
 
  */
 class HomeExercici1Controller extends Controller
