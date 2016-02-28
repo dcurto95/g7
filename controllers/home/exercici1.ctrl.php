@@ -1,6 +1,6 @@
 <?php
 /**
- * Exercici1 Controller: Controller that shows the instriuments. Also is linked to the DB.
+ * Exercici1 Controller: Controller that shows the instriuments.
 
  */
 class HomeExercici1Controller extends Controller
@@ -14,7 +14,7 @@ class HomeExercici1Controller extends Controller
         $info = $this->getParams();
 
         // Petició a model -> Array completa:
-        $model = $this->getClass('HomeExercici1Model');
+        $model = $this->getClass('HomeShowModel');
         $instruments = $model->getAllInstruments();
         $size = count($instruments) - 1;
 

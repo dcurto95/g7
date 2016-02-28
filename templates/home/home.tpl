@@ -14,7 +14,7 @@
 				</a>
 			</li>
 			<li role="presentation">
-				<a class="nav_exercice" href="#">
+				<a class="nav_exercice" href="{$ex2_path}">
 					<span class="ca-icon">2</span>
 					<div class="ca-content">
 						<h2 class="ca-main">Exercici 2</h2>

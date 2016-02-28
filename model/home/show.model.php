@@ -4,7 +4,7 @@
  * Exercici1 Model: Model that counts and stores the instriuments.
 
  */
-class HomeExercici1Model extends Model
+class HomeShowModel extends Model
 {
 
     /**
@@ -28,9 +28,10 @@ QUERY;
 
     /**
      * @param $name     Name of the Instrument.
-     * @param $type_n   Type of the Instrument.
-     * @param $url
-     * @return bool
+     * @param $type_n   Type of the Instrument {corda/vent/percusio}
+     * @param $url      Url of the Image on the internet.
+     *
+     * @return bool     Boolean: "true" when successful, "false" else.
      */
     public function addInstrument($name, $type_n, $url)
     {

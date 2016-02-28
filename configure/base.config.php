@@ -32,6 +32,8 @@ $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.ph
 // Home Controller
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
 $config['HomeExercici1Controller']		= PATH_CONTROLLERS . 'home/exercici1.ctrl.php';
+$config['HomeExercici2Controller']		= PATH_CONTROLLERS . 'home/exercici2.ctrl.php';
+
 
 // Shared controllers
 $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
@@ -39,4 +41,5 @@ $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php'
 
 
 // Models
-$config['HomeExercici1Model']			= PATH_MODELS . 'home/exercici1.model.php';
+$config['HomeShowModel']			= PATH_MODELS . 'home/show.model.php';
+$config['HomeInsertModel']			= PATH_MODELS . 'home/insert.model.php';
