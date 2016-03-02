@@ -8,13 +8,12 @@ class HomeExercici1Controller extends Controller
     protected $view = 'home/exercici1.tpl';
     protected $error_view = 'error/error404.tpl';
 
-    public function build()
-    {
+    public function build(){
 
         $info = $this->getParams();
 
         // Petició a model -> Array completa:
-        $model = $this->getClass('HomeShowModel');
+        $model = $this->getClass('HomeGaleryModel');
         $instruments = $model->getAllInstruments();
         $size = count($instruments) - 1;
 

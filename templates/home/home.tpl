@@ -22,7 +22,7 @@
 				</a>
 			</li>
 			<li role="presentation">
-				<a class="nav_exercice" href="#">
+				<a class="nav_exercice" href="{$ex3_path}">
 					<span class="ca-icon">3</span>
 					<div class="ca-content">
 						<h2 class="ca-main"> Exercici 3</h2>
@@ -30,7 +30,7 @@
 				</a>
 			</li>
 			<li role="presentation">
-				<a  class="nav_exercice" href="#">
+				<a  class="nav_exercice" href="{$ex4_path}">
 					<span class="ca-icon">4</span>
 					<div class="ca-content">
 						<h2 class="ca-main">Exercici 4</h2>

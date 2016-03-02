@@ -1,11 +1,18 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: David
+ * Date: 27/02/2016
+ * Time: 12:26
+ */
 
 class HomeExercici2Controller extends Controller
 {
     protected $view = 'home/exercici2.tpl';
     protected $error_view = 'error/error404.tpl';
 
-    public function build() {
+    public function build()
+    {
         $info = $this->getParams();
         $model = $this->getClass('HomeGaleryModel');
         $this->setLayout($this->view);
@@ -14,13 +21,8 @@ class HomeExercici2Controller extends Controller
         $type_n = Filter::getString('tipus');
         $url = Filter::getUrl('url');
 
-        $is_submit = Filter::getString('submit');
-        if($is_submit){
-            $model->addInstrument($name, $type_n, $url);
-        }
+        $model->addInstrument($name, $type_n, $url);
     }
-
-
 
 
     /**
@@ -34,6 +36,7 @@ class HomeExercici2Controller extends Controller
     {
         $modules['head'] = 'SharedHeadController';
         $modules['footer'] = 'SharedFooterController';
+
         return $modules;
     }
 }

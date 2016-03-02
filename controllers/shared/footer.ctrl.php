@@ -8,5 +8,4 @@ class SharedFooterController extends Controller
 	}
 }
 
-
 ?>

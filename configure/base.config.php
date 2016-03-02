@@ -39,7 +39,8 @@ $config['HomeExercici2Controller']		= PATH_CONTROLLERS . 'home/exercici2.ctrl.ph
 $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
 
+$config['SharedVentController']		    = PATH_CONTROLLERS . 'shared/vent.ctrl.php';
+
 
 // Models
-$config['HomeShowModel']			= PATH_MODELS . 'home/show.model.php';
-$config['HomeInsertModel']			= PATH_MODELS . 'home/insert.model.php';
+$config['HomeGaleryModel']	    		= PATH_MODELS . 'home/galery.model.php';

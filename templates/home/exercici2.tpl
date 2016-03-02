@@ -35,7 +35,7 @@
     <label for = "url">URL</label>
     <input type="text"  name ="url" placeholder="Introdueix la URL" required>
 
-    <input type="submit" value="Enviar">
+    <input type="submit" name="submit" value="Enviar">
 
 </form>
 

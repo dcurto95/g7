@@ -10,10 +10,9 @@ class HomeHomeController extends Controller
 
 	private $ex1_path = '/exercici1';
 	private $ex2_path = '/exercici2';
-	//private $ex3_path = '/exercici3';
+	private $ex3_path = '/exercici3';
 	//private $ex4_path = '/exercici4';
 
-	private $ex3_path = '#';
 	private $ex4_path = '#';
 
 	private $ex1_name = 'EXERCICI 1';
