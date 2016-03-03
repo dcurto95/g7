@@ -30,9 +30,6 @@ class SharedVentController extends Controller {
 
         $size = count($instruments);
 
-        //print_r($instruments);
-        //echo "MIDA -> $size";
-
         if ($which > $max_size/3){
             $this->setLayout($this->error_view);
         } else {
