@@ -28,17 +28,22 @@ class SharedVentController extends Controller {
 
         $instruments = $model->getTypeInstruments($this->type);
 
-        $size = count($instruments) - 1;
+        $size = count($instruments);
 
-        echo "$which";
+        //print_r($instruments);
+        //echo "MIDA -> $size";
 
         if ($which > $max_size/3){
             $this->setLayout($this->error_view);
         } else {
-            $this->assign('img_1', $this->null_img);
-            $this->assign('img_2', $this->null_img);
-            $this->assign('img_3', $this->null_img);
-
+            for($i = 0; $i < 3; $i++) {
+                $j = $i + 1;
+                if((($which*3) + $i) >= $size){
+                    $this->assign("img_$j", $this->null_img);
+                } else {
+                    $this->assign("img_$j", $instruments[(($which*3) + $i)]['url']);
+                }
+            }
             $this->setLayout($this->view);
         }
 

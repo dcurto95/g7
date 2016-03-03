@@ -15,13 +15,11 @@ class HomeExercici2Controller extends Controller
         $url = Filter::getUrl('url');
 
         $is_submit = Filter::getString('submit');
+
         if($is_submit){
             $model->addInstrument($name, $type_n, $url);
         }
     }
-
-
-
 
     /**
      * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).
