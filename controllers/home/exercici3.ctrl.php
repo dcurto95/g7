@@ -8,7 +8,7 @@ class HomeExercici3Controller extends Controller
     {
 
         $info = $this->getParams();
-        $model = $this->getClass('HomeShowModel');
+        $model = $this->getClass('HomeGaleryModel');
 
         //Demano a la BD els arrays d'instruments de cada tipus.
         $corda = $model->getTypeInstruments(1);
@@ -37,6 +37,10 @@ class HomeExercici3Controller extends Controller
     public function loadModules() {
         $modules['head']	= 'SharedHeadController';
         $modules['footer']	= 'SharedFooterController';
+        $modules['vent'] = 'SharedVentController';
+        $modules['corda'] = 'SharedCordaController';
+        $modules['percussio'] = 'SharedPercussioController';
+
         return $modules;
     }
 }

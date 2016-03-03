@@ -33,6 +33,7 @@ $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.ph
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
 $config['HomeExercici1Controller']		= PATH_CONTROLLERS . 'home/exercici1.ctrl.php';
 $config['HomeExercici2Controller']		= PATH_CONTROLLERS . 'home/exercici2.ctrl.php';
+$config['HomeExercici3Controller']		= PATH_CONTROLLERS . 'home/exercici3.ctrl.php';
 
 
 // Shared controllers
