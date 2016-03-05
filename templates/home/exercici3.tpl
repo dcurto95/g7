@@ -11,9 +11,8 @@
 <h1>EXERCICI 3</h1>
 <div id ="slider">
 
-    {$modules.corda}
     {$modules.vent}
-    {$modules.percussio}
+
 
     {if $is_last eq false}
         <a href="{$url.global}/exercici3/{$next}" class = "control_next">></a>

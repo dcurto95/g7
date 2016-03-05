@@ -9,6 +9,14 @@ class HomeExercici3Controller extends Controller
 
         $info = $this->getParams();
         $model = $this->getClass('HomeGaleryModel');
+        // Recuperem el valor de l'instrument a mostrar:
+        $which = $info['url_arguments'][0];
+
+        echo $which;
+
+        if($which == NULL){
+            $which = 0;
+        }
 
         //Demano a la BD els arrays d'instruments de cada tipus.
         $corda = $model->getTypeInstruments(1);
@@ -32,14 +40,38 @@ class HomeExercici3Controller extends Controller
         $this->setLayout($this->view);
 
 
+
+        if ($which > $size){
+            $this->setLayout($this->error_view);
+        } else {
+
+            //$this->assign('image_url', ($instruments[$which]['url']));
+            $this->assign('next', ($which + 1));
+            $this->assign('previous', ($which - 1));
+
+            if ($which == 0) {
+                $this->assign('is_first', true);
+            } else {
+                $this->assign('is_first', false);
+            }
+
+            if ($which == $size) {
+                $this->assign('is_last', true);
+            } else {
+                $this->assign('is_last', false);
+            }
+
+            $this->setLayout($this->view);
+        }
+
     }
 
     public function loadModules() {
         $modules['head']	= 'SharedHeadController';
         $modules['footer']	= 'SharedFooterController';
         $modules['vent'] = 'SharedVentController';
-        $modules['corda'] = 'SharedCordaController';
-        $modules['percussio'] = 'SharedPercussioController';
+        //$modules['corda'] = 'SharedCordaController';
+        //$modules['percussio'] = 'SharedPercussioController';
 
         return $modules;
     }
