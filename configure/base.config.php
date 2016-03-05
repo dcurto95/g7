@@ -40,6 +40,8 @@ $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
 
 $config['SharedVentController']		    = PATH_CONTROLLERS . 'shared/vent.ctrl.php';
+$config['SharedCordaController']		= PATH_CONTROLLERS . 'shared/corda.ctrl.php';
+$config['SharedPercussioController']	= PATH_CONTROLLERS . 'shared/percussio.ctrl.php';
 
 
 // Models
