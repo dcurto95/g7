@@ -1,8 +1,8 @@
 <?php
 
-class SharedVentController extends Controller {
+class SharedCordaController extends Controller {
 
-    protected $type = 'vent';
+    protected $type = 'corda';
 
     protected $view = 'shared/instrument.tpl';
     protected $error_view = 'error/error404.tpl';
