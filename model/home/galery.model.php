@@ -37,11 +37,11 @@ QUERY;
 
         //Comprovem que les entrades siguin correctes
 
-        if(preg_match('^[a-zA-Z]+$',$name , $output_array) == 0){
+   //   if(preg_match('^[a-zA-Z]+$',$name , $output_array) == 0){
             $is_name_valid = true;
-        } else {
-            $is_name_valid = false;
-        }
+  //      } else {
+  //          $is_name_valid = false;
+ //       }
 
         $type = 0;
         if ($type_n == 'corda') {
@@ -127,6 +127,23 @@ QUERY;
         }
 
         return $max;
+    }
+
+
+    public function getAllIntrumentsSortedByName(){
+        $query = <<<QUERY
+        SELECT
+                *
+        FROM
+                `Instruments`
+         ORDER BY
+                `name`
+
+QUERY;
+        $instruments = $this->getAll($query);
+
+        return $instruments;
+
     }
 
 }

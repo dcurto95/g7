@@ -40,6 +40,27 @@
 </form>
 
 
+<div id ="instrument">
+    {assign var="vent" value='#00FF1A'}
+    {assign var="percussio" value='#FFDA00'}
+    {assign var="corda" value='#00FFFF'}
+
+    <h1> Llistat d'Instruments</h1>
+    <ul>
+        {foreach from = $instruments item = i}
+
+            {if $i.type == 2}
+                <li style="background: {$vent}"><a href="{$i.url}">{$i.name}</li>
+            {elseif $i.type == 1}
+                <li style="background: {$corda}"><a href="{$i.url}">{$i.name}</li>
+            {elseif $i.type == 3}
+                <li style="background: {$percussio}"><a href="{$i.url}">{$i.name}</li>
+            {/if}
+        {/foreach}
+    </ul>
+
+</div>
+
 
 
 </body>

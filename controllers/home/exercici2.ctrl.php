@@ -19,6 +19,10 @@ class HomeExercici2Controller extends Controller
         if($is_submit){
             $model->addInstrument($name, $type_n, $url);
         }
+
+        $instruments = $model->getAllIntrumentsSortedByName();
+
+        $this->assign('instruments', $instruments);
     }
 
     /**

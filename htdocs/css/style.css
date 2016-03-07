@@ -14,7 +14,7 @@ body
 {
 	width:100%;
 	background-color:#464F4F;
-	
+
 }
 
 .site-logo a
@@ -45,7 +45,7 @@ footer a
 	font-size: 20px;
 	font-weight:bold;
 
-	padding: 8px; 
+	padding: 8px;
 	text-shadow: 0px 1px 1px rgba(0,0,0,0.35);
 	border:2px solid #3bb02b;
 	border-radius:8px;
@@ -66,8 +66,8 @@ footer a
 	border:2px solid #84BCBF;
 	border-radius:8px;
 	margin-right:12px;
-	
-	
+
+
 }
 .block:last-child
 {
@@ -440,11 +440,6 @@ h1>span {
 	color: #FFF;
 }
 
-
-
-
-
-
 input {
 	display:block;
 	width : 100%;
@@ -481,3 +476,31 @@ input[type=submit]{
 
 }
 
+#instrument{
+	width:600px;
+	height:auto;
+	overflow: hidden;
+	background-color: #f5e79e;
+	float:left;
+}
+
+#instrument h1{
+
+}
+
+
+#instrument ul{
+
+}
+#instrument ul li{
+	text-decoration: none;
+	font-size: 20px;
+	width: 100%;
+	display: block;
+	height: auto;
+
+}
+#instrument ul li a{
+	text-decoration: none;
+	width: 100%;
+}

@@ -8,11 +8,12 @@ class HomeExercici3Controller extends Controller
     {
 
         $info = $this->getParams();
+
+        // Petició a model -> Array completa:
         $model = $this->getClass('HomeGaleryModel');
+
         // Recuperem el valor de l'instrument a mostrar:
         $which = $info['url_arguments'][0];
-
-        echo $which;
 
         if($which == NULL){
             $which = 0;
