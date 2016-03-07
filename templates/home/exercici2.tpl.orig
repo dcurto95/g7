@@ -33,6 +33,19 @@
 
     <h1 class = "hex2"> Llistat d'Instruments</h1>
     <ul id ="list">
+<<<<<<< HEAD
+        {foreach from = $instruments item = i}
+
+            {if $i.type == 2}
+                <li style="background: {$vent}"><a href="{$url.global}/exercici1/{$i.id }">{$i.name}</li>
+            {elseif $i.type == 1}
+                <li style="background: {$corda}"><a href="{$url.global}/exercici1/{$i.id}">{$i.name}</li>
+            {elseif $i.type == 3}
+                <li style="background: {$percussio}"><a href="{$url.global}/exercici1/{$i.id}">{$i.name}</li>
+            {/if}
+
+        {/foreach}
+=======
 
         {foreach from = $instruments item = i}
 
@@ -46,6 +59,7 @@
 
         {/foreach}
 
+>>>>>>> 2e069b628bbfec18de351376a053fc00c2edbb67
     </ul>
 
     <ul id ="legend">
