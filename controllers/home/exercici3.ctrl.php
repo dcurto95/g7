@@ -71,8 +71,8 @@ class HomeExercici3Controller extends Controller
         $modules['head']	= 'SharedHeadController';
         $modules['footer']	= 'SharedFooterController';
         $modules['vent'] = 'SharedVentController';
-        //$modules['corda'] = 'SharedCordaController';
-        //$modules['percussio'] = 'SharedPercussioController';
+        $modules['corda'] = 'SharedCordaController';
+        $modules['percussio'] = 'SharedPercussioController';
 
         return $modules;
     }
