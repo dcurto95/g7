@@ -1,24 +1,9 @@
 {$modules.head}
 
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-    <title>Formulario</title>
-    <meta charset= "UTF-8">
-    <link rel = "stylesheet" type = "text/css" href ="style.css">
-
-</head>
-
-<body>
-
-<!--Información del usuario -->
 
 
 <form action = "" method = "post">
-    <h1>Registre d'Instruments
+    <h1 class = "hex2">Registre d'Instruments
         <span>Completi el formulari per registrar l'instrument.</span>
     </h1>
 
@@ -44,25 +29,34 @@
     {assign var="vent" value='#00FF1A'}
     {assign var="percussio" value='#FFDA00'}
     {assign var="corda" value='#00FFFF'}
+    {assign var="index" value=0}
 
-    <h1> Llistat d'Instruments</h1>
-    <ul>
+    <h1 class = "hex2"> Llistat d'Instruments</h1>
+    <ul id ="list">
         {foreach from = $instruments item = i}
 
             {if $i.type == 2}
-                <li style="background: {$vent}"><a href="{$i.url}">{$i.name}</li>
+                <li style="background: {$vent}"><a href="{$url.global}/exercici1/{$i.id }">{$i.name}</li>
             {elseif $i.type == 1}
-                <li style="background: {$corda}"><a href="{$i.url}">{$i.name}</li>
+                <li style="background: {$corda}"><a href="{$url.global}/exercici1/{$i.id}">{$i.name}</li>
             {elseif $i.type == 3}
-                <li style="background: {$percussio}"><a href="{$i.url}">{$i.name}</li>
+                <li style="background: {$percussio}"><a href="{$url.global}/exercici1/{$i.id}">{$i.name}</li>
             {/if}
+
         {/foreach}
     </ul>
+
+    <ul id ="legend">
+        <li style="background: {$vent}"> Vent </li>
+        <li style="background: {$corda}"> Corda </li>
+        <li style="background: {$percussio}"> Percussio </li>
+
+    </ul>
+
+
 
 </div>
 
 
 
-</body>
-
-</html>
+{$modules.footer}
