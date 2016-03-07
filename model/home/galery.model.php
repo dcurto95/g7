@@ -33,15 +33,12 @@ QUERY;
      *
      * @return bool     Boolean: "true" when successful, "false" else.
      */
-    public function addInstrument($name, $type_n, $url) {
+    public function addInstrument($name, $type_n, $url,$id) {
 
         //Comprovem que les entrades siguin correctes
 
-        if(preg_match('^[a-zA-Z]+$',$name , $output_array) == 0){
-            $is_name_valid = true;
-        } else {
-            $is_name_valid = false;
-        }
+        $is_name_valid = true;
+
 
         $type = 0;
         if ($type_n == 'corda') {
@@ -54,12 +51,13 @@ QUERY;
 
         if ($is_name_valid && $type != 0) {
             // Inserim l'instrument
+
             $query = <<<QUERY
         INSERT
             INTO `G7DB`.`Instruments`
                 (`id`, `name`, `type`, `url`)
             VALUES
-                (NULL, '$name', $type, '$url')
+                ('$id', '$name', $type, '$url')
 QUERY;
 
             $this->execute($query);
@@ -128,5 +126,37 @@ QUERY;
 
         return $max;
     }
+
+    public function getAllIntrumentsSortedByName(){
+        $query = <<<QUERY
+        SELECT
+                *
+        FROM
+                `Instruments`
+         ORDER BY
+                `name`
+
+QUERY;
+        $instruments = $this->getAll($query);
+
+        return $instruments;
+
+    }
+
+    public function getNumberInstruments(){
+
+        $query = <<<QUERY
+        SELECT
+               count(*)
+        FROM
+                `Instruments`
+
+
+QUERY;
+        $num = $this->getAll($query);
+
+        return $num;
+    }
+
 
 }

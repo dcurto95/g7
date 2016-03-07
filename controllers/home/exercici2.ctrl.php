@@ -16,9 +16,15 @@ class HomeExercici2Controller extends Controller
 
         $is_submit = Filter::getString('submit');
 
+        $index = $model->getNumberInstruments();
+        $id = $index[0]['count(*)'] +1;
+
         if($is_submit){
-            $model->addInstrument($name, $type_n, $url);
+            $model->addInstrument($name, $type_n, $url,$id);
         }
+        $instruments = $model->getAllIntrumentsSortedByName();
+
+        $this->assign('instruments', $instruments);
     }
 
     /**

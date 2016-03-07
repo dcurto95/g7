@@ -418,7 +418,7 @@ form {
 
 
 
-#hex2 {
+.hex2 {
 	font: 30px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	padding: 10px 0px 10px 20px;
 	display: block;
@@ -483,4 +483,57 @@ input[type=submit]{
 .instrument_container img{
 	width: 30%;
 	height: auto;
+}
+
+
+#instrument{
+	width:600px;
+	overflow: hidden;
+	font-size: 18px;
+	text-decoration: none;
+	border-radius : 10px;
+	padding: 20px;
+	border: 1px solid #999;
+	border:inset 1px solid #333;
+	box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	margin:auto;
+	margin-top: 20px;
+	margin-bottom:20px;
+}
+
+
+#list{
+	float:left;
+	height: auto;
+	width:50%;
+}
+#list li{
+	text-decoration: none;
+	font-size: 20px;
+	width: 100%;
+	display: block;
+	height: auto;
+	text-align: center;
+	margin-bottom:  2px;
+}
+#list li a{
+	text-decoration: none;
+	height:auto;
+	width: 100%;
+	font-size: 16px;
+}
+
+#legend{
+	float:right;
+	width:50%;
+	height:auto
+}
+#legend li{
+	text-decoration: none;
+	font-size: 20px;
+	width: 100%;
+	display: block;
+	height: auto;
+	text-align: center;
+
 }

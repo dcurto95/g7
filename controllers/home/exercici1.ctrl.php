@@ -22,7 +22,11 @@ class HomeExercici1Controller extends Controller
         if(empty($info['url_arguments'])){
             $which = 0;
         }else{
-            $which = $info['url_arguments'][0];
+            if ($info['url_arguments'][0] != 0) {
+                $which = ($info['url_arguments'][0]) - 1;
+            } else{
+                $which = 0;
+            }
         }
 
         if ($which > $size){
@@ -30,8 +34,8 @@ class HomeExercici1Controller extends Controller
         } else {
 
             $this->assign('image_url', ($instruments[$which]['url']));
-            $this->assign('next', ($which + 1));
-            $this->assign('previous', ($which - 1));
+            $this->assign('next', ($which + 2));
+            $this->assign('previous', ($which));
 
             if ($which == 0) {
                 $this->assign('is_first', true);
@@ -39,7 +43,7 @@ class HomeExercici1Controller extends Controller
                 $this->assign('is_first', false);
             }
 
-            if ($which == $size) {
+            if ($which == ($size)) {
                 $this->assign('is_last', true);
             } else {
                 $this->assign('is_last', false);
