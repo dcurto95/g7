@@ -15,10 +15,10 @@ class SharedPercussioController extends Controller {
         $info = $this->getParams();
 
         // Recuperem el valor de l'instrument a mostrar:
-        $which = $info['url_arguments'][0];
-
-        if($which == NULL){
+        if(empty($info['url_arguments'])){
             $which = 0;
+        }else{
+            $which =$info['url_arguments'][0];
         }
 
         // Petició a model -> Array del tipus:

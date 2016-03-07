@@ -8,13 +8,18 @@ body
 {
 	margin:0;
 	padding:0;
+	height: auto;
 }
 
 .main_header,footer
 {
 	width:100%;
+	height: auto;
 	background-color:#464F4F;
-	
+}
+
+footer{
+	margin-top: auto;
 }
 
 .site-logo a
@@ -132,7 +137,7 @@ footer a
 	margin: 0;
 	padding: 0;
 	width: 800px;
-	height: 600px;
+	height: auto;
 	text-align: center;
 	margin:0 auto;
 	margin-bottom: 80px;
@@ -413,7 +418,7 @@ form {
 
 
 
-h1 {
+#hex2 {
 	font: 30px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	padding: 10px 0px 10px 20px;
 	display: block;
@@ -434,16 +439,12 @@ h1 {
 
 
 }
+
 h1>span {
 	display: block;
 	font-size: 13px;
 	color: #FFF;
 }
-
-
-
-
-
 
 input {
 	display:block;
@@ -477,7 +478,9 @@ input[type=submit]{
 	background: -webkit-linear-gradient(top,  #8fc800 0%,#8fc800 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom,  #8fc800 0%,#8fc800 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fc800', endColorstr='#8fc800',GradientType=0 ); /* IE6-9 */
-
-
 }
 
+.instrument_container img{
+	width: 30%;
+	height: auto;
+}
