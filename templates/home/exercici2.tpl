@@ -18,7 +18,7 @@
 
 
 <form action = "" method = "post">
-    <h1 id="hex2">Registre d'Instruments
+    <h1>Registre d'Instruments
         <span>Completi el formulari per registrar l'instrument.</span>
     </h1>
 

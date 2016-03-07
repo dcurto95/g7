@@ -8,7 +8,6 @@ class HomeExercici3Controller extends Controller
     {
 
         $info = $this->getParams();
-<<<<<<< HEAD
 
         // Petició a model -> Array completa:
         $model = $this->getClass('HomeGaleryModel');
@@ -17,44 +16,37 @@ class HomeExercici3Controller extends Controller
         $which = $info['url_arguments'][0];
 
         if($which == NULL){
-=======
-
-        // Petició a model -> Array completa:
-        $model = $this->getClass('HomeGaleryModel');
-
-       // Recuperem el valor de l'instrument a mostrar:
-        if(empty($info['url_arguments'])){
->>>>>>> e51c068a6df18f07715af3cef6c1e177a661cfc6
             $which = 0;
-        }else{
-            $which = $info['url_arguments'][0];
         }
 
         //Demano a la BD els arrays d'instruments de cada tipus.
-        $corda = $model->getTypeInstrumentsNumeric(1);
-        $vent = $model->getTypeInstrumentsNumeric(2);
-        $percussio = $model->getTypeInstrumentsNumeric(3);
+        $corda = $model->getTypeInstruments(1);
+        $vent = $model->getTypeInstruments(2);
+        $percussio = $model->getTypeInstruments(3);
 
         //Calculo la mida de cada array
-        $size_corda = count($corda);
-        $size_vent = count($vent);
-        $size_percussio = count($percussio);
+        $size_corda = count($corda)-1;
+        $size_vent = count($vent)-1;
+        $size_percussio = count($percussio)-1;
 
         //Miro quin és l'array més gran
         $size = max($size_corda, $size_percussio, $size_vent);
 
         //Calculo el número de pàgines.
-
-        $num_pagines = (int)($size/3)-1;
+        $num_pagines = ($size/3);
         if($size%3>0){
             $num_pagines++;
         }
 
         $this->setLayout($this->view);
 
-        if ($which > $num_pagines){
+
+
+        if ($which > $size){
             $this->setLayout($this->error_view);
         } else {
+
+            //$this->assign('image_url', ($instruments[$which]['url']));
             $this->assign('next', ($which + 1));
             $this->assign('previous', ($which - 1));
 
@@ -64,7 +56,7 @@ class HomeExercici3Controller extends Controller
                 $this->assign('is_first', false);
             }
 
-            if ($which == $num_pagines) {
+            if ($which == $size) {
                 $this->assign('is_last', true);
             } else {
                 $this->assign('is_last', false);
@@ -79,8 +71,8 @@ class HomeExercici3Controller extends Controller
         $modules['head']	= 'SharedHeadController';
         $modules['footer']	= 'SharedFooterController';
         $modules['vent'] = 'SharedVentController';
-        $modules['corda'] = 'SharedCordaController';
-        $modules['percussio'] = 'SharedPercussioController';
+        //$modules['corda'] = 'SharedCordaController';
+        //$modules['percussio'] = 'SharedPercussioController';
 
         return $modules;
     }
