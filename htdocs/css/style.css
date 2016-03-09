@@ -414,6 +414,7 @@ form {
 	border:inset 1px solid #333;
 	box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
 	margin:auto;
+	margin-top:20px;
 }
 
 
@@ -487,16 +488,17 @@ input[type=submit]{
 
 
 #instrument{
-	width:600px;
+	width:450px;
 	overflow: hidden;
 	font-size: 18px;
 	text-decoration: none;
 	border-radius : 10px;
-	padding: 20px;
+	padding-top: 20px;
 	border: 1px solid #999;
 	border:inset 1px solid #333;
 	box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
 	margin:auto;
+
 	margin-top: 20px;
 	margin-bottom:20px;
 }
@@ -505,7 +507,9 @@ input[type=submit]{
 #list{
 	float:left;
 	height: auto;
-	width:50%;
+	width:100%;
+	padding: 0px;
+	margin:0px;
 }
 #list li{
 	text-decoration: none;
@@ -513,20 +517,72 @@ input[type=submit]{
 	width: 100%;
 	display: block;
 	height: auto;
-	text-align: center;
 	margin-bottom:  2px;
 }
 #list li a{
 	text-decoration: none;
+	padding-left: 20px;
 	height:auto;
 	width: 100%;
 	font-size: 16px;
+	color:white;
 }
 
-#legend{
+
+.btn-delete,.btn-edit{
+	color:white;
+	background: none;
+	border:0;
+}
+
+.btn-delete,.btn-edit:focus{
+	box-shadow: none;
+	outline: 0;
+}
+
+
+.btn-edit{
+	text-decoration: none;
+	font-size: 16px;
 	float:right;
-	width:50%;
-	height:auto
+}
+
+.btn-delete{
+	text-decoration: none;
+	font-size: 16px;
+	float:right;
+}
+
+.btn-delete:hover{
+	color:red;
+	font-weight: bold;
+}
+
+.btn-edit:hover{
+	color:black;
+	font-weight: bold;
+}
+
+
+
+#legend{
+	width:200px;
+	overflow: hidden;
+	font-size: 18px;
+	text-decoration: none;
+	border-radius : 10px;
+	padding-top: 20px;
+	padding-bottom:20px;
+	border: 1px solid #999;
+	border:inset 1px solid #333;
+	box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	margin:auto;
+	margin-top: 20px;
+	margin-bottom:20px;
+}
+#legend ul{
+	padding:0px;
+	padding-left:10px;
 }
 #legend li{
 	text-decoration: none;
@@ -534,6 +590,15 @@ input[type=submit]{
 	width: 100%;
 	display: block;
 	height: auto;
-	text-align: center;
+	padding-left:10px;
+	margin:auto;
 
+}
+
+#legend span{
+	border: 1px solid blue;
+	float:left;
+	width:30px;
+	height:30px;
+	margin:2px;
 }
