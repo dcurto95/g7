@@ -523,26 +523,21 @@ input[type=submit]{
 	text-decoration: none;
 	padding-left: 20px;
 	height:auto;
-	width: 100%;
 	font-size: 16px;
 	color:white;
 }
 
 
 .btn-delete,.btn-edit{
+
+	float :right;
 	color:white;
 	background: none;
 	border:0;
 }
 
-.btn-delete,.btn-edit:focus{
-	box-shadow: none;
-	outline: 0;
-}
-
-
 .btn-edit{
-	text-decoration: none;
+
 	font-size: 16px;
 	float:right;
 }
@@ -554,7 +549,7 @@ input[type=submit]{
 }
 
 .btn-delete:hover{
-	color:red;
+	color:blue;
 	font-weight: bold;
 }
 

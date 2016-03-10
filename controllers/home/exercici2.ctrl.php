@@ -8,7 +8,6 @@ class HomeExercici2Controller extends Controller
     public function build() {
         $info = $this->getParams();
         $model = $this->getClass('HomeGaleryModel');
-        $this->setLayout($this->view);
 
         $name = Filter::getString('instrument');
         $type_n = Filter::getString('tipus');
@@ -19,12 +18,43 @@ class HomeExercici2Controller extends Controller
         $index = $model->getNumberInstruments();
         $id = $index[0]['count(*)'] +1;
 
+
         if($is_submit){
             $model->addInstrument($name, $type_n, $url,$id);
         }
         $instruments = $model->getAllIntrumentsSortedByName();
 
         $this->assign('instruments', $instruments);
+
+
+        $edit = 0;
+        $selected= $model->select(1);
+        //print_r($selected);
+
+        if(!empty($info['url_arguments'] ) && !empty($info['url_arguments'][0]) && !empty($info['url_arguments'][1])){
+            if($info['url_arguments'][0] == 'edit' ){
+                $selected= $model->select($info['url_arguments'][1]);
+                $edit = 1;
+                header('Location:' .URL_ABSOLUTE. '/exercici2');
+                $this->assign("info",$selected);
+            }else{
+                if($info['url_arguments'][0] == 'delete'){
+                    $model->deleteInstrument($info['url_arguments'][1]);
+                    header('Location:' .URL_ABSOLUTE. '/exercici2');
+                }
+            }
+        }
+
+        //$this->assign('edit',$edit);
+        $this->assign('info',$selected);
+        $this->setLayout($this->view);
+
+        if($edit == 1){
+            $this->assign("edit",1);
+        }else{
+            $this->assign("edit",0);
+        }
+
     }
 
     /**

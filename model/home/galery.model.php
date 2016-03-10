@@ -158,5 +158,47 @@ QUERY;
         return $num;
     }
 
+    public function deleteInstrument($delete_id){
+        echo $delete_id;
+        $query = <<<QUERY
+        DELETE
+
+        FROM
+            Instruments
+        WHERE
+            `id`=$delete_id
+QUERY;
+        $this->execute($query);
+
+
+    }
+
+    public function update($id, $nom, $type, $url){
+        $query = <<<QUERY
+        UPDATE
+               Instruments
+        SET
+            name = $nom, type = $type, url = $url
+        WHERE
+            `id`=$id
+QUERY;
+        $this->execute($query);
+    }
+
+
+    public function  select($id){
+        $query = <<<QUERY
+        SELECT
+               *
+        FROM
+            `Instruments`
+        WHERE
+            `id`=$id
+QUERY;
+        return  $this->getAll($query);
+
+
+    }
+
 
 }

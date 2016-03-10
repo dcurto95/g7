@@ -2,23 +2,46 @@
 
 
 
+<p>"{$edit}"</p>
+<p>"{$info.name}"</p>
+<p>"{$info.type}"</p>
+<p>"{$info.url}"</p>
+
 <form action = "" method = "post">
     <h1 class = "hex2">Registre d'Instruments
         <span>Completi el formulari per registrar l'instrument.</span>
     </h1>
 
-    <label for ="instrument">Nom instrument</label>
-    <input type="text" name="instrument" placeholder="Introdueix el nom de l'instrument" autofocus required>
+    <label for ="instrument">Nom instrument {$edit}</label>
+    {if $edit ==1}
+        <input type="text" name="instrument"  value = "{$info.name}" autofocus required>
+        <label for = "tipus">Tipus instrument</label>
+        <select name = "tipus">
+            <option selected="selected" value="corda">Corda</option>
+            <option value="vent">Vent</option>
+            <option value="percussio">Percussio</option>
+        </select>
 
-    <label for = "tipus">Tipus instrument</label>
-    <select name = "tipus">
-        <option selected="selected" value="corda">Corda</option>
-        <option value="vent">Vent</option>
-        <option value="percussio">Percussio</option>
-    </select>
+        <label for = "url">URL</label>
+        <input type="text"  name ="url" value = "{$info.url}" required>
 
-    <label for = "url">URL</label>
-    <input type="text"  name ="url" placeholder="Introdueix la URL" required>
+    {else}
+
+
+        <input type="text" name="instrument" placeholder="Introdueix el nom de l'instrument" autofocus required>
+        <label for = "tipus">Tipus instrument</label>
+        <select name = "tipus">
+            <option selected="selected" value="corda">Corda</option>
+            <option value="vent">Vent</option>
+            <option value="percussio">Percussio</option>
+        </select>
+
+        <label for = "url">URL</label>
+        <input type="text"  name ="url" placeholder="Introdueix la URL" required>
+
+
+
+    {/if}
 
     <input type="submit" name="submit" value="Enviar">
 
@@ -39,20 +62,20 @@
             {if $i.type == 2}
               <li style="background: {$vent}">
                   <a href="{$url.global}/exercici1/{$i.id }">{$i.name}</a>
-                  <button class = "btn-edit"> Edit </button>
-                  <button class = "btn-delete"> Delete </button>
+                  <a href="{$url.global}/exercici2/edit/{$i.id}" class = "btn-edit"> Edit </a>
+                  <a href="{$url.global}/exercici2/delete/{$i.id}" class = "btn-delete"   onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
               </li>
             {elseif $i.type == 1}
                 <li style="background: {$corda}">
                     <a href="{$url.global}/exercici1/{$i.id}">{$i.name}</a>
-                    <button class = "btn-edit"> Edit </button>
-                    <button class = "btn-delete"> Delete </button>
+                    <a  href="{$url.global}/exercici2/edit/{$i.id}" class = "btn-edit"> Edit </a>
+                    <a href="{$url.global}/exercici2/delete/{$i.id}" class = "btn-delete"  onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
                 </li>
             {elseif $i.type == 3}
                 <li style="background: {$percussio}">
                     <a href="{$url.global}/exercici1/{$i.id}">{$i.name}</a>
-                    <button class = "btn-edit"> Edit </button>
-                    <button class = "btn-delete"> Delete </button>
+                    <a href="{$url.global}/exercici2/edit/{$i.id}" class = "btn-edit"> Edit </a>
+                    <a href="{$url.global}/exercici2/delete/{$i.id}" class = "btn-delete"  onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
                 </li>
             {/if}
 
