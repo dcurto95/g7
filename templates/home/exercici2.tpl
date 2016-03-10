@@ -36,21 +36,21 @@
 
         {foreach from = $instruments item = i}
 
-            {if $i.type == 2}
+            {if $i.instrument.type == 2}
               <li style="background: {$vent}">
-                  <a href="{$url.global}/exercici1/{$i.id }">{$i.name}</a>
+                  <a href="{$url.global}/exercici1/{$i.position }">{$i.instrument.name}</a>
                   <button class = "btn-edit"> Edit </button>
                   <button class = "btn-delete"> Delete </button>
               </li>
-            {elseif $i.type == 1}
+            {elseif $i.instrument.type == 1}
                 <li style="background: {$corda}">
-                    <a href="{$url.global}/exercici1/{$i.id}">{$i.name}</a>
+                    <a href="{$url.global}/exercici1/{$i.position}">{$i.instrument.name}</a>
                     <button class = "btn-edit"> Edit </button>
                     <button class = "btn-delete"> Delete </button>
                 </li>
-            {elseif $i.type == 3}
+            {elseif $i.instrument.type == 3}
                 <li style="background: {$percussio}">
-                    <a href="{$url.global}/exercici1/{$i.id}">{$i.name}</a>
+                    <a href="{$url.global}/exercici1/{$i.position}">{$i.instrument.name}</a>
                     <button class = "btn-edit"> Edit </button>
                     <button class = "btn-delete"> Delete </button>
                 </li>

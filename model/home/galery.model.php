@@ -128,18 +128,21 @@ QUERY;
     }
 
     public function getAllIntrumentsSortedByName(){
-        $query = <<<QUERY
-        SELECT
-                *
-        FROM
-                `Instruments`
-         ORDER BY
-                `name`
+        $instruments = $this->getAllInstruments();
 
-QUERY;
-        $instruments = $this->getAll($query);
+        $position = 0;
+        foreach ($instruments as $instrument) {
 
-        return $instruments;
+            $instruments_proc[$position]['instrument'] = $instrument;
+            $instruments_proc[$position]['position'] = $position;
+            $position++;
+        }
+
+        usort($instruments_proc, function ($inst1, $inst2){
+            return strcmp($inst1['instrument']['name'],$inst2['instrument']['name']);
+        });
+
+        return $instruments_proc;
 
     }
 
