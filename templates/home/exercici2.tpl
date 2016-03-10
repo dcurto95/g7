@@ -25,9 +25,10 @@
         <label for = "url">URL</label>
         <input type="text"  name ="url" value = "{$info.url}" required>
 
+    <label for = "url">URL</label>
+    <input type="text"  name ="url" placeholder="Introdueix la URL" required>
+
     {else}
-
-
         <input type="text" name="instrument" placeholder="Introdueix el nom de l'instrument" autofocus required>
         <label for = "tipus">Tipus instrument</label>
         <select name = "tipus">
@@ -38,8 +39,6 @@
 
         <label for = "url">URL</label>
         <input type="text"  name ="url" placeholder="Introdueix la URL" required>
-
-
 
     {/if}
 
@@ -59,23 +58,23 @@
 
         {foreach from = $instruments item = i}
 
-            {if $i.type == 2}
+            {if $i.instrument.type == 2}
               <li style="background: {$vent}">
-                  <a href="{$url.global}/exercici1/{$i.id }">{$i.name}</a>
-                  <a href="{$url.global}/exercici2/edit/{$i.id}" class = "btn-edit"> Edit </a>
-                  <a href="{$url.global}/exercici2/delete/{$i.id}" class = "btn-delete"   onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
+                  <a href="{$url.global}/exercici1/{$i.position }">{$i.instrument.name}</a>
+                  <a href="{$url.global}/exercici2/edit/{$i.instrument.id}" class = "btn-edit"> Edit </a>
+                  <a href="{$url.global}/exercici2/delete/{$i.instrument.id}" class = "btn-delete"   onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
               </li>
-            {elseif $i.type == 1}
+            {elseif $i.instrument.type == 1}
                 <li style="background: {$corda}">
-                    <a href="{$url.global}/exercici1/{$i.id}">{$i.name}</a>
-                    <a  href="{$url.global}/exercici2/edit/{$i.id}" class = "btn-edit"> Edit </a>
-                    <a href="{$url.global}/exercici2/delete/{$i.id}" class = "btn-delete"  onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
+                    <a href="{$url.global}/exercici1/{$i.position}">{$i.instrument.name}</a>
+                    <a  href="{$url.global}/exercici2/edit/{$i.instrument.id}" class = "btn-edit"> Edit </a>
+                    <a href="{$url.global}/exercici2/delete/{$i.instrument.id}" class = "btn-delete"  onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
                 </li>
-            {elseif $i.type == 3}
+            {elseif $i.instrument.type == 3}
                 <li style="background: {$percussio}">
-                    <a href="{$url.global}/exercici1/{$i.id}">{$i.name}</a>
-                    <a href="{$url.global}/exercici2/edit/{$i.id}" class = "btn-edit"> Edit </a>
-                    <a href="{$url.global}/exercici2/delete/{$i.id}" class = "btn-delete"  onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
+                    <a href="{$url.global}/exercici1/{$i.position}">{$i.instrument.name}</a>
+                    <a href="{$url.global}/exercici2/edit/{$i.instrument.id}" class = "btn-edit"> Edit </a>
+                    <a href="{$url.global}/exercici2/delete/{$i.instrument.id}" class = "btn-delete"  onclick="return confirm('Estàs segur que vols eliminar l\'instrument?')"> Delete </a>
                 </li>
             {/if}
 

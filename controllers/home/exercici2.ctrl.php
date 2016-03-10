@@ -26,10 +26,8 @@ class HomeExercici2Controller extends Controller
 
         $this->assign('instruments', $instruments);
 
-
         $edit = 0;
         $selected= $model->select(1);
-        //print_r($selected);
 
         if(!empty($info['url_arguments'] ) && !empty($info['url_arguments'][0]) && !empty($info['url_arguments'][1])){
             if($info['url_arguments'][0] == 'edit' ){
@@ -47,13 +45,14 @@ class HomeExercici2Controller extends Controller
 
         //$this->assign('edit',$edit);
         $this->assign('info',$selected);
-        $this->setLayout($this->view);
 
         if($edit == 1){
             $this->assign("edit",1);
         }else{
             $this->assign("edit",0);
         }
+
+        $this->setLayout($this->view);
 
     }
 
