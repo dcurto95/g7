@@ -1,32 +1,35 @@
 {$modules.head}
 
-
-
-<p>"{$edit}"</p>
-<p>"{$info.name}"</p>
-<p>"{$info.type}"</p>
-<p>"{$info.url}"</p>
-
 <form action = "" method = "post">
     <h1 class = "hex2">Registre d'Instruments
         <span>Completi el formulari per registrar l'instrument.</span>
     </h1>
 
-    <label for ="instrument">Nom instrument {$edit}</label>
+    <label for ="instrument">Nom instrument</label>
     {if $edit ==1}
-        <input type="text" name="instrument"  value = "{$info.name}" autofocus required>
+        <input type="text" name="instrument"  value = "{$info[0].name}" autofocus required>
         <label for = "tipus">Tipus instrument</label>
         <select name = "tipus">
-            <option selected="selected" value="corda">Corda</option>
-            <option value="vent">Vent</option>
-            <option value="percussio">Percussio</option>
+            {if $info[0].type == 1}
+                <option selected="selected" value="corda">Corda</option>
+                <option value="vent">Vent</option>
+                <option value="percussio">Percussio</option>
+            {elseif $info[0].type == 2}
+                <option value="corda">Corda</option>
+                <option selected="selected" value="vent">Vent</option>
+                <option value="percussio">Percussio</option>
+            {elseif $info[0].type == 3}
+                <option value="corda">Corda</option>
+                <option value="vent">Vent</option>
+                <option selected="selected" value="percussio">Percussio</option>
+            {/if}
+
         </select>
 
         <label for = "url">URL</label>
-        <input type="text"  name ="url" value = "{$info.url}" required>
+        <input type="text"  name ="url" value = "{$info[0].url}" required>
 
-    <label for = "url">URL</label>
-    <input type="text"  name ="url" placeholder="Introdueix la URL" required>
+        <input  type ="submit" name="update" value="Editar">
 
     {else}
         <input type="text" name="instrument" placeholder="Introdueix el nom de l'instrument" autofocus required>
@@ -40,9 +43,10 @@
         <label for = "url">URL</label>
         <input type="text"  name ="url" placeholder="Introdueix la URL" required>
 
+        <input type="submit" name="submit" value="Enviar">
+
     {/if}
 
-    <input type="submit" name="submit" value="Enviar">
 
 </form>
 

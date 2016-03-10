@@ -175,12 +175,36 @@ QUERY;
 
     }
 
-    public function update($id, $nom, $type, $url){
+    public function exists($id){
+
+        $query = <<<QUERY
+        SELECT COUNT(*) AS Quants FROM Instruments WHERE `id`=$id
+QUERY;
+        $select = $this->getAll($query);
+        print_r($select);
+        if($select[0]['Quants']==1){
+            echo "Elimino";
+            return true;
+        }
+        echo "Id incorrecte";
+        return false;
+    }
+
+    public function update($id, $nom, $type_n, $url){
+        $type = 0;
+        if ($type_n == 'corda') {
+            $type = 1;
+        } elseif ($type_n == 'vent') {
+            $type = 2;
+        } elseif ($type_n == 'percussio') {
+            $type = 3;
+        }
+
         $query = <<<QUERY
         UPDATE
-               Instruments
+               `Instruments`
         SET
-            name = $nom, type = $type, url = $url
+            `name` = "$nom", `type` = $type, `url` = "$url"
         WHERE
             `id`=$id
 QUERY;

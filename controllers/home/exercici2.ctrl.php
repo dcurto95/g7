@@ -14,13 +14,20 @@ class HomeExercici2Controller extends Controller
         $url = Filter::getUrl('url');
 
         $is_submit = Filter::getString('submit');
+        $is_updated = Filter::getString('update');
 
         $index = $model->getNumberInstruments();
         $id = $index[0]['count(*)'] +1;
 
-
         if($is_submit){
             $model->addInstrument($name, $type_n, $url,$id);
+        }
+
+        if($is_updated){
+
+            $model->update($info['url_arguments'][1],$name, $type_n, $url);
+            header('Location:' .URL_ABSOLUTE. '/exercici2');
+
         }
         $instruments = $model->getAllIntrumentsSortedByName();
 
@@ -30,26 +37,27 @@ class HomeExercici2Controller extends Controller
         $selected= $model->select(1);
 
         if(!empty($info['url_arguments'] ) && !empty($info['url_arguments'][0]) && !empty($info['url_arguments'][1])){
-            if($info['url_arguments'][0] == 'edit' ){
-                $selected= $model->select($info['url_arguments'][1]);
-                $edit = 1;
-                header('Location:' .URL_ABSOLUTE. '/exercici2');
-                $this->assign("info",$selected);
-            }else{
-                if($info['url_arguments'][0] == 'delete'){
-                    $model->deleteInstrument($info['url_arguments'][1]);
-                    header('Location:' .URL_ABSOLUTE. '/exercici2');
+            if($model->exists($info['url_arguments'][1])) {
+                if ($info['url_arguments'][0] == 'edit') {
+                    $selected = $model->select($info['url_arguments'][1]);
+                    $edit = 1;
+                    // header('Location:' .URL_ABSOLUTE. '/exercici2');
+                    $this->assign("info", $selected);
+                } else {
+                    if ($info['url_arguments'][0] == 'delete') {
+                        $model->deleteInstrument($info['url_arguments'][1]);
+                        header('Location:' . URL_ABSOLUTE . '/exercici2');
+                    }
                 }
             }
         }
 
         //$this->assign('edit',$edit);
         $this->assign('info',$selected);
-
         if($edit == 1){
-            $this->assign("edit",1);
+            $this->assign('edit',1);
         }else{
-            $this->assign("edit",0);
+            $this->assign('edit',0);
         }
 
         $this->setLayout($this->view);
