@@ -33,7 +33,7 @@ QUERY;
      *
      * @return bool     Boolean: "true" when successful, "false" else.
      */
-    public function addInstrument($name, $type_n, $url,$id) {
+    public function addInstrument($name, $type_n, $url) {
 
         //Comprovem que les entrades siguin correctes
 
@@ -55,9 +55,9 @@ QUERY;
             $query = <<<QUERY
         INSERT
             INTO `G7DB`.`Instruments`
-                (`id`, `name`, `type`, `url`)
+                ( `name`, `type`, `url`)
             VALUES
-                ('$id', '$name', $type, '$url')
+                ('$name', $type, '$url')
 QUERY;
 
             $this->execute($query);
@@ -178,12 +178,19 @@ QUERY;
     public function exists($id){
 
         $query = <<<QUERY
-        SELECT COUNT(*) AS Quants FROM Instruments WHERE `id`=$id
+        SELECT
+            COUNT(*)
+        AS
+            Quants
+        FROM
+            Instruments
+        WHERE
+            `id`=$id
 QUERY;
         $select = $this->getAll($query);
-        print_r($select);
+
         if($select[0]['Quants']==1){
-            echo "Elimino";
+
             return true;
         }
         echo "Id incorrecte";

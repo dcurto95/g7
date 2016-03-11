@@ -20,7 +20,7 @@ class HomeExercici2Controller extends Controller
         $id = $index[0]['count(*)'] +1;
 
         if($is_submit){
-            $model->addInstrument($name, $type_n, $url,$id);
+            $model->addInstrument($name, $type_n, $url);
         }
 
         if($is_updated){
@@ -34,7 +34,6 @@ class HomeExercici2Controller extends Controller
         $this->assign('instruments', $instruments);
 
         $edit = 0;
-        $selected= $model->select(1);
 
         if(!empty($info['url_arguments'] ) && !empty($info['url_arguments'][0]) && !empty($info['url_arguments'][1])){
             if($model->exists($info['url_arguments'][1])) {
@@ -53,7 +52,7 @@ class HomeExercici2Controller extends Controller
         }
 
         //$this->assign('edit',$edit);
-        $this->assign('info',$selected);
+        //$this->assign('info',$selected);
         if($edit == 1){
             $this->assign('edit',1);
         }else{
