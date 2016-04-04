@@ -31,20 +31,9 @@ $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.ph
 
 // Home Controller
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
-$config['HomeExercici1Controller']		= PATH_CONTROLLERS . 'home/exercici1.ctrl.php';
-$config['HomeExercici2Controller']		= PATH_CONTROLLERS . 'home/exercici2.ctrl.php';
-$config['HomeExercici3Controller']		= PATH_CONTROLLERS . 'home/exercici3.ctrl.php';
-
 
 // Shared controllers
 $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
 
-$config['SharedInstrumentController']   = PATH_CONTROLLERS . 'shared/instrument.ctrl.php';
-$config['SharedVentController']		    = PATH_CONTROLLERS . 'shared/vent.ctrl.php';
-$config['SharedCordaController']		= PATH_CONTROLLERS . 'shared/corda.ctrl.php';
-$config['SharedPercussioController']	= PATH_CONTROLLERS . 'shared/percussio.ctrl.php';
 
-
-// Models
-$config['HomeGaleryModel']	    		= PATH_MODELS . 'home/galery.model.php';
