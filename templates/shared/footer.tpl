@@ -27,20 +27,9 @@
 	</footer>
 	
 	<script src="{$url.global}/js/bootstrap.min.js"></script>
-	<script src="{$url.global}/js/buttons.js"></script>
-	<script src="{$url.global}/js/chart.js"></script>
-	<script src="{$url.global}/js/collapsible.js"></script>
-	<script src="{$url.global}/js/dropdown.js"></script>
-	<script src="{$url.global}/js/forms-basic.js"></script>
-	<script src="{$url.global}/js/global.js"></script>
 	<script src="{$url.global}/js/jquery.min.js"></script>
 	<script src="{$url.global}/js/jquery-easing.js"></script>
-	<script src="{$url.global}/js/mdb.min.js"></script>
-	<script src="{$url.global}/js/scrolling-nav.js"></script>
-	<script src="{$url.global}/js/velocity.js"></script>
-	<script src="{$url.global}/js/video-bg.js"></script>
-	<script src="{$url.global}/js/waves-effect.js"></script>
-	<script src="{$url.global}/js/wow.js"></script>
+	<script src="{$url.global}/js/materialize.min.js"></script>
 
 </body>
 

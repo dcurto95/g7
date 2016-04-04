@@ -3,12 +3,18 @@
  * Home Controller: Controller example.
 
  */
-class HomeHomeController extends Controller
+class HomeRegisterController extends Controller
 {
-	protected $view = 'home/home.tpl';
+	protected $view = 'home/register.tpl';
 
 	public function build()
 	{
+
+		$username_regex = '([A-Za-z]{6,})';
+		$this->assign('username_regex', $username_regex);
+
+		$twitter_regex = '([@]{1})\w+';
+		$this->assign('twitter_regex', $twitter_regex);
 
 		$this->setLayout( $this->view );
 

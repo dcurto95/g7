@@ -5,3 +5,5 @@
 
 $config['default']				= 'HomeHomeController';
 $config['home']					= 'HomeHomeController';
+
+$config['register']				= 'HomeRegisterController';

@@ -32,6 +32,8 @@ $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.ph
 // Home Controller
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
 
+$config['HomeRegisterController']		= PATH_CONTROLLERS . 'home/register.ctrl.php';
+
 // Shared controllers
 $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
