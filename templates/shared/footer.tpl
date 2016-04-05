@@ -30,6 +30,7 @@
 	<script src="{$url.global}/js/jquery.min.js"></script>
 	<script src="{$url.global}/js/jquery-easing.js"></script>
 	<script src="{$url.global}/js/materialize.min.js"></script>
+	<script src="{$url.global}/js/password-meter.js"></script>
 
 </body>
 

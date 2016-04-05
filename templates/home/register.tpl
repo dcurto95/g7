@@ -18,6 +18,7 @@
 			<div class="input-field col-md-6">
 				<input id="password" type="password" class="validate" required>
 				<label for="password">Password</label>
+
 			</div>
 			<div class="input-field col-md-6">
 				<input placeholder="@name" pattern="{$twitter_regex}" id="twitter" type="text" class="validate">
