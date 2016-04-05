@@ -1,7 +1,7 @@
 
 </div>
 
-	<footer class="page-footer blue center-on-small-only">
+	<footer class="page-footer blue center-on-small-only yellow darken-3">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6">

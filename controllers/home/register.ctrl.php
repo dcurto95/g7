@@ -13,7 +13,7 @@ class HomeRegisterController extends Controller
 		$username_regex = '([A-Za-z]{6,})';
 		$this->assign('username_regex', $username_regex);
 
-		$twitter_regex = '([@]{1})\w+';
+		$twitter_regex = '@\w+';
 		$this->assign('twitter_regex', $twitter_regex);
 
 		$this->setLayout( $this->view );

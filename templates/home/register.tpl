@@ -1,6 +1,6 @@
 {$modules.head}
 
-<h1 class="grey-text"> REGISTRE </h1>
+<h1 class="light-blue-text"> REGISTER </h1>
 
 <div class="row">
 	<form class="col-md-12">
@@ -24,7 +24,7 @@
 				<label for="twitter" data-error="Wrong twitter account" data-success="Ok!">Twitter</label>
 			</div>
 		</div>
-		<button class="btn waves-effect waves-light" type="submit" name="action">Register
+		<button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">Register
 			<i class="material-icons right">perm_identity</i>
 		</button>
 	</form>
@@ -32,8 +32,5 @@
 
 
 <div class="space-50" style="height: 200px"></div>
-
-
-
 
 {$modules.footer}
