@@ -31,6 +31,6 @@
 </div>
 
 
-<div class="space-50" style="height: 200px"></div>
+<div class="space-50" style="height: 220px"></div>
 
 {$modules.footer}

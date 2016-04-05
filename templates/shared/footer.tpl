@@ -2,7 +2,7 @@
 </div>
 
 	<footer class="page-footer blue center-on-small-only yellow darken-3">
-		<div class="container-fluid">
+		<!-- <div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6">
 					<h5 class="white-text">Footer Content</h5>
@@ -18,10 +18,10 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="footer-copyright text-center rgba-black-light">
 			<div class="container-fluid">
-				© 2015 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
+				© 2015 Copyright: <i>Jordi Roig, David Curto, Albert Llauradó</i>.
 			</div>
 		</div>
 	</footer>
