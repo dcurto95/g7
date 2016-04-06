@@ -12,7 +12,7 @@ class HomeAuthController extends Controller
 
         $info = $this->getParams();
 
-        // Petició a model -> Array completa:
+        // Petició a model
         $model = $this->getClass('HomeMailManagerModel');
 
         if(empty($info['url_arguments'])){
