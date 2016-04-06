@@ -21,7 +21,7 @@
 		</div> -->
 		<div class="footer-copyright text-center rgba-black-light">
 			<div class="container-fluid">
-				© 2015 Copyright: <i>Jordi Roig, David Curto, Albert Llauradó</i>.
+				© 2016 Copyright: <i>Jordi Roig, David Curto, Albert Llauradó</i>.
 			</div>
 		</div>
 	</footer>
