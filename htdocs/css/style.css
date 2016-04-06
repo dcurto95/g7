@@ -49,3 +49,10 @@ body {
 .input-field .prefix.active {
     color: #29b6f6;
 }
+
+
+.img-circle {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
