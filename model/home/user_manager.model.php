@@ -17,9 +17,9 @@ QUERY;
         SELECT
                 *
         FROM
-                `users`
+                `user`
         WHERE
-            `users.id_user` = $id
+            `id_user` = $id
 QUERY;
         $user = $this->getAll($query);
 
@@ -31,8 +31,8 @@ QUERY;
         SELECT
                 *
         FROM
-                `users`
-        WHERE `users.id_user` = $id
+                `user`
+        WHERE `id_user` = $id
 QUERY;
         $temp = $this->getAll($query);
 
@@ -42,7 +42,7 @@ QUERY;
         UPDATE
                 `user`
         SET
-            `user.valid` = true;
+            `valid` = true;
 QUERY;
             $this->execute($query);
             return true;
@@ -53,7 +53,7 @@ QUERY;
 
     public function deleteUser($id){
         $query = <<<QUERY
-        DELETE FROM `users` WHERE `user.id`=$id
+        DELETE FROM `user` WHERE `id`=$id
 QUERY;
         $this->execute($query);
     }

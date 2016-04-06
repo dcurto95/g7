@@ -13,17 +13,16 @@ class HomeAuthController extends Controller
         $info = $this->getParams();
 
         // Petició a model
-        $model = $this->getClass('HomeMailManagerModel');
+        $model = $this->getClass('HomeUserManagerModel');
 
-        if(empty($info['url_arguments'])){
-            // Standard home:
+        if(empty($info['url_arguments'][0])){
+            // Standard:
 
-        }else if($info['url_arguments'][0] == 'validate'){
-            // Validation Home:
+        }else{
+            // Validation:
 
             /* Validation URL Format: g7.dev/auth/<codi> */
-            $username = $info['url_arguments'][1];
-            $validation_code = $info['url_arguments'][2];
+            $validation_code = $info['url_arguments'][0];
 
             $status = $model->validateUser($validation_code);
             if($status){
@@ -32,9 +31,6 @@ class HomeAuthController extends Controller
             }else{
                 // Pantalla d'error
             }
-
-        }else{
-
         }
 
         $this->setLayout( $this->view );

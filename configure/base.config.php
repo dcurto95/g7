@@ -40,4 +40,4 @@ $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
 
 // Models
-$config['HomeMailManagerModel']	    	= PATH_MODELS . 'home/user_manager.model.php';
+$config['HomeUserManagerModel']	    	= PATH_MODELS . 'home/user_manager.model.php';
