@@ -4,4 +4,8 @@ Mail : ls29167
 
 
 
-Web : http://materializecss.com
+Web :
+    http://materializecss.com
+
+Passwd Strength:
+    http://jsfiddle.net/jquery4u/mmXV5/
