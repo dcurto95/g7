@@ -38,4 +38,5 @@ $config['HomeRegisterController']		= PATH_CONTROLLERS . 'home/register.ctrl.php'
 $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
 
-
+// Models
+$config['HomeMailManagerModel']	    	= PATH_MODELS . 'home/mail_manager.model.php';
