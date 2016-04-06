@@ -6,6 +6,8 @@
  */
 class HomeMailManagerModel extends Model{
 
-
+public function validateUser($id){
+    return true;
+}
 
 }
