@@ -5,9 +5,9 @@
  */
 class HomeUserManagerModel extends Model{
 
-    public function createUser($username,$email,$twitter,$password,$image){
+    public function createUser($id,$username,$email,$twitter,$password,$image){
         $query = <<<QUERY
-            INSERT INTO user VALUES ($username, $email, $twitter, $password, $image)
+            INSERT INTO user VALUES ($id,$username, $email, $twitter, $password, $image)
 QUERY;
         $this->execute($query);
     }
@@ -57,5 +57,27 @@ QUERY;
 QUERY;
         $this->execute($query);
     }
+
+    //Retorna true si el nom d'usuari és vàlid
+    public function validateUserName($name){
+        $query = <<<QUERY
+        SELECT * FROM `users` WHERE username = $name
+QUERY;
+        $temp = $this->getAll($query);
+        if(empty($temp[0])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+    /*
+     * TO DO:
+     * Afegir usuaris, des del formulari i feedback de si tota la info esta correcte. VALDAR FORMULARI
+     * Si falla, indicar quins camps fallen
+     * Si és tot correcte, redirigir a la home (secundari)
+     */
 
 }

@@ -1,7 +1,3 @@
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
 CREATE TABLE user(
 	id_user INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(100) NOT NULL,
@@ -9,6 +5,5 @@ CREATE TABLE user(
 	twitter VARCHAR(100),
 	password VARCHAR(100) NOT NULL,
 	image VARCHAR(300),
-	valid BOOLEAN DAFAULT false,
-	PRIMARY KEY (id_user)
-)ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54;
+	valid BOOLEAN DEFAULT false,
+	PRIMARY KEY (id_user));
