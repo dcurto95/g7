@@ -33,7 +33,7 @@ class HomeAuthController extends Controller
             }else{
                 // Pantalla d'error
                 $this->assign('auth_status', 'User KO');
-                
+
             }
         }
 
