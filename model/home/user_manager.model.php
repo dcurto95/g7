@@ -19,7 +19,7 @@ QUERY;
         FROM
                 `user`
         WHERE
-            `id_user` = $id
+            `id_user` = '$id'
 QUERY;
         $user = $this->getAll($query);
 
@@ -32,7 +32,7 @@ QUERY;
                 *
         FROM
                 `user`
-        WHERE `id_user` = $id
+        WHERE `id_user` = '$id'
 QUERY;
         $temp = $this->getAll($query);
 
@@ -53,7 +53,7 @@ QUERY;
 
     public function deleteUser($id){
         $query = <<<QUERY
-        DELETE FROM `user` WHERE `id`=$id
+        DELETE FROM `user` WHERE `id` = '$id'
 QUERY;
         $this->execute($query);
     }
@@ -61,13 +61,28 @@ QUERY;
     //Retorna true si el nom d'usuari és vàlid
     public function validateUserName($name){
         $query = <<<QUERY
-        SELECT * FROM `users` WHERE username = $name
+        SELECT * FROM `users` WHERE username = '$name'
 QUERY;
         $temp = $this->getAll($query);
         if(empty($temp[0])){
             return true;
         }else{
             return false;
+        }
+    }
+
+    public function login($name, $pw){
+
+        $query = <<<QUERY
+        SELECT * FROM `users` WHERE username = '$name' AND password = '$pw'
+QUERY;
+        $temp = $this->getAll($query);
+
+        //comprova que hi hagi una correspondència amb user i pw
+        if(size($temp)==1){
+            return true;
+        }else{
+            return true;
         }
     }
 
