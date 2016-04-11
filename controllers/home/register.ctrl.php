@@ -18,6 +18,40 @@ class HomeRegisterController extends Controller
 
 		$this->setLayout( $this->view );
 
+
+		$name = Filter::getString('username');
+		$email = Filter::getEmail('email');
+		$is_submit = Filter::getString('submit');
+
+
+		if($is_submit){
+			//mail($email,"User code activation","Prova");
+			echo("Hola: $email");
+
+			$to = "dcurto95@gmail.com";
+			$subject = "This is subject";
+
+			$message = "<b>This is HTML message.</b>";
+			$message .= "<h1>This is headline.</h1>";
+
+
+
+			$retval = mail ($to,$subject,$message);
+
+			if( $retval == true ) {
+				echo "Message sent successfully...";
+			}else {
+				print_r(error_get_last());
+				echo "Message could not be sent...";
+			}
+
+		}
+
+
+
+
+
+
 	}
 
 
