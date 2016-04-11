@@ -28,15 +28,12 @@ class HomeAuthController extends Controller
 
             $status = $model->validateUser($validation_code);
 
-            $status = true;
             if($status){
                 // Pantalla de benvinguda
                 $this->assign('auth_status', 0);
-
             }else{
                 // Pantalla d'error
                 $this->assign('auth_status', 1);
-
             }
         }
 
