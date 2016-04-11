@@ -23,7 +23,7 @@
 		<div class="navbar-fixed">
 			<nav>
 				<div class="nav-wrapper deep-orange lighten-1">
-					<a href="g7.dev" class="brand-logo">G7 DEV</a>
+					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><a href="sass.html">Sass</a></li>
 						<li><a href="badges.html">Components</a></li>

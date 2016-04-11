@@ -17,7 +17,8 @@ class HomeAuthController extends Controller
 
         if(empty($info['url_arguments'][0])){
             // Standard:
-            $this->assign('auth_status', 'Not a user');
+            header('Location:' .URL_ABSOLUTE);
+            $this->assign('auth_status', -1);
 
         }else{
             // Validation:
@@ -26,13 +27,15 @@ class HomeAuthController extends Controller
             $validation_code = $info['url_arguments'][0];
 
             $status = $model->validateUser($validation_code);
+
+            $status = true;
             if($status){
                 // Pantalla de benvinguda
-                $this->assign('auth_status', 'User OK');
+                $this->assign('auth_status', 0);
 
             }else{
                 // Pantalla d'error
-                $this->assign('auth_status', 'User KO');
+                $this->assign('auth_status', 1);
 
             }
         }
