@@ -5,9 +5,9 @@
  */
 class HomeUserManagerModel extends Model{
 
-    public function createUser($id,$username,$email,$twitter,$password,$image){
+    public function createUser($username,$email,$twitter,$password,$image,$activation_code){
         $query = <<<QUERY
-            INSERT INTO user VALUES ($id,$username, $email, $twitter, $password, $image)
+            INSERT INTO user(username, email, twitter, password, image, activation_code) VALUES ('$username', '$email', '$twitter', '$password', '$image', '$activation_code')
 QUERY;
         $this->execute($query);
     }

@@ -9,6 +9,7 @@ class HomeRegisterController extends Controller
 
 	public function build()
 	{
+		$model = $this->getClass('HomeUserManagerModel');
 
 		$username_regex = '([A-Za-z]{6,})';
 		$this->assign('username_regex', $username_regex);
@@ -19,16 +20,30 @@ class HomeRegisterController extends Controller
 		$this->setLayout( $this->view );
 
 
-		$name = Filter::getString('username');
+		$username = Filter::getString('username');
 		$email = Filter::getEmail('email');
+		$twitter = Filter::getString('twitter');
+
+		if($twitter == ''){
+			$twitter = 'null';
+		}
+
+		$password = Filter::getString('password');
+		$imatge = Filter::getString('image');
+
+		if($imatge == ''){
+			$imatge = 'null';
+		}
+
+		$activation_code = uniqid('AC');
+
 		$is_submit = Filter::getString('submit');
 
-
 		if($is_submit){
-			//mail($email,"User code activation","Prova");
-			echo("Hola: $email");
 
-			$to = "dcurto95@gmail.com";
+			//Creem usuari
+			$model->createUser($username,$email,$twitter,$password,$imatge,$activation_code);
+
 			$subject = "This is subject";
 
 			$message = "<b>This is HTML message.</b>";
@@ -36,7 +51,7 @@ class HomeRegisterController extends Controller
 
 
 
-			$retval = mail ($to,$subject,$message);
+			$retval = mail($email,$subject,$message);
 
 			if( $retval == true ) {
 				echo "Message sent successfully...";

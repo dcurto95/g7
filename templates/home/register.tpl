@@ -6,7 +6,7 @@
 	<form class="col-md-12" method="post" action="">
 		<div class="row">
 			<div class="input-field col-md-6">
-				<input placeholder="Your name" pattern="{$username_regex}" id="username" type="text" class="validate" required>
+				<input placeholder="Your name" pattern="{$username_regex}" name="username" id="username" type="text" class="validate" required>
 				<label for="username" data-error="Wrong, minimum 6 characters" data-success="Ok!">Username</label>
 			</div>
 			<div class="input-field col-md-6">
@@ -16,12 +16,12 @@
 		</div>
 		<div class="row">
 			<div class="input-field col-md-6">
-				<input id="password" type="password" class="validate" required length="10" maxlength="10" minlength="6">
+				<input id="password" name="password" type="password" class="validate" required length="10" maxlength="10" minlength="6">
 				<label for="password">Password</label>
 
 			</div>
 			<div class="input-field col-md-6">
-				<input placeholder="@name" pattern="{$twitter_regex}" id="twitter" type="text" class="validate">
+				<input placeholder="@name" pattern="{$twitter_regex}" id="twitter" name="twitter" type="text" class="validate">
 				<label for="twitter" data-error="Wrong twitter account" data-success="Ok!">Twitter</label>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 			<div class="file-field input-field col-md-8">
 				<div class="btn col-md-4">
 					<span>Profile image</span>
-					<input type="file" id="inputFile">
+					<input type="file" id="inputFile" name="image">
 				</div>
 				<div class="file-path-wrapper col-md-8">
 					<input class="file-path validate" type="text">
