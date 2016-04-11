@@ -12,21 +12,6 @@ class HomeHomeController extends Controller
 
 		$info = $this->getParams();
 
-		// Petició a model -> Array completa:
-		$model = $this->getClass('HomeMailManagerModel');
-
-		if(empty($info['url_arguments'])){
-			// Standard home:
-
-		}else if($info['url_arguments'][0] == 'validate'){
-			// Validation Home:
-
-			/* Validation URL Format: g7.dev/validate/<codi> */
-			$validation_code = $info['url_arguments'][1];
-
-		}else{
-
-		}
 
 		$this->setLayout( $this->view );
 
