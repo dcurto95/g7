@@ -13,6 +13,7 @@ class SharedHeadController extends Controller
 			//echo "Estic loguejat!";
 
 			// Recuperar info de l'usuari logejat
+
 			$username = 'Usuari';
 			$user_img = 'http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-6.jpg';
 
@@ -22,19 +23,19 @@ class SharedHeadController extends Controller
 
 		} else {
 			// Fer login si ho demana
-
 			$is_submit = Filter::getString('submit');
 
 			if($is_submit) {
 				$model = $this->getClass('HomeUserManagerModel');
 
-				$username = Filter::getString('username');
+				$user_name = Filter::getString('username');
 				$password = Filter::getString('password');
 
-				//$loginStatus = $model->login($username, $password);
+				// $loginStatus = $model->login($user_name, $password);
 				$loginStatus = false;
 				if ($loginStatus){
 					// Actualitzar informació
+					$user_info = $model->getUserInfo($user_name);
 
 				} else {
 					header('Location:' .URL_ABSOLUTE .'/auth/loginfail');
