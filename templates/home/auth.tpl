@@ -14,8 +14,13 @@
                 {/if}
                 {if $auth_status eq 1}
                     <span class="card-title red-text">Auhentication Failed</span>
-                    <p>Your registration failed.</p>
+                    <p>Either your registration failed or you are already in our database.</p>
                 {/if}
+                {if $auth_status eq 2}
+                    <span class="card-title red-text">Log in Failed</span>
+                    <p>Username or password incorrect.</p>
+                {/if}
+
 
             </div>
             <div class="card-action">

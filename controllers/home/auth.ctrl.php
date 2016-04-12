@@ -20,7 +20,7 @@ class HomeAuthController extends Controller
             header('Location:' .URL_ABSOLUTE);
             $this->assign('auth_status', -1);
 
-        }else{
+        }else if ($info['url_arguments'][0] != 'loginfail'){
             // Validation:
 
             /* Validation URL Format: g7.dev/auth/<codi> */
@@ -35,6 +35,8 @@ class HomeAuthController extends Controller
                 // Pantalla d'error
                 $this->assign('auth_status', 1);
             }
+        } else {
+            $this->assign('auth_status', 2);
         }
 
         $this->setLayout( $this->view );
