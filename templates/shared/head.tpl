@@ -24,10 +24,11 @@
 		<div class="navbar-fixed">
 			<!-- Dropdown -->
 
-			<ul id="dropdown1" class="dropdown-content">
-				<li><a href="#!" class="light-blue-text darken-3">Profile</a></li>
+			<ul id="dropdown1" class="dropdown-content" style="margin-top: 4.5%;">
+				<li><a href="#" class="light-blue-text darken-3">Profile</a></li>
+				<li><a href="{$url.global}/wallet" class="light-blue-text darken-3">Wallet</a></li>
 				<li class="divider"></li>
-				<li><a href="#!" class="white-text blue-grey darken-2">Log out</a></li>
+				<li><a href="#" class="white-text blue-grey darken-2">Log out</a></li>
 			</ul>
 
 			<!-- END Dropdown -->
@@ -38,6 +39,7 @@
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 						<!-- LOGIN -->
 						{if $isLogged eq true}
+							<li><img id="image_upload_preview" style="margin-top: 10%; width: 50px; height: 50px" class="img-circle" src="{$user_image}" alt="your image" /></li>
 							<li>
 								<a class="dropdown-button" href="#!" data-activates="dropdown1">
 									{$user_name}<i class="material-icons right">arrow_drop_down</i>
@@ -46,10 +48,10 @@
 						{/if}
 
 						{if $isLogged eq false}
-						<li>
-							<!-- Modal Trigger -->
-							<a class="modal-trigger" href="#modal1">Log in</a>
-						</li>
+							<li>
+								<!-- Modal Trigger -->
+								<a class="modal-trigger" href="#modal1">Log in</a>
+							</li>
 						{/if}
 						<!-- END LOGIN -->
 					</ul>
