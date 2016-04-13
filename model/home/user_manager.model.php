@@ -12,27 +12,27 @@ QUERY;
         $this->execute($query);
     }
 
-    public function getUser($id){
+    public function getUser($id_user){
         $query = <<<QUERY
         SELECT
                 *
         FROM
                 `user`
         WHERE
-            `id_user` = '$id'
+            `id_user` = '$id_user'
 QUERY;
         $user = $this->getAll($query);
 
         return $user[0];
     }
 
-    public function validateUser($id){
+    public function validateUser($id_user){
         $query = <<<QUERY
         SELECT
                 *
         FROM
                 `user`
-        WHERE `id_user` = '$id'
+        WHERE `id_user` = '$id_user'
 QUERY;
         $temp = $this->getAll($query);
 
@@ -51,14 +51,14 @@ QUERY;
         }
     }
 
-    public function deleteUser($id){
+    public function deleteUser($id_user){
         $query = <<<QUERY
-        DELETE FROM `user` WHERE `id` = '$id'
+        DELETE FROM `user` WHERE `id_user` = '$id_user'
 QUERY;
         $this->execute($query);
     }
 
-    //Retorna true si el nom d'usuari és vàlid
+    //Retorna true si el nom d'usuari és vàlid_user
     public function validateUserName($name){
         $query = <<<QUERY
         SELECT * FROM `user` WHERE username = '$name'
@@ -86,38 +86,39 @@ QUERY;
         }
     }
 
-    //inserir pasta(id, quantitat)
-    public function insertMoney($id, $quantitat){
-        $money = $this->getMoney($id);
-        $money+=$quantitat;
+    //inserir pasta(id_user_user, quantitat)
+    public function insertMoney($id_user, $quantitat){
+        $money = $this->getMoney($id_user);
+        echo($money);
+        $money= $money + $quantitat;
 
         $query = <<<QUERY
-        UPDATE user SET saldo = '$money' WHERE id='$id'
+        UPDATE user SET saldo = '$money' WHERE 'id_user'='$id_user'
 QUERY;
         $this->execute($query);
     }
 
 
-    //veure quantitat de saldo(id) retorn:quantitat
-    public function getMoney($id){
+    //veure quantitat de saldo(id_user) retorn:quantitat
+    public function getMoney($id_user){
 
         $query = <<<QUERY
-        SELECT saldo FROM `user` WHERE id = '$id'
+        SELECT saldo FROM `user` WHERE 'id_user' = '$id_user'
 QUERY;
 
         $temp = $this->getAll($query);
-        return $temp['saldo'];
+        return $temp;
     }
 
-    //Restar saldo(id, quantitat): true/false
-    public function pay($id, $quantitat){
-        $money = $this->getMoney($id);
+    //Restar saldo(id_user, quantitat): true/false
+    public function pay($id_user, $quantitat){
+        $money = $this->getMoney($id_user);
         if($money >= $quantitat){
 
             $money-=$quantitat;
 
             $query = <<<QUERY
-        UPDATE user SET saldo = '$money' WHERE id='$id'
+        UPDATE user SET saldo = '$money' WHERE 'id_user'='$id_user'
 QUERY;
             $this->execute($query);
 
