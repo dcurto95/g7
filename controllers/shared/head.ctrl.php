@@ -5,20 +5,25 @@ class SharedHeadController extends Controller
 	public function build( )
 	{
 
-		$isLogged = true;
+		echo session_status();
 
-		$this->assign('isLogged', $isLogged);
+		$this->assign('isLogged', session_status());
 
-		if ($isLogged){
-			//echo "Estic loguejat!";
+		if (session_status() == PHP_SESSION_ACTIVE){
+			echo "Estic loguejat!";
 
 			// Recuperar info de l'usuari logejat
 
 			$username = 'Usuari';
 			$user_img = 'http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-6.jpg';
 
-			$this->assign('user_name', $username);
+			$this->assign('username', $username);
 			$this->assign('user_image', $user_img);
+
+			$is_submit = Filter::getString('submit');
+			if($is_submit) {
+				session_destroy();
+			}
 
 
 		} else {
@@ -28,14 +33,18 @@ class SharedHeadController extends Controller
 			if($is_submit) {
 				$model = $this->getClass('HomeUserManagerModel');
 
-				$user_name = Filter::getString('username');
+				$username = Filter::getString('username');
 				$password = Filter::getString('password');
 
-				// $loginStatus = $model->login($user_name, $password);
-				$loginStatus = false;
-				if ($loginStatus){
+				$userId = $model->login($username, $password);
+				if ($userId >= 0){ // És un usuari
 					// Actualitzar informació
-					$user_info = $model->getUserInfo($user_name);
+					$user_info = $model->getUser($userId);
+					print_r($user_info);
+
+					session_start();
+					$_SESSION['user'] = $user_info;
+
 
 				} else {
 					header('Location:' .URL_ABSOLUTE .'/auth/loginfail');

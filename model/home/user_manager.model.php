@@ -23,7 +23,7 @@ QUERY;
 QUERY;
         $user = $this->getAll($query);
 
-        return $user;
+        return $user[0];
     }
 
     public function validateUser($id){
@@ -61,7 +61,7 @@ QUERY;
     //Retorna true si el nom d'usuari és vàlid
     public function validateUserName($name){
         $query = <<<QUERY
-        SELECT * FROM `users` WHERE username = '$name'
+        SELECT * FROM `user` WHERE username = '$name'
 QUERY;
         $temp = $this->getAll($query);
         if(empty($temp[0])){
@@ -74,15 +74,15 @@ QUERY;
     public function login($name, $pw){
 
         $query = <<<QUERY
-        SELECT * FROM `users` WHERE username = '$name' AND password = '$pw'
+        SELECT * FROM `user` WHERE username = '$name' AND password = '$pw' AND valid = true
 QUERY;
         $temp = $this->getAll($query);
 
         //comprova que hi hagi una correspondència amb user i pw
-        if(size($temp)==1){
-            return true;
-        }else{
-            return true;
+        if(sizeof($temp) == 1){
+            return $temp[0]['id_user'];
+        } else {
+            return (-1);
         }
     }
 

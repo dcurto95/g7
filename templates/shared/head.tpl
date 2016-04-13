@@ -28,7 +28,10 @@
 				<li><a href="#" class="light-blue-text darken-3">Profile</a></li>
 				<li><a href="{$url.global}/wallet" class="light-blue-text darken-3">Wallet</a></li>
 				<li class="divider"></li>
-				<li><a href="#" class="white-text blue-grey darken-2">Log out</a></li>
+				<li>
+					<!-- a href="#" class="white-text blue-grey darken-2">Log out</a -->
+					<input class="" type="submit" id ="submit" name="submit" value="Log out">
+				</li>
 			</ul>
 
 			<!-- END Dropdown -->
@@ -38,16 +41,16 @@
 					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 						<!-- LOGIN -->
-						{if $isLogged eq true}
+						{if $isLogged eq 2}
 							<li><img id="image_upload_preview" style="margin-top: 10%; width: 50px; height: 50px" class="img-circle" src="{$user_image}" alt="your image" /></li>
 							<li>
 								<a class="dropdown-button" href="#!" data-activates="dropdown1">
-									{$user_name}<i class="material-icons right">arrow_drop_down</i>
+									{$username}<i class="material-icons right">arrow_drop_down</i>
 								</a>
 							</li>
 						{/if}
 
-						{if $isLogged eq false}
+						{if $isLogged eq 1}
 							<li>
 								<!-- Modal Trigger -->
 								<a class="modal-trigger" href="#modal1">Log in</a>
@@ -71,13 +74,13 @@
 						<div class="col s12">
 							<div class="row">
 								<div class="input-field col s12">
-									<input placeholder="Placeholder" id="user_name" type="text" class="validate">
-									<label for="user_name" class="light-blue-text text-lighten-1">Username</label>
+									<input id="username" name="username" type="text" class="validate" required>
+									<label for="username" class="light-blue-text text-lighten-1">Username</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s12">
-									<input id="password" type="password" class="validate">
+									<input id="password" name="password" type="password" class="validate" required>
 									<label for="password">Password</label>
 								</div>
 							</div>
