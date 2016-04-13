@@ -20,6 +20,7 @@ class HomeRegisterController extends Controller
 		$this->setLayout( $this->view );
 
 
+		//Agafar valors per la creació de l'usuari
 		$username = Filter::getString('username');
 		$email = Filter::getEmail('email');
 		$twitter = Filter::getString('twitter');
@@ -61,12 +62,6 @@ class HomeRegisterController extends Controller
 			}
 
 		}
-
-
-
-
-
-
 	}
 
 

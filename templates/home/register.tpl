@@ -6,7 +6,7 @@
 	<form class="col-md-12" method="post" action="">
 		<div class="row">
 			<div class="input-field col s6">
-				<input placeholder="Your name" pattern="{$username_regex}" id="username" type="text" class="validate" required>
+				<input placeholder="Your name" pattern="{$username_regex}" name="username" id="username" type="text" class="validate" required>
 				<label for="username" data-error="Wrong, minimum 6 characters" data-success="Ok!">Username</label>
 			</div>
 			<div class="input-field col s6">
@@ -16,12 +16,12 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
-				<input id="password" type="password" class="validate password-meter" required length="10" maxlength="10" minlength="6">
+				<input id="password" type="password" name="password" class="validate password-meter" required length="10" maxlength="10" minlength="6">
 				<label for="password">Password</label>
 
 			</div>
 			<div class="input-field col s6">
-				<input placeholder="@name" pattern="{$twitter_regex}" id="twitter" type="text" class="validate">
+				<input placeholder="@name" pattern="{$twitter_regex}" name="twitter" id="twitter" type="text" class="validate">
 				<label for="twitter" data-error="Wrong twitter account" data-success="Ok!">Twitter</label>
 			</div>
 		</div>
