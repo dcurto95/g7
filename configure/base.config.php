@@ -32,10 +32,15 @@ $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.ph
 // Home Controller
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
 $config['HomeRegisterController']		= PATH_CONTROLLERS . 'home/register.ctrl.php';
+
 $config['HomeInsertCoinController']		= PATH_CONTROLLERS . 'home/insertCoin.ctrl.php';
+
+$config['HomeAuthController']	    	= PATH_CONTROLLERS . 'home/auth.ctrl.php';
+
 
 // Shared controllers
 $config['SharedHeadController']			= PATH_CONTROLLERS . 'shared/head.ctrl.php';
 $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php';
 
-
+// Models
+$config['HomeUserManagerModel']	    	= PATH_MODELS . 'home/user_manager.model.php';

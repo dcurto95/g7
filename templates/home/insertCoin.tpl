@@ -3,13 +3,11 @@
 
 <h1> HOLA MON! </h1>
 
-<form action="" method = "post">
-
-    <p class="range-field">
+<form  class="col-md-12" action="" method = "post">
+    <p>
         <label for =test5> Introdueix la quantitat que vols inserir</label>
-        <input type="range" id="test5" name ="test5" min="1" max="100" />
+        <input type="number" id="test5" name ="test5" min="1" max="100" />
     </p>
-
 
     <p>
         <input name="group1" type="radio" id="test1"/>
@@ -24,8 +22,6 @@
         <label for="test3">Transferencia</label>
     </p>
     <input class="btn waves-effect waves-light" type="submit" name="action" id="action">
-
-
 
 </form>
 
