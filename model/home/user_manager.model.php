@@ -86,13 +86,45 @@ QUERY;
         }
     }
 
+    //inserir pasta(id, quantitat)
+    public function insertMoney($id, $quantitat){
+        $money = $this->getMoney($id);
+        $money+=$quantitat;
+
+        $query = <<<QUERY
+        UPDATE user SET saldo = '$money' WHERE id='$id'
+QUERY;
+        $this->execute($query);
+    }
 
 
-    /*
-     * TO DO:
-     * Afegir usuaris, des del formulari i feedback de si tota la info esta correcte. VALDAR FORMULARI
-     * Si falla, indicar quins camps fallen
-     * Si és tot correcte, redirigir a la home (secundari)
-     */
+    //veure quantitat de saldo(id) retorn:quantitat
+    public function getMoney($id){
 
+        $query = <<<QUERY
+        SELECT saldo FROM `user` WHERE id = '$id'
+QUERY;
+
+        $temp = $this->getAll($query);
+        return $temp['saldo'];
+    }
+
+    //Restar saldo(id, quantitat): true/false
+    public function pay($id, $quantitat){
+        $money = $this->getMoney($id);
+        if($money >= $quantitat){
+
+            $money-=$quantitat;
+
+            $query = <<<QUERY
+        UPDATE user SET saldo = '$money' WHERE id='$id'
+QUERY;
+            $this->execute($query);
+
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }

@@ -6,5 +6,6 @@ CREATE TABLE user(
 	password VARCHAR(100) NOT NULL,
 	image VARCHAR(300),
 	activation_code VARCHAR(30) NOT NULL,
+	saldo FLOAT DEFAULT 0,
 	valid BOOLEAN DEFAULT false,
 	PRIMARY KEY (id_user));
