@@ -26,13 +26,9 @@ QUERY;
         return $user[0];
     }
 
-    public function validateUser($id){
+    public function validateUser($activation_code){
         $query = <<<QUERY
-        SELECT
-                *
-        FROM
-                `user`
-        WHERE `id_user` = '$id'
+        SELECT * FROM user WHERE activation_code = '$activation_code'
 QUERY;
         $temp = $this->getAll($query);
 
@@ -43,6 +39,7 @@ QUERY;
                 `user`
         SET
             `valid` = true;
+        WHERE activation_code = '$activation_code'
 QUERY;
             $this->execute($query);
             return true;
@@ -59,9 +56,9 @@ QUERY;
     }
 
     //Retorna true si el nom d'usuari és vàlid
-    public function validateUserName($name){
+    public function validateUserNameAndMail($name,$mail){
         $query = <<<QUERY
-        SELECT * FROM `user` WHERE username = '$name'
+        SELECT * FROM `user` WHERE username = '$name' OR mail='$mail'
 QUERY;
         $temp = $this->getAll($query);
         if(empty($temp[0])){
@@ -74,7 +71,7 @@ QUERY;
     public function login($name, $pw){
 
         $query = <<<QUERY
-        SELECT * FROM `user` WHERE username = '$name' AND password = '$pw' AND valid = true
+        SELECT * FROM `user` WHERE (username = '$name' OR mail='$name') AND password = '$pw' AND valid = true
 QUERY;
         $temp = $this->getAll($query);
 
@@ -86,13 +83,45 @@ QUERY;
         }
     }
 
+    //inserir pasta(id, quantitat)
+    public function insertMoney($id, $quantitat){
+        $money = $this->getMoney($id);
+        $money+=$quantitat;
+
+        $query = <<<QUERY
+        UPDATE user SET saldo = '$money' WHERE id='$id'
+QUERY;
+        $this->execute($query);
+    }
 
 
-    /*
-     * TO DO:
-     * Afegir usuaris, des del formulari i feedback de si tota la info esta correcte. VALDAR FORMULARI
-     * Si falla, indicar quins camps fallen
-     * Si és tot correcte, redirigir a la home (secundari)
-     */
+    //veure quantitat de saldo(id) retorn:quantitat
+    public function getMoney($id){
 
+        $query = <<<QUERY
+        SELECT saldo FROM `user` WHERE id = '$id'
+QUERY;
+
+        $temp = $this->getAll($query);
+        return $temp[0]['saldo'];
+    }
+
+    //Restar saldo(id, quantitat): true/false
+    public function pay($id, $quantitat){
+        $money = $this->getMoney($id);
+        if($money >= $quantitat){
+
+            $money-=$quantitat;
+
+            $query = <<<QUERY
+        UPDATE user SET saldo = '$money' WHERE id='$id'
+QUERY;
+            $this->execute($query);
+
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }
