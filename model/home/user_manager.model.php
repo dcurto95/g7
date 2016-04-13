@@ -27,18 +27,19 @@ QUERY;
     }
 
     public function validateUser($activation_code){
+
         $query = <<<QUERY
-        SELECT * FROM user WHERE activation_code = '$activation_code'
+        SELECT * FROM `user` WHERE activation_code = '$activation_code'
 QUERY;
         $temp = $this->getAll($query);
 
         //Controlem que realment existeixi l'usuari
-        if($temp[0]!=null && !$temp[0]['valid']){
+        if($temp[0]!= null && !$temp[0]['valid']){
             $query = <<<QUERY
         UPDATE
                 `user`
         SET
-            `valid` = true;
+            valid = true;
         WHERE activation_code = '$activation_code'
 QUERY;
             $this->execute($query);
@@ -58,7 +59,7 @@ QUERY;
     //Retorna true si el nom d'usuari és vàlid
     public function validateUserNameAndMail($name,$mail){
         $query = <<<QUERY
-        SELECT * FROM `user` WHERE username = '$name' OR mail='$mail'
+        SELECT * FROM `user` WHERE username = '$name' OR email='$mail'
 QUERY;
         $temp = $this->getAll($query);
         if(empty($temp[0])){
@@ -71,7 +72,7 @@ QUERY;
     public function login($name, $pw){
 
         $query = <<<QUERY
-        SELECT * FROM `user` WHERE (username = '$name' OR mail='$name') AND password = '$pw' AND valid = true
+        SELECT * FROM `user` WHERE (username = '$name' OR email='$name') AND password = '$pw' AND valid = true
 QUERY;
         $temp = $this->getAll($query);
 
