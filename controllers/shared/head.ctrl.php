@@ -2,15 +2,18 @@
 
 class SharedHeadController extends Controller
 {
-	public function build( )
-	{
+	public function build( ){
 
-		echo session_status();
+		echo "- ";
+		$session = Session::getInstance();
 
-		$this->assign('isLogged', session_status());
-
-		if (session_status() == PHP_SESSION_ACTIVE){
+		print_r($session->get('user'));
+		$user = $session->get('user');
+		//if (true){
+		if ($user != null){
 			echo "Estic loguejat!";
+			$this->assign('isLogged', true);
+
 
 			// Recuperar info de l'usuari logejat
 
@@ -22,15 +25,16 @@ class SharedHeadController extends Controller
 
 			$is_submit = Filter::getString('submit');
 			if($is_submit) {
-				session_destroy();
+				$session->delete('user');
 			}
 
-
 		} else {
+			$this->assign('isLogged', false);
 			// Fer login si ho demana
-			$is_submit = Filter::getString('submit');
+			$is_submit = Filter::getString('login');
 
 			if($is_submit) {
+
 				$model = $this->getClass('HomeUserManagerModel');
 
 				$username = Filter::getString('username');
@@ -38,13 +42,15 @@ class SharedHeadController extends Controller
 
 				$userId = $model->login($username, $password);
 				if ($userId >= 0){ // És un usuari
+
 					// Actualitzar informació
 					$user_info = $model->getUser($userId);
 					print_r($user_info);
 
-					session_start();
-					$_SESSION['user'] = $user_info;
 
+					$session->set('user', $user_info);
+					echo " Session: ";
+					print_r($session->get('user'));
 
 				} else {
 					header('Location:' .URL_ABSOLUTE .'/auth/loginfail');
@@ -52,6 +58,8 @@ class SharedHeadController extends Controller
 
 			}
 		}
+
+		echo " -";
 
 		$this->setLayout( 'shared/head.tpl' );
 	}

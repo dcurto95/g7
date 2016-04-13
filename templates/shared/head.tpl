@@ -29,8 +29,8 @@
 				<li><a href="{$url.global}/wallet" class="light-blue-text darken-3">Wallet</a></li>
 				<li class="divider"></li>
 				<li>
-					<!-- a href="#" class="white-text blue-grey darken-2">Log out</a -->
-					<input class="" type="submit" id ="submit" name="submit" value="Log out">
+					<a href="#" class="white-text blue-grey darken-2">Log out</a>
+					<!-- input class="" type="submit" id ="submit" name="submit" value="Log out" -->
 				</li>
 			</ul>
 
@@ -41,8 +41,9 @@
 					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 						<!-- LOGIN -->
-						{if $isLogged eq 2}
-							<li><img id="image_upload_preview" style="margin-top: 10%; width: 50px; height: 50px" class="img-circle" src="{$user_image}" alt="your image" /></li>
+						{if $isLogged eq true}
+							<li><img id="image_upload_preview" style="margin-top: 12%; width: 50px; height: 50px"
+									 class="responsive-img circle" src="{$user_image}" alt="your image" /></li>
 							<li>
 								<a class="dropdown-button" href="#!" data-activates="dropdown1">
 									{$username}<i class="material-icons right">arrow_drop_down</i>
@@ -50,7 +51,7 @@
 							</li>
 						{/if}
 
-						{if $isLogged eq 1}
+						{if $isLogged eq false}
 							<li>
 								<!-- Modal Trigger -->
 								<a class="modal-trigger" href="#modal1">Log in</a>
@@ -97,7 +98,7 @@
 				</div>
 				<div class="modal-footer">
 					<input class="modal-action modal-close btn-flat waves-effect waves-ripple"
-						   type="submit" id ="submit" name="submit" value="Log in">
+						   type="submit" id ="submit" name="login" value="Log in">
 				</div>
 			</form>
 		</div>
