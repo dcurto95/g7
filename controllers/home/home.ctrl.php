@@ -12,7 +12,6 @@ class HomeHomeController extends Controller
 
 		$info = $this->getParams();
 
-
 		$this->setLayout( $this->view );
 
 	}
