@@ -10,8 +10,10 @@ class HomeInsertCoinController extends Controller
 {
     protected $view = 'home/insertCoin.tpl';
 
+
     public function build()
     {
+        $model = $this->getClass('HomeUserManagerModel');
 
         $model = $this->getClass('HomeUserManagerModel');
 
@@ -20,21 +22,18 @@ class HomeInsertCoinController extends Controller
         $is_submit = Filter::getString('action');
 
         if($is_submit){
-            $coinValue = Filter::getInteger('test5');
-            $model->insertMoney(1,$coinValue);
-            $currentMoney =$model->getMoney(1);
-            print_r($currentMoney);
-            /*
-           // $totalSaldo = $coinValue +$currentMoney;
-            $totalSaldo =150;
-            if ($totalSaldo >=1000){
-                echo("You ve got so much money");
+
+            $money = Filter::getFloat('test5');
+            echo($money);
+            $saldo = $model->getMoney(1);
+            if ($saldo+$money >1000){
+                echo("You've got so much money bitch!!!!");
+            }else{
+                $model->insertMoney(1, $money);
+                echo($model->getMoney(1));
             }
 
-            */
-            echo("La pasta inserida es");
-            echo($coinValue);
-            //echo($totalSaldo);
+
 
         }
 
