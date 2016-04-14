@@ -15,21 +15,12 @@ class SharedHeadController extends Controller
 			// Recuperar info de l'usuari logejat
 
 			$username = $session->get('username');
-
 			$user_img = $session->get('image');
+			$user_coins = $session->get('saldo');
 
 			$this->assign('user_image', $user_img);
-
 			$this->assign('username', $username);
-
-
-			$is_submit = Filter::getString('submit');
-			/* if($is_submit) { */
-				/*$session->delete('id_user');
-				$session->delete('username');
-				$session->delete('email');
-				$session->delete('image');*/
-			/* } */
+			$this->assign('user_coins', $user_coins);
 
 		} else {
 
@@ -57,11 +48,13 @@ class SharedHeadController extends Controller
 					$session->delete('username');
 					$session->delete('email');
 					$session->delete('image');
+					$session->delete('saldo');
 
 					$session->set('id_user', 	$user_info['id_user']);
 					$session->set('username', 	$user_info['username']);
 					$session->set('email', 		$user_info['email']);
 					$session->set('image', 		$user_info['image']);
+					$session->set('saldo', 		$user_info['saldo']);
 
 					header('Location:' .URL_ABSOLUTE);
 

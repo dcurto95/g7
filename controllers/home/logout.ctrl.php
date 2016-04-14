@@ -17,6 +17,7 @@ class HomeLogoutController extends Controller
         $session->delete('username');
         $session->delete('email');
         $session->delete('image');
+        $session->delete('saldo');
 
         header('Location:' .URL_ABSOLUTE);
 
