@@ -10,16 +10,20 @@ class HomeInsertCoinController extends Controller
 {
     protected $view = 'home/insertCoin.tpl';
 
+
     public function build()
     {
+        $model = $this->getClass('HomeUserManagerModel');
 
         $this->setLayout( $this->view );
 
         $is_submit = Filter::getString('action');
 
         if($is_submit){
-            $coinValue = Filter::getInteger('test5');
-            echo($coinValue);
+
+
+            //Ingressar diners?
+
 
         }
 
