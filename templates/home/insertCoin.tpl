@@ -1,7 +1,7 @@
 {$modules.head}
 
 
-<h1> HOLA MON! </h1>
+<h1 class="light-blue-text"> INSERT COINS: </h1>
 
 <form  class="col-md-12" action="" method = "post">
     <p>
@@ -24,6 +24,8 @@
     <input class="btn waves-effect waves-light" type="submit" name="action" id="action">
 
 </form>
+
+<div class="space-50" style="height: 250px"></div>
 
 
 {$modules.footer}

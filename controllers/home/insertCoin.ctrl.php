@@ -24,17 +24,23 @@ class HomeInsertCoinController extends Controller
         if($is_submit){
 
             $money = Filter::getFloat('test5');
-            echo($money);
             $saldo = $model->getMoney(1);
             if ($saldo+$money >1000){
-                echo("You've got so much money bitch!!!!");
+                // Superem maxim de diners... caldrà mostrar algo...
             }else{
                 $model->insertMoney(1, $money);
-                echo($model->getMoney(1));
+
+                // Actualitzem session:
+                $session = Session::getInstance();
+                $model = $this->getClass('HomeUserManagerModel');
+                $userId = $session->get('id_user');
+                $user_info = $model->getUser($userId);
+
+                $session->delete('saldo');
+                $session->set('saldo', $user_info['saldo']);
+
+                header('Location:' .URL_ABSOLUTE);
             }
-
-
-
         }
 
 

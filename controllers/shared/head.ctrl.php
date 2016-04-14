@@ -7,7 +7,7 @@ class SharedHeadController extends Controller
 		$session = Session::getInstance();
 
 		$user = $session->get('id_user');
-		//if (true){
+
 		if ($user != null){
 
 			$this->assign('isLogged', true);
