@@ -58,7 +58,7 @@ QUERY;
     //Retorna true si el nom d'usuari és vàlid
     public function validateUserNameAndMail($name,$mail){
         $query = <<<QUERY
-        SELECT * FROM `user` WHERE username = '$name' OR mail='$mail'
+        SELECT * FROM `user` WHERE 'username' = '$name' OR 'mail'='$mail'
 QUERY;
         $temp = $this->getAll($query);
         if(empty($temp[0])){
@@ -114,7 +114,7 @@ QUERY;
             $money-=$quantitat;
 
             $query = <<<QUERY
-        UPDATE user SET saldo = '$money' WHERE id='$id'
+        UPDATE user SET 'saldo' = '$money' WHERE 'id'='$id'
 QUERY;
             $this->execute($query);
 
