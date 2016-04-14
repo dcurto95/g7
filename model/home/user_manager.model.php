@@ -57,7 +57,7 @@ QUERY;
         SELECT * FROM `user` WHERE `username` = '$name' OR `email`='$mail'
 QUERY;
         $temp = $this->getAll($query);
-        //print_r($temp);
+
         if(empty($temp[0])){
             return true;
         }else{
@@ -71,7 +71,6 @@ QUERY;
         SELECT * FROM `user` WHERE (`username` = '$name' OR `email`='$name') AND `password` = '$pw' AND `valid` = 1
 QUERY;
         $temp = $this->getAll($query);
-        print_r($temp);
 
         //comprova que hi hagi una correspondència amb user i pw
         if(!empty($temp)){
@@ -101,7 +100,6 @@ QUERY;
 QUERY;
 
         $usuari = $this->getAll($query);
-        print_r($usuari[0]['saldo']);
 
         return $usuari[0]['saldo'];
     }

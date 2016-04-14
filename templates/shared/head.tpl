@@ -29,7 +29,7 @@
 				<li><a href="{$url.global}/wallet" class="light-blue-text darken-3">Wallet</a></li>
 				<li class="divider"></li>
 				<li>
-					<a href="#" class="white-text blue-grey darken-2">Log out</a>
+					<a href="{$url.global}/logout" class="white-text blue-grey darken-2">Log out</a>
 					<!-- input class="" type="submit" id ="submit" name="submit" value="Log out" -->
 				</li>
 			</ul>

@@ -7,8 +7,8 @@ $config['default']				= 'HomeHomeController';
 $config['home']					= 'HomeHomeController';
 
 $config['register']				= 'HomeRegisterController';
-
 $config['insertcoin']           = 'HomeInsertCoinController';
-
 $config['auth']			    	= 'HomeAuthController';
+$config['login']			    = 'HomeLoginController';
+$config['logout']			    = 'HomeLogoutController';
 

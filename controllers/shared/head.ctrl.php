@@ -29,10 +29,12 @@ class SharedHeadController extends Controller
 				$session->delete('username');
 				$session->delete('email');
 				$session->delete('image');*/
-			/*}*/
+			/* } */
 
 		} else {
+
 			$this->assign('isLogged', false);
+
 			// Fer login si ho demana
 			$is_submit = Filter::getString('login');
 
@@ -64,7 +66,7 @@ class SharedHeadController extends Controller
 					header('Location:' .URL_ABSOLUTE);
 
 				} else {
-					header('Location:' .URL_ABSOLUTE .'/auth/loginfail');
+					header('Location:' .URL_ABSOLUTE .'/login');
 				}
 
 			}
