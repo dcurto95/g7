@@ -24,12 +24,12 @@ class SharedHeadController extends Controller
 
 
 			$is_submit = Filter::getString('submit');
-			/* if($is_submit) {
-				$session->delete('id_user');
+			/* if($is_submit) { */
+				/*$session->delete('id_user');
 				$session->delete('username');
 				$session->delete('email');
-				$session->delete('image');
-			}*/
+				$session->delete('image');*/
+			/*}*/
 
 		} else {
 			$this->assign('isLogged', false);
