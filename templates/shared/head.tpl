@@ -49,7 +49,7 @@
 									{$username}<i class="material-icons right">arrow_drop_down</i>
 								</a>
 							</li>
-							<li><a href="#!"><span class="coin badge">{$user_coins}</span></a></li>
+							<li><a href="#"><span class="coin badge">{$user_coins}</span></a></li>
 						{/if}
 
 						{if $isLogged eq false}
@@ -59,6 +59,8 @@
 							</li>
 						{/if}
 						<!-- END LOGIN -->
+
+						<li><a href="#"><i class="material-icons">refresh</i></a></li>
 					</ul>
 				</div>
 			</nav>

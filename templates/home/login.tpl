@@ -28,7 +28,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<input class="btn waves-effect waves-ripple"
+		<input class="deep-orange lighten-1 btn waves-effect waves-ripple"
 			   type="submit" id ="submit" name="submit" value="Log in">
 	</div>
 </form>
