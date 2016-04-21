@@ -28,6 +28,7 @@ $config['dispatcher']					=  PATH_ENGINE . 'dispatcher.class.php';
 
 // 404 Controller
 $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.php';
+$config['ErrorError403Controller']		= PATH_CONTROLLERS . 'error/error403.ctrl.php';
 
 // Home Controller
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
@@ -36,6 +37,7 @@ $config['HomeInsertCoinController']		= PATH_CONTROLLERS . 'home/insertCoin.ctrl.
 $config['HomeAuthController']	    	= PATH_CONTROLLERS . 'home/auth.ctrl.php';
 $config['HomeLoginController']	    	= PATH_CONTROLLERS . 'home/login.ctrl.php';
 $config['HomeLogoutController']	    	= PATH_CONTROLLERS . 'home/logout.ctrl.php';
+$config['HomeAddProductController']	    = PATH_CONTROLLERS . 'home/addProduct.ctrl.php';
 
 
 // Shared controllers

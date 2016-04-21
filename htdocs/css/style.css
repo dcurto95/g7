@@ -68,3 +68,7 @@ span.badge.coin{
 span.badge.coin:after{
     content:" coins"
 }
+
+.picker__weekdate-display{
+    color: #0089ec;
+}

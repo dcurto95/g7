@@ -59,8 +59,8 @@
 							</li>
 						{/if}
 						<!-- END LOGIN -->
+						<li><a href="{$url.global}/addProduct">ADD</a></li>
 
-						<li><a href="#"><i class="material-icons">refresh</i></a></li>
 					</ul>
 				</div>
 			</nav>

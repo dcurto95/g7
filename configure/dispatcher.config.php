@@ -11,4 +11,5 @@ $config['insertcoin']           = 'HomeInsertCoinController';
 $config['auth']			    	= 'HomeAuthController';
 $config['login']			    = 'HomeLoginController';
 $config['logout']			    = 'HomeLogoutController';
+$config['addProduct']		    = 'HomeAddProductController';
 

@@ -33,6 +33,7 @@
 	<script src="{$url.global}/js/password-meter.js"></script>
 	<script src="{$url.global}/js/register.js"></script>
 	<script src="{$url.global}/js/modal-init.js"></script>
+	<script src="{$url.global}/js/datepicker-init.js"></script>
 
 </body>
 
