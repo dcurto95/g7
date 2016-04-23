@@ -23,15 +23,18 @@ class HomeAddProductController extends Controller
 			$product_numeric_regex = '([0-9]{0,3})';
 			$this->assign('product_numeric_regex', $product_numeric_regex);
 
+			$this->setLayout( $view );
+
 			$is_submit = Filter::getString('submit');
 
 			if($is_submit) {
 
 				$isValid = true;
 
-				$model = $this->getClass('HomeProductManagerModel');
-
 				$info['name'] = Filter::getString('product_name');
+				if (strlen($info['name']) > 50){
+					$isValid = false;
+				}
 
 				$info['price'] = Filter::getString('price');
 				if ($info['price'] <= 0.){
@@ -52,8 +55,32 @@ class HomeAddProductController extends Controller
 					$isValid = false;
 				}
 
-				//$info['image'] = Filter::getString('image');
+				$info['image'] = "";//Filter::getString('image');
+				//if ($info['image'].size() > 2MB){ --> A més cal comprovar extensions de la imatge!
+				//	$isValid = false;
+				//}
 
+				if ($session->get('saldo') == 0){
+					// Anem a una pantalla d'error! -> Falta de diners.
+					header('Location:' .URL_ABSOLUTE .'/requiremoney');
+				}
+
+				if ($isValid){
+
+					$modelProduct = $this->getClass('HomeProductManagerModel');
+					$modelUser = $this->getClass('HomeUserManagerModel');
+
+					$modelProduct->addProduct($info);
+					$modelUser->pay($session->get('id_user'), 1);
+					$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
+
+					header('Location:' .URL_ABSOLUTE);
+
+				} else {
+
+					// Reomplir els camps!
+					echo "NO es valid!!!";
+				}
 
 
 			}
@@ -62,10 +89,9 @@ class HomeAddProductController extends Controller
 
 			$view = 'error/error403.tpl';
 			var_dump(http_response_code(403));
+			$this->setLayout( $view );
 
 		}
-
-		$this->setLayout( $view );
 
 	}
 

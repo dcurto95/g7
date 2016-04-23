@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-04-2016 a las 10:46:20
+-- Tiempo de generación: 23-04-2016 a las 11:34:40
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 5.6.10
 
@@ -23,12 +23,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `product` (
   `id_product` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
-  `price` int(10) unsigned NOT NULL,
+  `price` float unsigned NOT NULL,
   `stock` int(10) unsigned NOT NULL,
   `description` varchar(500) NOT NULL,
   `date` varchar(50) NOT NULL,
   `image` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `product`
+--
+
+INSERT INTO `product` (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image`) VALUES
+  (2, 'producte', 3, 42, '', '23 April, 2016', '');
 
 -- --------------------------------------------------------
 
@@ -53,7 +60,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `email`, `twitter`, `password`, `image`, `activation_code`, `saldo`, `valid`) VALUES
-(1, 'usuari', 'email@gmail.com', '@user', 'password', 'http://k36.kn3.net/CA1AEE661.jpg', 'AC1', 101, 1);
+  (1, 'usuari', 'email@gmail.com', '@user', 'password', 'http://k36.kn3.net/CA1AEE661.jpg', 'AC1', 90, 1);
 
 --
 -- Índices para tablas volcadas
@@ -63,13 +70,13 @@ INSERT INTO `user` (`id_user`, `username`, `email`, `twitter`, `password`, `imag
 -- Indices de la tabla `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id_product`);
+ADD PRIMARY KEY (`id_product`);
 
 --
 -- Indices de la tabla `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -79,9 +86,9 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id_product` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;

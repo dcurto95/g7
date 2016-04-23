@@ -5,7 +5,10 @@ class HomeUserManagerModel extends Model{
 
     public function createUser($username,$email,$twitter,$password,$image,$activation_code){
         $query = <<<QUERY
-            INSERT INTO user(username, email, twitter, password, image, activation_code) VALUES ('$username', '$email', '$twitter', '$password', '$image', '$activation_code')
+            INSERT INTO user
+                (username, email, twitter, password, image, activation_code)
+            VALUES
+                ('$username', '$email', '$twitter', '$password', '$image', '$activation_code')
 QUERY;
         $this->execute($query);
     }
@@ -105,7 +108,7 @@ QUERY;
     //Restar saldo(id, quantitat): true/false
     public function pay($id, $quantitat){
         $money = $this->getMoney($id);
-        if($money >= $quantitat){
+        if ($money >= $quantitat){
 
             $money=$money-$quantitat;
 
@@ -115,7 +118,7 @@ QUERY;
             $this->execute($query);
 
             return true;
-        }else{
+        } else {
             return false;
         }
 
