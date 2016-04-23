@@ -1,8 +1,6 @@
 <?php
 
-/**
- * Mail Manager Model: Model that manages the users.
- */
+
 class HomeUserManagerModel extends Model{
 
     public function createUser($username,$email,$twitter,$password,$image,$activation_code){

@@ -46,3 +46,4 @@ $config['SharedFooterController']		= PATH_CONTROLLERS . 'shared/footer.ctrl.php'
 
 // Models
 $config['HomeUserManagerModel']	    	= PATH_MODELS . 'home/user_manager.model.php';
+$config['HomeProductManagerModel']	    = PATH_MODELS . 'home/product_manager.model.php';

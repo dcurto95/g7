@@ -17,12 +17,46 @@ class HomeAddProductController extends Controller
 
 			$view = 'home/addProduct.tpl';
 
+			$product_float_regex = '([0-9]{1,3}([\.\,]([0-9]+)){0,1})';
+			$this->assign('product_float_regex', $product_float_regex);
+
 			$product_numeric_regex = '([0-9]{0,3})';
 			$this->assign('product_numeric_regex', $product_numeric_regex);
 
-			$model = $this->getClass('HomeUserManagerModel');
+			$is_submit = Filter::getString('submit');
+
+			if($is_submit) {
+
+				$isValid = true;
+
+				$model = $this->getClass('HomeProductManagerModel');
+
+				$info['name'] = Filter::getString('product_name');
+
+				$info['price'] = Filter::getString('price');
+				if ($info['price'] <= 0.){
+					$isValid = false;
+				}
+
+				$info['stock'] = Filter::getString('stock');
+				if ($info['stock'] <= 0){
+					$isValid = false;
+				}
+
+				$info['description'] = Filter::getString('description');
+
+				$info['date'] = Filter::getString('date');
+				$today = strtotime(date("j F, Y"));
+				$givenDate = strtotime($info['date']);
+				if ($givenDate < $today){
+					$isValid = false;
+				}
+
+				//$info['image'] = Filter::getString('image');
 
 
+
+			}
 
 		} else {
 

@@ -6,33 +6,33 @@
     <form class="col s12">
         <div class="row">
             <div class="input-field col s6">
-                <input id="product_name" type="text" class="validate" required>
+                <input id="product_name" name="product_name" type="text" class="validate" required>
                 <label for="product_name">Name</label>
             </div>
             <div class="input-field col s3">
-                <input id="last_name" type="text" pattern="{$product_numeric_regex}" class="validate" required>
-                <label for="last_name" data-error="Wrong, must be a numeric value form 0 to 999" data-success="Ok!">Price</label>
+                <input id="price" name="price" type="text" pattern="{$product_float_regex}" class="validate" required>
+                <label for="price" data-error="Wrong, must be a numeric value form 0 to 999" data-success="Ok!">Price</label>
             </div>
             <div class="input-field col s3">
-                <input id="last_name" type="text" pattern="{$product_numeric_regex}" class="validate" required>
-                <label for="last_name" data-error="Wrong, must be a numeric value form 0 to 999" data-success="Ok!">Stock</label>
+                <input id="stock" name="stock" type="text" pattern="{$product_numeric_regex}" class="validate" required>
+                <label for="stock" data-error="Wrong, must be a numeric value form 0 to 999" data-success="Ok!">Stock</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" class="materialize-textarea"></textarea>
+                <textarea id="description" name="description" class="materialize-textarea"></textarea>
                 <label for="description">Description</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <label for="date">Date</label>
-                <input type="text" class="datepicker" id="date">
+                <input id="date" name="date" type="text" class="datepicker" required>
             </div>
         </div>
         <div class = "row">
             <div class="file-field input-field col s8">
-                <div class="btn col s4">
+                <div class="btn waves-effect waves-light deep-orange lighten-2 col s4">
                     <span>Product image</span>
                     <input type="file" id="inputFile">
                 </div>
