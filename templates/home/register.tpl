@@ -3,7 +3,7 @@
 <h1 class="light-blue-text"> REGISTER </h1>
 
 <div class="row">
-	<form class="col-md-12" method="post" action="">
+	<form class="col-md-12" method="post" action="" enctype = "multipart/form-data">
 		<div class="row">
 			<div class="input-field col s6">
 				<input placeholder="Your name" pattern="{$username_regex}" name="username" id="username" type="text" class="validate" required>
@@ -31,7 +31,7 @@
 			<div class="file-field input-field col s8">
 				<div class="btn col s4">
 					<span>Profile image</span>
-					<input type="file" id="inputFile">
+					<input type="file" name = "inputFile" id="inputFile">
 				</div>
 				<div class="file-path-wrapper col s8">
 					<input class="file-path validate" type="text">
