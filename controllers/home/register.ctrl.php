@@ -32,6 +32,9 @@ class HomeRegisterController extends Controller
 		$password = Filter::getString('password');
 		$imatge = Filter::getString('image');
 
+
+
+
 		if($imatge == ''){
 			$imatge = 'null';
 		}
@@ -41,6 +44,10 @@ class HomeRegisterController extends Controller
 		$is_submit = Filter::getString('submit');
 
 		if($is_submit){
+
+			$image = $_FILES["inputFile"]["name"];
+			$filetmp = $_FILES["inputFile"]["tmp_name"];
+			move_uploaded_file($filetmp,'../htdocs/img/'.$image);
 
 			//Creem usuari
 			$model->createUser($username,$email,$twitter,$password,$imatge,$activation_code);
