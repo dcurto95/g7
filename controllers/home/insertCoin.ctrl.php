@@ -23,6 +23,7 @@ class HomeInsertCoinController extends Controller
 
 
             //Ingressar diners?
+            print_r($model->login('newJordi','1111111111'));
 
 
         }

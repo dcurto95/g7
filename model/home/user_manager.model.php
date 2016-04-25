@@ -68,7 +68,7 @@ QUERY;
     public function login($name, $pw){
 
         $query = <<<QUERY
-        SELECT * FROM `user` WHERE (`username` = '$name' OR `email`='$name') AND `password` = '$pw' AND `valid` = false
+        SELECT * FROM `user` WHERE (`username` = '$name' OR `email`='$name') AND `password` = '$pw' AND `valid` = 1
 QUERY;
         $temp = $this->getAll($query);
         print_r($temp);
@@ -97,7 +97,7 @@ QUERY;
     public function getMoney($id){
 
         $query = <<<QUERY
-        SELECT * FROM `user` WHERE `id_user` = '1'
+        SELECT * FROM `user` WHERE `id_user` = '$id'
 QUERY;
 
         $usuari = $this->getAll($query);
