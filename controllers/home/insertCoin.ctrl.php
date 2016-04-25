@@ -13,7 +13,6 @@ class HomeInsertCoinController extends Controller
 
     public function build()
     {
-        $model = $this->getClass('HomeUserManagerModel');
 
         $model = $this->getClass('HomeUserManagerModel');
 
@@ -23,17 +22,18 @@ class HomeInsertCoinController extends Controller
 
         if($is_submit){
 
-            $money = Filter::getFloat('test5');
-            $saldo = $model->getMoney(1);
+            $money = Filter::getFloat('quantitat');
+            $session = Session::getInstance();
+            $userId = $session->get('id_user');
+            $saldo = $model->getMoney($userId);
+
             if ($saldo+$money >1000){
                 // Superem maxim de diners... caldrà mostrar algo...
             }else{
-                $model->insertMoney(1, $money);
+                $model->insertMoney($userId, $money);
 
                 // Actualitzem session:
-                $session = Session::getInstance();
-                $model = $this->getClass('HomeUserManagerModel');
-                $userId = $session->get('id_user');
+
                 $user_info = $model->getUser($userId);
 
                 $session->delete('saldo');

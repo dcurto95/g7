@@ -6,7 +6,7 @@
 <form  class="col-md-12" action="" method = "post">
     <p>
         <label for =test5> Introdueix la quantitat que vols inserir</label>
-        <input type="number" id="test5" name ="test5" min="1" max="100" />
+        <input type="number" id="test5" name ="quantitat" min="1" max="100" />
     </p>
 
     <p>
