@@ -26,10 +26,10 @@
 
 			<ul id="dropdown1" class="dropdown-content" style="margin-top: 4.5%;">
 				<li><a href="#" class="light-blue-text darken-3">Profile</a></li>
-				<li><a href="{$url.global}/wallet" class="light-blue-text darken-3">Wallet</a></li>
+				<li><a href="{$url.global}/insertcoin" class="light-blue-text darken-3">Insert Coin</a></li>
 				<li class="divider"></li>
 				<li>
-					<a href="#" class="white-text blue-grey darken-2">Log out</a>
+					<a href="{$url.global}/logout" class="white-text blue-grey darken-2">Log out</a>
 					<!-- input class="" type="submit" id ="submit" name="submit" value="Log out" -->
 				</li>
 			</ul>
@@ -49,6 +49,7 @@
 									{$username}<i class="material-icons right">arrow_drop_down</i>
 								</a>
 							</li>
+							<li><a href="#"><span class="coin badge">{$user_coins}</span></a></li>
 						{/if}
 
 						{if $isLogged eq false}
@@ -58,6 +59,8 @@
 							</li>
 						{/if}
 						<!-- END LOGIN -->
+						<li><a href="{$url.global}/addProduct">ADD</a></li>
+
 					</ul>
 				</div>
 			</nav>

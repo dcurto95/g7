@@ -56,3 +56,19 @@ body {
     width: 120px;
     height: 120px;
 }
+
+span.badge.coin{
+    font-weight:300;
+    font-size:0.8rem;
+    color: #37474f;
+    background-color: #ffeb3b;
+    border-radius:2px
+}
+
+span.badge.coin:after{
+    content:" coins"
+}
+
+.picker__weekdate-display{
+    color: #0089ec;
+}

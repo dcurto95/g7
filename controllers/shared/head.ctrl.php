@@ -7,7 +7,7 @@ class SharedHeadController extends Controller
 		$session = Session::getInstance();
 
 		$user = $session->get('id_user');
-		//if (true){
+
 		if ($user != null){
 
 			$this->assign('isLogged', true);
@@ -15,24 +15,17 @@ class SharedHeadController extends Controller
 			// Recuperar info de l'usuari logejat
 
 			$username = $session->get('username');
-
 			$user_img = $session->get('image');
+			$user_coins = $session->get('saldo');
 
 			$this->assign('user_image', $user_img);
-
 			$this->assign('username', $username);
-
-
-			$is_submit = Filter::getString('submit');
-			/* if($is_submit) {
-				$session->delete('id_user');
-				$session->delete('username');
-				$session->delete('email');
-				$session->delete('image');
-			}*/
+			$this->assign('user_coins', $user_coins);
 
 		} else {
+
 			$this->assign('isLogged', false);
+
 			// Fer login si ho demana
 			$is_submit = Filter::getString('login');
 
@@ -55,16 +48,18 @@ class SharedHeadController extends Controller
 					$session->delete('username');
 					$session->delete('email');
 					$session->delete('image');
+					$session->delete('saldo');
 
 					$session->set('id_user', 	$user_info['id_user']);
 					$session->set('username', 	$user_info['username']);
 					$session->set('email', 		$user_info['email']);
 					$session->set('image', 		$user_info['image']);
+					$session->set('saldo', 		$user_info['saldo']);
 
 					header('Location:' .URL_ABSOLUTE);
 
 				} else {
-					header('Location:' .URL_ABSOLUTE .'/auth/loginfail');
+					header('Location:' .URL_ABSOLUTE .'/login');
 				}
 
 			}

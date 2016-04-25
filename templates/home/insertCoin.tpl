@@ -1,12 +1,12 @@
 {$modules.head}
 
 
-<h1> HOLA MON! </h1>
+<h1 class="light-blue-text"> INSERT COINS: </h1>
 
 <form  class="col-md-12" action="" method = "post">
     <p>
         <label for =test5> Introdueix la quantitat que vols inserir</label>
-        <input type="number" id="test5" name ="test5" min="1" max="100" />
+        <input type="number" id="test5" name ="quantitat" min="1" max="100" />
     </p>
 
     <p>
@@ -24,6 +24,8 @@
     <input class="btn waves-effect waves-light" type="submit" name="action" id="action">
 
 </form>
+
+<div class="space-50" style="height: 250px"></div>
 
 
 {$modules.footer}

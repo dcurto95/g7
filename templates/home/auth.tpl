@@ -25,6 +25,9 @@
             </div>
             <div class="card-action">
                 <a href="{$url.global}">Take me home</a>
+                {if $auth_status eq 2}
+                    <a href="{$url.global}/login">Try again</a>
+                {/if}
             </div>
         </div>
     </div>

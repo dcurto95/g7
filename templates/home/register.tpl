@@ -29,7 +29,7 @@
 		<div class = "row">
 
 			<div class="file-field input-field col s8">
-				<div class="btn col s4">
+				<div class="btn waves-effect waves-light deep-orange lighten-2 col s4">
 					<span>Profile image</span>
 					<input type="file" name = "inputFile" id="inputFile">
 				</div>

@@ -1,13 +1,14 @@
 <?php
 
-/**
- * Mail Manager Model: Model that manages the users.
- */
+
 class HomeUserManagerModel extends Model{
 
     public function createUser($username,$email,$twitter,$password,$image,$activation_code){
         $query = <<<QUERY
-            INSERT INTO user(username, email, twitter, password, image, activation_code) VALUES ('$username', '$email', '$twitter', '$password', '$image', '$activation_code')
+            INSERT INTO user
+                (username, email, twitter, password, image, activation_code)
+            VALUES
+                ('$username', '$email', '$twitter', '$password', '$image', '$activation_code')
 QUERY;
         $this->execute($query);
     }
@@ -57,7 +58,7 @@ QUERY;
         SELECT * FROM `user` WHERE `username` = '$name' OR `email`='$mail'
 QUERY;
         $temp = $this->getAll($query);
-        //print_r($temp);
+
         if(empty($temp[0])){
             return true;
         }else{
@@ -71,7 +72,6 @@ QUERY;
         SELECT * FROM `user` WHERE (`username` = '$name' OR `email`='$name') AND `password` = '$pw' AND `valid` = 1
 QUERY;
         $temp = $this->getAll($query);
-        print_r($temp);
 
         //comprova que hi hagi una correspondència amb user i pw
         if(!empty($temp)){
@@ -101,7 +101,6 @@ QUERY;
 QUERY;
 
         $usuari = $this->getAll($query);
-        print_r($usuari[0]['saldo']);
 
         return $usuari[0]['saldo'];
     }
@@ -109,7 +108,7 @@ QUERY;
     //Restar saldo(id, quantitat): true/false
     public function pay($id, $quantitat){
         $money = $this->getMoney($id);
-        if($money >= $quantitat){
+        if ($money >= $quantitat){
 
             $money=$money-$quantitat;
 
@@ -119,7 +118,7 @@ QUERY;
             $this->execute($query);
 
             return true;
-        }else{
+        } else {
             return false;
         }
 
