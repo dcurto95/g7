@@ -37,17 +37,16 @@ class HomeRegisterController extends Controller
 
 		if($is_submit){
 
-			$image = $_FILES["inputFile"]["name"];
+			$image_manager = $this->getClass('HomeImageManagerModel');
 
-			// Codi d'adició de la imatge:
-			$filetmp = $_FILES["inputFile"]["tmp_name"];
-			$img_path = '../htdocs/img/profile_img/'.$image;
-			move_uploaded_file($filetmp,$img_path);
+			$image_manager->AddImage("inputFile");
 
-			$this->Img_Resize($img_path);
+			$img_name = $_FILES["inputFile"]["name"];
+			$img_path = '../htdocs/img/profile_img/'.$img_name;
+			$image_manager->ResizeImg($img_path);
 
 			//Creem usuari
-			$model->createUser($username,$email,$twitter,$password,$image,$activation_code);
+			$model->createUser($username,$email,$twitter,$password,$img_name,$activation_code);
 
 
 			// Mail:
@@ -66,47 +65,6 @@ class HomeRegisterController extends Controller
 			}
 
 		}
-	}
-
-	private function Img_Resize($path) {
-
-		$x = getimagesize($path);
-		$width  = $x['0'];
-		$height = $x['1'];
-
-		$rs_width  = 200;	//resize to half of the original width.
-		$rs_height = 200;	//resize to half of the original height.
-
-		switch ($x['mime']) {
-			case "image/gif":
-				$img = imagecreatefromgif($path);
-				break;
-			case "image/jpeg":
-				$img = imagecreatefromjpeg($path);
-				break;
-			case "image/png":
-				$img = imagecreatefrompng($path);
-				break;
-		}
-
-		$img_base = imagecreatetruecolor($rs_width, $rs_height);
-
-		imagecopyresized($img_base, $img, 0, 0, 0, 0, $rs_width, $rs_height, $width, $height);
-
-		$path_info = pathinfo($path);
-
-		switch ($path_info['extension']) {
-			case "gif":
-				imagegif($img_base, $path);
-				break;
-			case "jpg":
-				imagejpeg($img_base, $path);
-				break;
-			case "png":
-				imagepng($img_base, $path);
-				break;
-		}
-
 	}
 
 
