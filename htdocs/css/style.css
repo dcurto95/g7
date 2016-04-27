@@ -72,3 +72,14 @@ span.badge.coin:after{
 .picker__weekdate-display{
     color: #0089ec;
 }
+
+/*CSS per product.tpl*/
+#product_img {
+    width: 400px;
+    height: 300px;
+}
+
+#product_card{
+    width: 400px;
+
+}

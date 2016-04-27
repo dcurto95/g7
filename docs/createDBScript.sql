@@ -27,15 +27,16 @@ CREATE TABLE `product` (
   `stock` int(10) unsigned NOT NULL,
   `description` varchar(500) NOT NULL,
   `date` varchar(50) NOT NULL,
-  `image` varchar(200) NOT NULL
+  `image` varchar(200) NOT NULL,
+  `user`int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `product`
 --
 
-INSERT INTO `product` (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image`) VALUES
-  (2, 'producte', 3, 42, '', '23 April, 2016', '');
+INSERT INTO `product` (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image`, `user`) VALUES
+  (2, 'producte', 3, 42, '', '23 April, 2016', '',1);
 
 -- --------------------------------------------------------
 

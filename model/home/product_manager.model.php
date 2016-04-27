@@ -23,4 +23,15 @@ QUERY;
 
     }
 
+    public function getProduct($id){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$id'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
+
+    }
+
 }
