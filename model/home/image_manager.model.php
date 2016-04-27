@@ -4,7 +4,7 @@
 class HomeImageManagerModel extends Model{
 
 
-    public function AddImage($name){
+    public function AddProfileImage($name){
 
         // Codi d'adició de la imatge:
         $image = $_FILES["inputFile"]["name"];
@@ -12,16 +12,16 @@ class HomeImageManagerModel extends Model{
         $img_path = '../htdocs/img/profile_img/'.$image;
         move_uploaded_file($filetmp,$img_path);
 
+        $img_path = '../htdocs/img/profile_img/'.$image;
+        $this->ResizeImg($img_path, 200, 200);
+
     }
 
-    public function ResizeImage($path) {
+    private function ResizeImage($path, $rs_width, $rs_height) {
 
         $x = getimagesize($path);
         $width  = $x['0'];
         $height = $x['1'];
-
-        $rs_width  = 200;	//resize to half of the original width.
-        $rs_height = 200;	//resize to half of the original height.
 
         switch ($x['mime']) {
             case "image/gif":

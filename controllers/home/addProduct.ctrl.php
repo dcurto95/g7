@@ -55,33 +55,43 @@ class HomeAddProductController extends Controller
 					$isValid = false;
 				}
 
-				$info['image'] = "";//Filter::getString('image');
-				//if ($info['image'].size() > 2MB){ --> A més cal comprovar extensions de la imatge!
-				//	$isValid = false;
-				//}
+				$info['image'] = $_FILES["inputFile"]["name"];
+				if (filesize($info['image']) > 2000000){
+					$isValid = false;
+				}
 
 				if ($session->get('saldo') == 0){
 					// Anem a una pantalla d'error! -> Falta de diners.
-					header('Location:' .URL_ABSOLUTE .'/requiremoney');
-				}
-
-				if ($isValid){
-
-					$modelProduct = $this->getClass('HomeProductManagerModel');
-					$modelUser = $this->getClass('HomeUserManagerModel');
-
-					$modelProduct->addProduct($info);
-					$modelUser->pay($session->get('id_user'), 1);
-					$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
-
-					header('Location:' .URL_ABSOLUTE);
-
+					header('Location:' .URL_ABSOLUTE .'/requireMoney');
 				} else {
 
-					// Reomplir els camps!
-					echo "NO es valid!!!";
-				}
+					if ($isValid) {
 
+						$modelProduct = $this->getClass('HomeProductManagerModel');
+						$modelUser = $this->getClass('HomeUserManagerModel');
+
+						// Processem la imatge:
+
+
+						$modelProduct->addProduct($info);
+						$modelUser->pay($session->get('id_user'), 1);
+						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
+
+						header('Location:' . URL_ABSOLUTE);
+
+					} else {
+
+						// Reomplir els camps!
+						$this->assign('product_name', $info['name']);
+						$this->assign('product_price', $info['price']);
+						$this->assign('product_stock', $info['stock']);
+						$this->assign('product_description', $info['description']);
+						$this->assign('product_date', $info['date']);
+						$this->assign('product_image', $info['image']);
+
+
+					}
+				}
 
 			}
 

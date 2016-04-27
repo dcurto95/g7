@@ -39,13 +39,10 @@ class HomeRegisterController extends Controller
 
 			$image_manager = $this->getClass('HomeImageManagerModel');
 
-			$image_manager->AddImage("inputFile");
-
-			$img_name = $_FILES["inputFile"]["name"];
-			$img_path = '../htdocs/img/profile_img/'.$img_name;
-			$image_manager->ResizeImg($img_path);
+			$image_manager->AddProfileImage("inputFile");
 
 			//Creem usuari
+			$img_name = $_FILES["inputFile"]["name"];
 			$model->createUser($username,$email,$twitter,$password,$img_name,$activation_code);
 
 
@@ -58,11 +55,13 @@ class HomeRegisterController extends Controller
 			$retval = mail($email,$subject,$message);
 
 			if( $retval == true ) {
-				echo "Message sent successfully...";
+				//echo "Message sent successfully...";
 			}else {
-				print_r(error_get_last());
-				echo "Message could not be sent...";
+				//print_r(error_get_last());
+				//echo "Message could not be sent...";
 			}
+
+			header('Location:' . URL_ABSOLUTE);
 
 		}
 	}

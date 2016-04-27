@@ -42,7 +42,7 @@
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 						<!-- LOGIN -->
 						{if $isLogged eq true}
-							<li><img id="image_upload_preview" style="margin-top: 12%; width: 50px; height: 50px"
+							<li><img id="profile_image" style="margin-top: 12%; width: 50px; height: 50px"
 									 class="responsive-img circle" src="{$user_image}" alt="your image" /></li>
 							<li>
 								<a class="dropdown-button" href="#!" data-activates="dropdown1">

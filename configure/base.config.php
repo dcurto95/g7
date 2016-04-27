@@ -26,11 +26,12 @@ $config['dispatcher']					=  PATH_ENGINE . 'dispatcher.class.php';
  *
  */
 
-// 404 Controller
+// Error Controllers
 $config['ErrorError404Controller']		= PATH_CONTROLLERS . 'error/error404.ctrl.php';
 $config['ErrorError403Controller']		= PATH_CONTROLLERS . 'error/error403.ctrl.php';
+$config['ErrorErrorMoneyController']	= PATH_CONTROLLERS . 'error/errorMoney.ctrl.php';
 
-// Home Controller
+// Home Controllers
 $config['HomeHomeController']			= PATH_CONTROLLERS . 'home/home.ctrl.php';
 $config['HomeRegisterController']		= PATH_CONTROLLERS . 'home/register.ctrl.php';
 $config['HomeInsertCoinController']		= PATH_CONTROLLERS . 'home/insertCoin.ctrl.php';
