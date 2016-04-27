@@ -1,0 +1,32 @@
+{$modules.head}
+
+<div class="card" id="product_card" >
+
+    <div class="row valign-wrapper card_propietari">
+        <div class="col s2">
+            <img src="{$profile}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+        </div>
+        <div class="col s10">
+                <p>Provider: <a href="#">{$user}</a></p>
+        </div>
+    </div>
+
+    <div class="card-image waves-effect waves-block waves-light center-align">
+        <img id="product_img"class="activator" src="{$img_path}">
+    </div>
+
+    <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{$name} - {$preu}€<i class="material-icons right">more_vert</i></span>
+    </div>
+
+    <div class="card-reveal" id="product_reveal">
+        <span class="card-title grey-text text-darken-4">{$name}<i class="material-icons right">close</i></span>
+        <p>Expiry day: {$date}</p>
+        <p>Price: {$preu}</p>
+        <p>Aviable stock: {$stock}</p>
+        <p>Provider: <a href="#">{$user}</a>. {$soldProducts} sold products.</p>
+        <p>Description: {$descripcio}</p>
+    </div>
+</div>
+
+{$modules.footer}

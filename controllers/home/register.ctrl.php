@@ -30,14 +30,6 @@ class HomeRegisterController extends Controller
 		}
 
 		$password = Filter::getString('password');
-		$imatge = Filter::getString('image');
-
-
-
-
-		if($imatge == ''){
-			$imatge = 'null';
-		}
 
 		$activation_code = uniqid('AC');
 
@@ -45,13 +37,19 @@ class HomeRegisterController extends Controller
 
 		if($is_submit){
 
-			$image = $_FILES["inputFile"]["name"];
-			$filetmp = $_FILES["inputFile"]["tmp_name"];
-			move_uploaded_file($filetmp,'../htdocs/img/'.$image);
+			$image_manager = $this->getClass('HomeImageManagerModel');
+
+			$image_manager->AddImage("inputFile");
+
+			$img_name = $_FILES["inputFile"]["name"];
+			$img_path = '../htdocs/img/profile_img/'.$img_name;
+			$image_manager->ResizeImg($img_path);
 
 			//Creem usuari
-			$model->createUser($username,$email,$twitter,$password,$imatge,$activation_code);
+			$model->createUser($username,$email,$twitter,$password,$img_name,$activation_code);
 
+
+			// Mail:
 			$subject = "This is subject";
 
 			$message = "<b>This is HTML message.</b>";

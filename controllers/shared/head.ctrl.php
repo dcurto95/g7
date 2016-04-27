@@ -15,7 +15,8 @@ class SharedHeadController extends Controller
 			// Recuperar info de l'usuari logejat
 
 			$username = $session->get('username');
-			$user_img = $session->get('image');
+			$user_img = '/img/profile_img/'.$session->get('image');
+
 			$user_coins = $session->get('saldo');
 
 			$this->assign('user_image', $user_img);

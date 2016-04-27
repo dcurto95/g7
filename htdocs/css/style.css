@@ -73,13 +73,15 @@ span.badge.coin:after{
     color: #0089ec;
 }
 
-/*CSS per product.tpl*/
-#product_img {
-    width: 400px;
-    height: 300px;
+
+#product_img{
+    width: 80%;
 }
 
-#product_card{
-    width: 400px;
+#preview_producte{
+    padding: 3%;
+}
 
+#product_price{
+    /*font-family: "Bernard MT Condensed";*/
 }

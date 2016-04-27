@@ -34,4 +34,14 @@ QUERY;
 
     }
 
+    public function getProductFromName($productName){
+        $query = <<<QUERY
+        SELECT `id_product` FROM `product` WHERE `name` = '$productName'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product[0]['id_product'];
+    }
+
 }
