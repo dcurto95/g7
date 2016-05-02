@@ -24,18 +24,16 @@ class HomeProductController extends Controller
             //LINEES DE DEV
             $product = $model->getProduct($product_id);
 
-
-            $this->assign('name', $product[0]['name']);
-            $this->assign('preu', $product[0]['price']);
-            $this->assign('stock', $product[0]['stock']);
-            $this->assign('descripcio', $product[0]['description']);
-            $this->assign('date', $product[0]['date']);
-            $product_img = '/img/product_img_big/'.$product[0]['image'];
+            $this->assign('name', $product['name']);
+            $this->assign('preu', $product['price']);
+            $this->assign('stock', $product['stock']);
+            $this->assign('descripcio', $product['description']);
+            $this->assign('date', $product['date']);
+            $product_img = '/img/product_img_big/'.$product['image_big'];
             $this->assign('img_path', $product_img);
             $this->assign('soldProducts', 0);
-
-
-            $user = $modelUsuaris->getUser($product[0]['user']);
+            
+            $user = $modelUsuaris->getUser($product['user']);
             $this->assign('user', $user['username']);
             $this->assign('profile', $user['image']);
             //print_r($product);
