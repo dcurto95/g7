@@ -12,8 +12,27 @@ class HomeImageManagerModel extends Model{
         $img_path = '../htdocs/img/profile_img/'.$image;
         move_uploaded_file($filetmp,$img_path);
 
-        $img_path = '../htdocs/img/profile_img/'.$image;
         $this->ResizeImg($img_path, 200, 200);
+
+    }
+
+    public function AddProductImages($name){
+
+        // Codi d'adició de la imatge:
+        $image = $_FILES["inputFile"]["name"];
+        $filetmp = $_FILES["$name"]["tmp_name"];
+        $img_path = '../htdocs/img/product_img_big/'.$image;
+        move_uploaded_file($filetmp,$img_path);
+
+        $this->ResizeImg($img_path, 400, 300);
+
+        // Codi d'adició de la imatge:
+        $image = $_FILES["inputFile"]["name"];
+        $filetmp = $_FILES["$name"]["tmp_name"];
+        $img_path = '../htdocs/img/product_img_tiny/'.$image;
+        move_uploaded_file($filetmp,$img_path);
+
+        $this->ResizeImg($img_path, 100, 100);
 
     }
 

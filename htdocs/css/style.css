@@ -72,3 +72,16 @@ span.badge.coin:after{
 .picker__weekdate-display{
     color: #0089ec;
 }
+
+
+#product_img{
+    width: 80%;
+}
+
+#preview_producte{
+    padding: 3%;
+}
+
+#product_price{
+    /*font-family: "Bernard MT Condensed";*/
+}
