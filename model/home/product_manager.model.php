@@ -60,17 +60,42 @@ QUERY;
     public function getProductDescription($id){
 
         $query = <<<QUERY
-        SELECT `description` FROM `product` WHERE `id_product` = '$id' LIMIT 50
+        SELECT LEFT(`description`,50) as 'description' FROM `product` WHERE `id_product` = '$id'
 QUERY;
 
         $description = $this->getAll($query);
-        echo $description[0]['description'];
-        /// $description = $description[0]['description'];
-        //$description = stripcslashes($description);
-
+        $description =  $description[0]['description'];
 
         return $description;
 
+    }
+
+    public function getLatestProduct(){
+        $query = <<<QUERY
+        SELECT * FROM `product` ORDER BY `id_product` DESC LIMIT 1
+QUERY;
+        $product = $this->getAll($query);
+
+        return $product;
+    }
+
+    public function getMostViewedProduct()
+    {
+        /*
+        Es mostrarà un llistat dels 5 producte més visionats (vegeu següent apartat).
+        Per cadascun d’ells es mostrarà el títol, els 50 primers caràcters de la descripcio
+        ́, la data de caducitat i el preu de venda. El títol ha de ser un link cap al visionat
+        públic d’aquest producte
+
+        */
+
+        $query = <<<QUERY
+        SELECT * FROM `product` ORDER BY `views` DESC LIMIT 5
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
     }
 
 }

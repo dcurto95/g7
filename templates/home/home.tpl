@@ -96,9 +96,5 @@
     </div>
 
 </div>
-<div class="space-50" style="height: 1200px"></div>
-
-
-
 
 {$modules.footer}
