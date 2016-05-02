@@ -54,4 +54,21 @@ QUERY;
         return $product[0]['id_product'];
     }
 
+
+    public function getProductDescription($id){
+
+        $query = <<<QUERY
+        SELECT `description` FROM `product` WHERE `id_product` = '$id' LIMIT 50
+QUERY;
+
+        $description = $this->getAll($query);
+        echo $description[0]['description'];
+        /// $description = $description[0]['description'];
+        //$description = stripcslashes($description);
+
+
+        return $description;
+
+    }
+
 }

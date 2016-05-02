@@ -11,6 +11,11 @@ class HomeHomeController extends Controller
 	{
 
 		$info = $this->getParams();
+		$model = $this->getClass('HomeProductManagerModel');
+		$model->getProductDescription(1);
+
+
+
 
 		$this->setLayout( $this->view );
 
