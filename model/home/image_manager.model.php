@@ -7,7 +7,7 @@ class HomeImageManagerModel extends Model{
     public function AddProfileImage($name){
 
         // Codi d'adició de la imatge:
-        $image = $_FILES["inputFile"]["name"];
+        $image = $_FILES["$name"]["name"];
         $filetmp = $_FILES["$name"]["tmp_name"];
         $img_path = '../htdocs/img/profile_img/'.$image;
         move_uploaded_file($filetmp,$img_path);
@@ -19,24 +19,22 @@ class HomeImageManagerModel extends Model{
     public function AddProductImages($name){
 
         // Codi d'adició de la imatge:
-        $image = $_FILES["inputFile"]["name"];
+        $image = $_FILES["$name"]["name"];
         $filetmp = $_FILES["$name"]["tmp_name"];
-        $img_path = '../htdocs/img/product_img_big/'.$image;
-        move_uploaded_file($filetmp,$img_path);
+        $img_path_big = '../htdocs/img/product_img_big/'.$image;
+        move_uploaded_file($filetmp,$img_path_big);
 
-        $this->ResizeImg($img_path, 400, 300);
+        $this->ResizeImg($img_path_big, 400, 300);
 
-        // Codi d'adició de la imatge:
-        $image = $_FILES["inputFile"]["name"];
-        $filetmp = $_FILES["$name"]["tmp_name"];
-        $img_path = '../htdocs/img/product_img_tiny/'.$image;
-        move_uploaded_file($filetmp,$img_path);
+        // Codi de copia i adició de la imatge:
+        $img_path_small = '../htdocs/img/product_img_tiny/'.$image;
+        copy($img_path_big, $img_path_small);
 
-        $this->ResizeImg($img_path, 100, 100);
+        $this->ResizeImg($img_path_small, 100, 100);
 
     }
 
-    private function ResizeImage($path, $rs_width, $rs_height) {
+    private function ResizeImg($path, $rs_width, $rs_height) {
 
         $x = getimagesize($path);
         $width  = $x['0'];
