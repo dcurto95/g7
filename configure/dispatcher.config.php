@@ -12,5 +12,7 @@ $config['auth']			    	= 'HomeAuthController';
 $config['login']			    = 'HomeLoginController';
 $config['logout']			    = 'HomeLogoutController';
 $config['addProduct']		    = 'HomeAddProductController';
+$config['editProduct']		    = 'HomeEditProductController';
+
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 
