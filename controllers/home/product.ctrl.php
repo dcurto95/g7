@@ -33,9 +33,11 @@ class HomeProductController extends Controller
             $this->assign('img_path', $product_img);
             $this->assign('soldProducts', 0);
             
-            $user = $modelUsuaris->getUser($product['user']);
+            $user = $modelUsuaris->getUser($product['id_user']);
+
             $this->assign('user', $user['username']);
-            $this->assign('profile', $user['image']);
+            $user_img = '/img/profile_img/'.$user['image'];
+            $this->assign('profile', $user_img);
             //print_r($product);
 
             $this->setLayout($this->view);
