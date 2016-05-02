@@ -123,4 +123,23 @@ QUERY;
         }
 
     }
+
+    public function countVisits(){
+        $query = <<<QUERY
+        SELECT * FROM `Visit`
+QUERY;
+        $count = $this->getAll($query);
+
+        $num =  $count[0]['visitas'];
+        $new = $num +1;
+
+        echo $new;
+
+        $query = <<<QUERY
+        UPDATE Visit SET visitas = '$new'
+QUERY;
+        $this->execute($query);
+
+
+    }
 }

@@ -25,7 +25,5 @@
 
 </form>
 
-<div class="space-50" style="height: 250px"></div>
-
 
 {$modules.footer}
