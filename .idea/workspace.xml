@@ -25,8 +25,18 @@
       <file leaf-file-name="user_manager.model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/home/user_manager.model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.230769">
-              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+            <state vertical-scroll-proportion="-7.576923">
+              <caret line="127" column="62" selection-start-line="127" selection-start-column="62" selection-end-line="127" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createDBScript.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/createDBScript.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46072507">
+              <caret line="33" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -35,8 +45,8 @@
       <file leaf-file-name="product_manager.model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/home/product_manager.model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.0">
-              <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+            <state vertical-scroll-proportion="-12.807693">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -45,7 +55,7 @@
       <file leaf-file-name="product.tpl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home/product.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
               <folding />
             </state>
@@ -55,17 +65,17 @@
       <file leaf-file-name="product.ctrl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/home/product.ctrl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846">
-              <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+            <state vertical-scroll-proportion="-25.5">
+              <caret line="39" column="53" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/htdocs/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.92608696">
+            <state vertical-scroll-proportion="-55.576923">
               <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
               <folding />
             </state>
@@ -102,12 +112,12 @@
         <option value="$PROJECT_DIR$/configure/base.config.php" />
         <option value="$PROJECT_DIR$/templates/home/insertCoin.tpl" />
         <option value="$PROJECT_DIR$/docs/createDBScript.sql" />
-        <option value="$PROJECT_DIR$/model/home/user_manager.model.php" />
         <option value="$PROJECT_DIR$/model/home/product_manager.model.php" />
-        <option value="$PROJECT_DIR$/controllers/home/product.ctrl.php" />
         <option value="$PROJECT_DIR$/docs/template de producte" />
         <option value="$PROJECT_DIR$/templates/home/product.tpl" />
         <option value="$PROJECT_DIR$/htdocs/css/style.css" />
+        <option value="$PROJECT_DIR$/controllers/home/product.ctrl.php" />
+        <option value="$PROJECT_DIR$/model/home/user_manager.model.php" />
       </list>
     </option>
   </component>
@@ -416,10 +426,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1722365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17416452" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -682,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/createDBScript.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94864047">
-          <caret line="94" column="66" selection-start-line="94" selection-start-column="66" selection-end-line="94" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/insertCoin.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154">
@@ -757,15 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14782609">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/home/user_manager.model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.230769">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -793,25 +787,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/home/product_manager.model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.0">
-          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/home/product.ctrl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/product.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
           <folding />
         </state>
@@ -819,8 +797,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/htdocs/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.92608696">
+        <state vertical-scroll-proportion="-55.576923">
           <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/home/product.ctrl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.5">
+          <caret line="39" column="53" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/home/product_manager.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.807693">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/home/user_manager.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.576923">
+          <caret line="127" column="62" selection-start-line="127" selection-start-column="62" selection-end-line="127" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/createDBScript.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46072507">
+          <caret line="33" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="66" />
           <folding />
         </state>
       </provider>

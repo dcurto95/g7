@@ -14,7 +14,10 @@ class HomeInsertCoinController extends Controller
     public function build()
     {
 
+
+
         $model = $this->getClass('HomeUserManagerModel');
+        $model->countVisits();
 
         $this->setLayout( $this->view );
 

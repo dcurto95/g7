@@ -3,7 +3,7 @@
  * Home Controller: Controller example.
 
  */
-class HomeAddProductController extends Controller
+class HomeEditProductController extends Controller
 {
 
 	public function build()
@@ -69,12 +69,11 @@ class HomeAddProductController extends Controller
 
 						$modelProduct = $this->getClass('HomeProductManagerModel');
 						$modelUser = $this->getClass('HomeUserManagerModel');
-						$imageManager = $this->getClass('HomeImageManagerModel');
 
 						// Processem la imatge:
 
+
 						$modelProduct->addProduct($info);
-						$imageManager->AddProductImages($info['image']);
 						$modelUser->pay($session->get('id_user'), 1);
 						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
 
@@ -89,6 +88,7 @@ class HomeAddProductController extends Controller
 						$this->assign('product_description', $info['description']);
 						$this->assign('product_date', $info['date']);
 						$this->assign('product_image', $info['image']);
+
 
 					}
 				}

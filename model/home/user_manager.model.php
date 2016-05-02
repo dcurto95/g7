@@ -121,6 +121,31 @@ QUERY;
         } else {
             return false;
         }
+    }
+
+    public function buy($id_user, $id_product){
+            $query = <<<QUERY
+        UPDATE user SET saldo = '$money' WHERE `id_user`='$id'
+QUERY;
+            $this->execute($query);
+    }
+
+    public function countVisits(){
+        $query = <<<QUERY
+        SELECT * FROM `Visit`
+QUERY;
+        $count = $this->getAll($query);
+
+        $num =  $count[0]['visitas'];
+        $new = $num +1;
+
+        echo $new;
+
+        $query = <<<QUERY
+        UPDATE Visit SET visitas = '$new'
+QUERY;
+        $this->execute($query);
+
 
     }
 }
