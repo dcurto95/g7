@@ -13,6 +13,16 @@ class HomeHomeController extends Controller
 		$info = $this->getParams();
 		$model = $this->getClass('HomeProductManagerModel');
 		$description = $model->getProductDescription(1);
+		$mostViewedProducts = $model->getMostViewedProducts();
+		//$mostViewdProductsDescription = $model->getProductDescription();
+
+		foreach($mostViewedProducts as $mV){
+
+			print_r($mV);
+
+
+
+		}
 
 
 

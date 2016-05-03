@@ -79,7 +79,7 @@ QUERY;
         return $product;
     }
 
-    public function getMostViewedProduct()
+    public function getMostViewedProducts()
     {
         /*
         Es mostrarà un llistat dels 5 producte més visionats (vegeu següent apartat).
