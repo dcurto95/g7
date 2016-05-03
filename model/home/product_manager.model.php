@@ -43,6 +43,17 @@ QUERY;
         return $product;
     }
 
+    public function getAllProductsFromName($productName){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `name` = '$productName' ORDER BY `id_product`
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
+    }
+
+
     public function getProductFromName($productName){
         $query = <<<QUERY
         SELECT `id_product` FROM `product` WHERE `name` = '$productName'
