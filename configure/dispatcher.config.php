@@ -14,6 +14,8 @@ $config['logout']			    = 'HomeLogoutController';
 $config['addProduct']		    = 'HomeAddProductController';
 $config['editProduct']		    = 'HomeEditProductController';
 $config['product']              = 'HomeProductController';
+$config['buyProduct']           = 'HomeBuyProductController';
+//$config['errorMoney']           = 'HomeErrorMoneyController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 

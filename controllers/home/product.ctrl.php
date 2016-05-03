@@ -18,6 +18,8 @@ class HomeProductController extends Controller
             $product_id = $model->getProductFromName($info[0]);
         }
 
+        //id_user(comprador), id_product
+        //$modelUsuaris->buy(2,2);
 
         if($product_id > 0) {
 
@@ -30,7 +32,7 @@ class HomeProductController extends Controller
             $this->assign('stock', $product[0]['stock']);
             $this->assign('descripcio', $product[0]['description']);
             $this->assign('date', $product[0]['date']);
-            $product_img = '/img/product_img_big/'.$product[0]['image'];
+            $product_img = '/img/product_img_big/'.$product[0]['image_big'];
             $this->assign('img_path', $product_img);
             $this->assign('soldProducts', 0);
 

@@ -17,14 +17,15 @@
             </div>
         </div>
 
-
-        <p>{$name} - {$preu}Ä</p>
+        <p>{$name} - {$preu}</p>
         <p>Expiry day: {$date}</p>
         <p>Price: {$preu}</p>
         <p>Aviable stock: {$stock}</p>
         <p>Provider: <a href="#">{$user}</a>. {$soldProducts} sold products.</p>
         <p>Description: {$descripcio}</p>
-        <a class="waves-effect waves-light btn"><i class="material-icons right">shopping_basket</i>Buy</a>
+        <a class="waves-effect waves-light btn" href="{$url.global}/buyProduct/{$name}"><i class="material-icons right">shopping_basket</i>Buy</a>
+
     </div>
 </div>
+
 {$modules.footer}
