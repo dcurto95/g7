@@ -15,7 +15,7 @@ class HomeEditProductController extends Controller
 
 		if ($user != null){
 
-			$view = 'home/addProduct.tpl';
+			$view = 'home/editProduct.tpl';
 
 			$product_float_regex = '([0-9]{1,3}([\.\,]([0-9]+)){0,1})';
 			$this->assign('product_float_regex', $product_float_regex);
@@ -23,78 +23,114 @@ class HomeEditProductController extends Controller
 			$product_numeric_regex = '([0-9]{0,3})';
 			$this->assign('product_numeric_regex', $product_numeric_regex);
 
-			$this->setLayout( $view );
+			// Fill fields with product:
 
-			$is_submit = Filter::getString('submit');
+			$params = $this->getParams();
+			$params = $params['url_arguments'];
 
-			if($is_submit) {
+			if(empty($params[0]) || $params[0] <= 0) {
+				$view = 'error/error403.tpl';
+				//var_dump(http_response_code(403));
+				$this->setLayout( $view );
+			} else {
 
-				$isValid = true;
+				$prod_id = $params[0];
 
-				$info['name'] = Filter::getString('product_name');
-				if (strlen($info['name']) > 50){
-					$isValid = false;
-				}
+				// Omplir els camps!
+				$model = $this->getClass('HomeProductManagerModel');
+				$prod = $model->getProduct($prod_id);
 
-				$info['price'] = Filter::getString('price');
-				if ($info['price'] <= 0.){
-					$isValid = false;
-				}
+				$this->assign('product_name', $prod['name']);
+				$this->assign('product_price', $prod['price']);
+				$this->assign('product_stock', $prod['stock']);
+				$this->assign('product_description', $prod['description']);
+				$this->assign('product_date', $prod['date']);
+				$this->assign('product_image_name', $prod['image_big']);
+				$product_img = '/img/product_img_big/'.$prod['image_big'];
+				$this->assign('product_image', $product_img);
 
-				$info['stock'] = Filter::getString('stock');
-				if ($info['stock'] <= 0){
-					$isValid = false;
-				}
+				$this->setLayout($view);
 
-				$info['description'] = Filter::getString('description');
+				$is_submit = Filter::getString('submit');
 
-				$info['date'] = Filter::getString('date');
-				$today = strtotime(date("j F, Y"));
-				$givenDate = strtotime($info['date']);
-				if ($givenDate < $today){
-					$isValid = false;
-				}
+				$is_remove = Filter::getString('remove');
 
-				$info['image'] = $_FILES["inputFile"]["name"];
-				if (filesize($info['image']) > 2000000){
-					$isValid = false;
-				}
+				if ($is_submit) {
 
-				if ($session->get('saldo') == 0){
-					// Anem a una pantalla d'error! -> Falta de diners.
-					header('Location:' .URL_ABSOLUTE .'/requireMoney');
-				} else {
+					$isValid = true;
 
-					if ($isValid) {
+					$info['name'] = Filter::getString('product_name');
+					if (strlen($info['name']) > 50) {
+						$isValid = false;
+					}
 
-						$modelProduct = $this->getClass('HomeProductManagerModel');
-						$modelUser = $this->getClass('HomeUserManagerModel');
+					$info['price'] = Filter::getString('price');
+					if ($info['price'] <= 0.) {
+						$isValid = false;
+					}
 
-						// Processem la imatge:
+					$info['stock'] = Filter::getString('stock');
+					if ($info['stock'] <= 0) {
+						$isValid = false;
+					}
 
+					$info['description'] = Filter::getString('description');
 
-						$modelProduct->addProduct($info);
-						$modelUser->pay($session->get('id_user'), 1);
-						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
+					$info['date'] = Filter::getString('date');
+					$today = strtotime(date("j F, Y"));
+					$givenDate = strtotime($info['date']);
+					if ($givenDate < $today) {
+						$isValid = false;
+					}
 
-						header('Location:' . URL_ABSOLUTE);
+					$info['image_small'] = $_FILES["inputFile"]["name"];
+					$info['image_big'] = $_FILES["inputFile"]["name"];
+					if (filesize($info['image']) > 2000000) {
+						$isValid = false;
+					}
 
+					if ($session->get('saldo') == 0) {
+						// Anem a una pantalla d'error! -> Falta de diners.
+						header('Location:' . URL_ABSOLUTE . '/requireMoney');
 					} else {
 
-						// Reomplir els camps!
-						$this->assign('product_name', $info['name']);
-						$this->assign('product_price', $info['price']);
-						$this->assign('product_stock', $info['stock']);
-						$this->assign('product_description', $info['description']);
-						$this->assign('product_date', $info['date']);
-						$this->assign('product_image', $info['image']);
+						if ($isValid) {
 
+							$modelProduct = $this->getClass('HomeProductManagerModel');
+							$modelUser = $this->getClass('HomeUserManagerModel');
+							$imageManager = $this->getClass('HomeImageManagerModel');
 
+							$modelProduct->deleteProduct($prod_id);
+							$modelProduct->addProduct($info);
+
+							$id_user = $session->get('id_user');
+
+							$imageManager->AddProductImages("inputFile", $id_user);
+
+							$modelUser->pay($session->get('id_user'), 1);
+							$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
+
+							header('Location:' . URL_ABSOLUTE);
+
+						} else {
+
+							// Reomplir els camps!
+							$this->assign('product_name', $info['name']);
+							$this->assign('product_price', $info['price']);
+							$this->assign('product_stock', $info['stock']);
+							$this->assign('product_description', $info['description']);
+							$this->assign('product_date', $info['date']);
+							$this->assign('product_image', $info['image']);
+
+						}
 					}
+
+				} elseif ($is_remove) {
+					// Remove product form DB:
+					$modelProduct = $this->getClass('HomeProductManagerModel');
+					$modelProduct->deleteProduct($prod_id);
 				}
-
 			}
-
 		} else {
 
 			$view = 'error/error403.tpl';

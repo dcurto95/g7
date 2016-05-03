@@ -17,7 +17,8 @@ class SharedHeadController extends Controller
 			$username = $session->get('username');
 			$user_img = '/img/profile_img/'.$session->get('image');
 
-			$user_coins = $session->get('saldo');
+			$model = $this->getClass('HomeUserManagerModel');
+			$user_coins = $model->getMoney($user);
 
 			$this->assign('user_image', $user_img);
 			$this->assign('username', $username);

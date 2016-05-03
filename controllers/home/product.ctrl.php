@@ -30,7 +30,7 @@ class HomeProductController extends Controller
             $this->assign('descripcio', $product['description']);
             $this->assign('date', $product['date']);
             $product_img = '/img/product_img_big/'.$product['image_big'];
-            $this->assign('img_path', $product_img);
+            $this->assign('product_image', $product_img);
             $this->assign('soldProducts', 0);
             
             $user = $modelUsuaris->getUser($product['id_user']);

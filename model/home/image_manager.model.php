@@ -4,34 +4,65 @@
 class HomeImageManagerModel extends Model{
 
 
-    public function AddProfileImage($name){
+    public function AddProfileImage($name, $user_id){
 
         // Codi d'adició de la imatge:
         $image = $_FILES["$name"]["name"];
         $filetmp = $_FILES["$name"]["tmp_name"];
-        $img_path = '../htdocs/img/profile_img/'.$image;
+        $img_path = '../htdocs/img/profile_img/'.$user_id.'_'.$image;
         move_uploaded_file($filetmp,$img_path);
 
         $this->ResizeImg($img_path, 200, 200);
 
     }
 
-    public function AddProductImages($name){
+    public function AddProductImages($name, $user_id){
 
         // Codi d'adició de la imatge:
         $image = $_FILES["$name"]["name"];
         $filetmp = $_FILES["$name"]["tmp_name"];
-        $img_path_big = '../htdocs/img/product_img_big/'.$image;
+        $img_path_big = '../htdocs/img/product_img_big/'.$user_id.'_'.$image;
         move_uploaded_file($filetmp,$img_path_big);
 
         $this->ResizeImg($img_path_big, 400, 300);
 
         // Codi de copia i adició de la imatge:
-        $img_path_small = '../htdocs/img/product_img_tiny/'.$image;
+        $img_path_small = '../htdocs/img/product_img_tiny/'.$user_id.'_'.$image;
         copy($img_path_big, $img_path_small);
 
         $this->ResizeImg($img_path_small, 100, 100);
 
+    }
+
+    public function AddProductImageFail($name, $user_id){
+
+        // Codi d'adició de la imatge:
+        $image = $_FILES["$name"]["name"];
+        $filetmp = $_FILES["$name"]["tmp_name"];
+        $img_path_big = '../htdocs/img/tmp_image/tmp_big_image/'.$user_id.'_'.$image;
+        move_uploaded_file($filetmp,$img_path_big);
+
+        $this->ResizeImg($img_path_big, 400, 300);
+
+        // Codi de copia i adició de la imatge:
+        $img_path_small = '../htdocs/img/tmp_image/tmp_tiny_image/'.$user_id.'_'.$image;
+        copy($img_path_big, $img_path_small);
+
+        $this->ResizeImg($img_path_small, 100, 100);
+
+    }
+
+    public function MoveProductImageFail($image_name, $user_id){
+
+        $img_path_big_old = '../htdocs/img/tmp_image/tmp_big_image/'.$user_id.'_'.$image_name;
+        $img_path_big_new = '../htdocs/img/product_img_big/'.$user_id.'_'.$image_name;
+        copy($img_path_big_old, $img_path_big_new);
+        unlink($img_path_big_old);
+
+        $img_path_small_old = '../htdocs/img/tmp_image/tmp_tiny_image/'.$user_id.'_'.$image_name;
+        $img_path_small_new = '../htdocs/img/product_img_tiny/'.$user_id.'_'.$image_name;
+        copy($img_path_small_old, $img_path_small_new);
+        unlink($img_path_small_old);
     }
 
     private function ResizeImg($path, $rs_width, $rs_height) {

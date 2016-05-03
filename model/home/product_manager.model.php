@@ -46,6 +46,12 @@ QUERY;
 
     }
 
+    public function deleteProduct($id){
+
+        // Cal fer el codi!
+
+    }
+
     public function getProductFromName($productName){
         $query = <<<QUERY
         SELECT `id_product` FROM `product` WHERE `name` = '$productName'

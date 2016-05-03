@@ -75,7 +75,8 @@ class HomeAddProductController extends Controller
 						// Processem la imatge:
 
 						$modelProduct->addProduct($info);
-						$imageManager->AddProductImages("inputFile");
+						$id_user = $session->get('id_user');
+						$imageManager->AddProductImages("inputFile", $id_user);
 						$modelUser->pay($session->get('id_user'), 1);
 						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
 
