@@ -13,7 +13,8 @@ $config['login']			    = 'HomeLoginController';
 $config['logout']			    = 'HomeLogoutController';
 $config['addProduct']		    = 'HomeAddProductController';
 $config['editProduct']		    = 'HomeEditProductController';
-$config['product']              = 'HomeProductController';
+$config['p']                    = 'HomeProductController';
+$config['mv']                   = 'HomeMostViewedProductController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 

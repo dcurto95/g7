@@ -5,13 +5,13 @@
 <div class="row">
 
     <div class="col s12 m12">
-        <div class="card">
+        <div class="card medium">
             <div class="card-image">
                 <img src="img/bg_image.jpg">
                 <span class="card-title">Card Title</span>
             </div>
             <div class="card-action">
-                <a href="#">This is a link</a>
+                 <a href="#">This is a link</a>
             </div>
         </div>
     </div>
@@ -97,11 +97,9 @@
 
 </div>
 
-
-<!--
 <a class="twitter-timeline" href="https://twitter.com/hashtag/LSStore" data-widget-id="722405726187089921">Tweets sobre #LSStore</a>
 
-<script>
+<script> {literal}
     !function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
                 p = /^http:/.test(d.location) ? 'http' : 'https';
@@ -112,8 +110,14 @@
             fjs.parentNode.insertBefore(js, fjs);
         }
     }(document, "script", "twitter-wjs");
+    {/literal}
 </script>
--->
+
 
 {$modules.footer}
+
+
+
+
+
 

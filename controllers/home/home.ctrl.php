@@ -12,9 +12,54 @@ class HomeHomeController extends Controller
 
 		$info = $this->getParams();
 		$model = $this->getClass('HomeProductManagerModel');
-		$description = $model->getProductDescription(1);
-		$mostViewedProducts = $model->getMostViewedProducts();
-		//$mostViewdProductsDescription = $model->getProductDescription();
+
+
+		// Recuperem el valor del producte a mostrar:
+		if(empty($info['url_arguments'])){
+			$which = 0;
+		}else{
+			$which = $info['url_arguments'][0];
+		}
+
+
+		//$description = $model->getProductDescription(1);
+		//$mostViewedProducts = $model->getMostViewedProducts();
+
+
+		/*
+		$sizeProducts = count($mostViewedProducts);
+		$num_pagines = (int)($sizeProducts/3)-1;
+		if($sizeProducts%3>0){
+			$num_pagines++;
+		}
+
+
+		if ($which > $num_pagines){
+			$this->setLayout($this->error_view);
+		} else {
+			$this->assign('next', ($which + 1));
+			$this->assign('previous', ($which - 1));
+
+			if ($which == 0) {
+				$this->assign('is_first', true);
+			} else {
+				$this->assign('is_first', false);
+			}
+
+			if ($which == $num_pagines) {
+				$this->assign('is_last', true);
+			} else {
+				$this->assign('is_last', false);
+			}
+
+			$this->setLayout($this->view);
+		}
+
+		*/
+
+
+		/*
+		$mostViewdProductsDescription = $model->getProductDescription();
 
 		foreach($mostViewedProducts as $mV){
 
@@ -23,6 +68,8 @@ class HomeHomeController extends Controller
 
 
 		}
+
+		*/
 
 
 
