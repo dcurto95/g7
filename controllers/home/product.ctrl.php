@@ -40,6 +40,8 @@ class HomeProductController extends Controller
             $this->assign('stock', $product['stock']);
             $this->assign('descripcio', $product['description']);
             $this->assign('date', $product['date']);
+            $this->assign('id_product', $product['id_product']);
+
             $product_img = '/img/product_img_big/'.$product['image_big'];
 
             $this->assign('img_path', $product_img);
