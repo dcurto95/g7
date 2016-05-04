@@ -55,7 +55,8 @@ class HomeAddProductController extends Controller
 					$isValid = false;
 				}
 
-				$info['image'] = $_FILES["inputFile"]["name"];
+				$info['image_small'] = $_FILES["inputFile"]["name"];
+				$info['image_big'] 	 = $_FILES["inputFile"]["name"];
 				if (filesize($info['image']) > 2000000){
 					$isValid = false;
 				}
@@ -74,7 +75,7 @@ class HomeAddProductController extends Controller
 						// Processem la imatge:
 
 						$modelProduct->addProduct($info);
-						$imageManager->AddProductImages($info['image']);
+						$imageManager->AddProductImages("inputFile");
 						$modelUser->pay($session->get('id_user'), 1);
 						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
 

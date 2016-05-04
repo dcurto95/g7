@@ -20,13 +20,15 @@ class HomeProductManagerModel extends Model{
         $stock          = $info['stock'];
         $description    = addslashes($info['description']);
         $date           = addslashes($info['date']);
-        $image          = $info['image'];
+        $image_small    = $info['image_small'];
+        $image_big      = $info['image_big'];
+        $views          = 0;
 
         $query = <<<QUERY
         INSERT INTO `G7DB2`.`product`
-            (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image`)
+            (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image_small`, `image_big`, `views`)
         VALUES
-            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image');
+            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image_small', '$image_big', '$views');
 QUERY;
 
         $this->execute($query);
@@ -39,6 +41,7 @@ QUERY;
 QUERY;
 
         $product = $this->getAll($query);
+
 
         return $product;
     }
@@ -78,10 +81,50 @@ QUERY;
         $query = <<<QUERY
         SELECT * FROM `product` WHERE `id_product` = '$productId'
 QUERY;
-
         $product = $this->getAll($query);
 
         return $product[0]['stock'];
+    }
+
+    public function getProductDescription($id){
+
+        $query = <<<QUERY
+        SELECT LEFT(`description`,50) as 'description' FROM `product` WHERE `id_product` = '$id'
+QUERY;
+
+        $description = $this->getAll($query);
+        $description =  $description[0]['description'];
+
+        return $description;
+
+    }
+
+    public function getLatestProduct(){
+        $query = <<<QUERY
+        SELECT * FROM `product` ORDER BY `id_product` DESC LIMIT 1
+QUERY;
+        $product = $this->getAll($query);
+
+        return $product;
+    }
+
+    public function getMostViewedProducts()
+    {
+        /*
+        Es mostrarà un llistat dels 5 producte més visionats (vegeu següent apartat).
+        Per cadascun d’ells es mostrarà el títol, els 50 primers caràcters de la descripcio
+        ́, la data de caducitat i el preu de venda. El títol ha de ser un link cap al visionat
+        públic d’aquest producte
+
+        */
+
+        $query = <<<QUERY
+        SELECT * FROM `product` ORDER BY `views` DESC LIMIT 5
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
     }
 
 }

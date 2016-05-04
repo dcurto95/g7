@@ -14,8 +14,6 @@ class HomeProductController extends Controller
         $info = $this->getParams();
         $info = $info['url_arguments'];
 
-        //print_r($info[1]);
-
         if(!empty($info[0])) {
             //Miro quants productes hi ha amb el nom donat
             $allProducts = $model->getAllProductsFromName($info[0]);
@@ -36,20 +34,22 @@ class HomeProductController extends Controller
         }
 
         if($product_id > 0) {
-            $product = $model->getProduct($product_id);
+            $product = $model->getProduct($product_id)[0];
+            $this->assign('name', $product['name']);
+            $this->assign('preu', $product['price']);
+            $this->assign('stock', $product['stock']);
+            $this->assign('descripcio', $product['description']);
+            $this->assign('date', $product['date']);
+            $product_img = '/img/product_img_big/'.$product['image_big'];
 
-            $this->assign('name', $product[0]['name']);
-            $this->assign('preu', $product[0]['price']);
-            $this->assign('stock', $product[0]['stock']);
-            $this->assign('descripcio', $product[0]['description']);
-            $this->assign('date', $product[0]['date']);
-            $product_img = '/img/product_img_big/'.$product[0]['image_big'];
             $this->assign('img_path', $product_img);
             $this->assign('soldProducts', 0);
 
-            $user = $modelUsuaris->getUser($product[0]['user']);
+            $user = $modelUsuaris->getUser($product['id_user']);
+
             $this->assign('user', $user['username']);
-            $this->assign('profile', $user['image']);
+            $user_img = '/img/profile_img/'.$user['image'];
+            $this->assign('profile', $user_img);
 
             $this->setLayout($this->view);
         }else{

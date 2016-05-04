@@ -101,7 +101,7 @@ QUERY;
 QUERY;
 
         $usuari = $this->getAll($query);
-
+        //print_r($usuari);
         return $usuari[0]['saldo'];
     }
 
@@ -144,7 +144,7 @@ QUERY;
             $this->execute($query);
 
         //Calculem i actualitzem els diners que tindrè el venedor.
-        $id_venedor = $product[0]['user'];
+        $id_venedor = $product[0]['id_user'];
         $money = $this->getMoney($id_venedor);
         $total_money = $money + $price;
 
