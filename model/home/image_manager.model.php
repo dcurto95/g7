@@ -65,6 +65,16 @@ class HomeImageManagerModel extends Model{
         unlink($img_path_small_old);
     }
 
+    public function RemoveProductImageFail($image_name, $user_id){
+
+        $img_path_big_old = '../htdocs/img/tmp_image/tmp_big_image/'.$user_id.'_'.$image_name;
+        unlink($img_path_big_old);
+
+        $img_path_small_old = '../htdocs/img/tmp_image/tmp_tiny_image/'.$user_id.'_'.$image_name;
+        unlink($img_path_small_old);
+
+    }
+
     private function ResizeImg($path, $rs_width, $rs_height) {
 
         $x = getimagesize($path);
