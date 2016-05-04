@@ -8,7 +8,7 @@
 
 class HomeMostViewedProductController extends Controller
 {
-    protected $view = 'home/home.tpl';
+    protected $view = 'home/mostViewedProduct.tpl';
 
     public function build()
     {

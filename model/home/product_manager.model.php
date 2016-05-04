@@ -42,9 +42,20 @@ QUERY;
 
         $product = $this->getAll($query);
 
-        return $product[0];
 
+        return $product;
     }
+
+    public function getAllProductsFromName($productName){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `name` = '$productName' ORDER BY `id_product`
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
+    }
+
 
     public function getProductFromName($productName){
         $query = <<<QUERY
@@ -56,6 +67,24 @@ QUERY;
         return $product[0]['id_product'];
     }
 
+    public function getPrice($productId){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$productId'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product[0]['price'];
+    }
+
+    public function getStock($productId){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$productId'
+QUERY;
+        $product = $this->getAll($query);
+
+        return $product[0]['stock'];
+    }
 
     public function getProductDescription($id){
 
