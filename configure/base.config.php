@@ -41,6 +41,9 @@ $config['HomeLogoutController']	    	= PATH_CONTROLLERS . 'home/logout.ctrl.php'
 $config['HomeAddProductController']	    = PATH_CONTROLLERS . 'home/addProduct.ctrl.php';
 $config['HomeEditProductController']	= PATH_CONTROLLERS . 'home/editProduct.ctrl.php';
 $config['HomeProductController']	    = PATH_CONTROLLERS . 'home/product.ctrl.php';
+$config['HomeBuyProductController']	    = PATH_CONTROLLERS . 'home/buyProduct.ctrl.php';
+
+$config['HomeMostViewedProductController']	    = PATH_CONTROLLERS . 'home/mostViewedProduct.ctrl.php';
 
 
 // Shared controllers

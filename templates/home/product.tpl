@@ -24,7 +24,8 @@
         <p>Aviable stock: {$stock}</p>
         <p>Sold Products: {$soldProducts}.</p>
         <p>Description: {$descripcio}</p>
-        <a class="waves-effect waves-light btn"><i class="material-icons right">shopping_basket</i>Buy</a>
+        <a class="waves-effect waves-light btn" href="{$url.global}/buyProduct/{$name}"><i class="material-icons right">shopping_basket</i>Buy</a>
+
     </div>
 </div>
 {$modules.footer}

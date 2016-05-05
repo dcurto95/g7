@@ -101,7 +101,7 @@ QUERY;
 QUERY;
 
         $usuari = $this->getAll($query);
-
+        //print_r($usuari);
         return $usuari[0]['saldo'];
     }
 
@@ -121,6 +121,47 @@ QUERY;
         } else {
             return false;
         }
+    }
+
+    public function buy($id_user, $id_product){
+
+        //Calculem i actualitzem els diners que tindrà el comprador
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$id_product'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        $price = $product[0]['price'];
+
+        $money = $this->getMoney($id_user);
+
+        $total_money = $money - $price;
+
+        $query = <<<QUERY
+        UPDATE user SET saldo = '$total_money' WHERE `id_user`='$id_user'
+QUERY;
+            $this->execute($query);
+
+        //Calculem i actualitzem els diners que tindrè el venedor.
+        $id_venedor = $product[0]['id_user'];
+        $money = $this->getMoney($id_venedor);
+        $total_money = $money + $price;
+
+        $query = <<<QUERY
+        UPDATE user SET saldo = '$total_money' WHERE `id_user` = '$id_venedor'
+QUERY;
+        $this->execute($query);
+
+        //mirem l'estock que queda i calculem el que quedarà
+        $stock = $product[0]['stock'];
+        $stock = $stock - 1;
+
+        //Baixem en 1 l'stock del producte
+        $query = <<<QUERY
+        UPDATE product SET stock = '$stock' WHERE `id_product` = '$id_product'
+QUERY;
+        $this->execute($query);
 
     }
 

@@ -42,15 +42,20 @@ QUERY;
 
         $product = $this->getAll($query);
 
-        return $product[0];
 
+        return $product;
     }
 
-    public function deleteProduct($id){
+    public function getAllProductsFromName($productName){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `name` = '$productName' ORDER BY `id_product`
+QUERY;
 
-        // Cal fer el codi!
+        $product = $this->getAll($query);
 
+        return $product;
     }
+
 
     public function getProductFromName($productName){
         $query = <<<QUERY
@@ -60,6 +65,66 @@ QUERY;
         $product = $this->getAll($query);
 
         return $product[0]['id_product'];
+    }
+
+    public function getPrice($productId){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$productId'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product[0]['price'];
+    }
+
+    public function getStock($productId){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$productId'
+QUERY;
+        $product = $this->getAll($query);
+
+        return $product[0]['stock'];
+    }
+
+    public function getProductDescription($id){
+
+        $query = <<<QUERY
+        SELECT LEFT(`description`,50) as 'description' FROM `product` WHERE `id_product` = '$id'
+QUERY;
+
+        $description = $this->getAll($query);
+        $description =  $description[0]['description'];
+
+        return $description;
+
+    }
+
+    public function getLatestProduct(){
+        $query = <<<QUERY
+        SELECT * FROM `product` ORDER BY `id_product` DESC LIMIT 1
+QUERY;
+        $product = $this->getAll($query);
+
+        return $product;
+    }
+
+    public function getMostViewedProducts()
+    {
+        /*
+        Es mostrarà un llistat dels 5 producte més visionats (vegeu següent apartat).
+        Per cadascun d’ells es mostrarà el títol, els 50 primers caràcters de la descripcio
+        ́, la data de caducitat i el preu de venda. El títol ha de ser un link cap al visionat
+        públic d’aquest producte
+
+        */
+
+        $query = <<<QUERY
+        SELECT * FROM `product` ORDER BY `views` DESC LIMIT 5
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
     }
 
 }
