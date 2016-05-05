@@ -31,6 +31,8 @@ class HomeAddProductController extends Controller
 
 				$isValid = true;
 
+				$info['id_user'] = $user;
+
 				$info['name'] = Filter::getString('product_name');
 				if (strlen($info['name']) > 50){
 					$isValid = false;
@@ -57,8 +59,25 @@ class HomeAddProductController extends Controller
 
 				$info['image_small'] = $_FILES["inputFile"]["name"];
 				$info['image_big'] 	 = $_FILES["inputFile"]["name"];
-				if (filesize($info['image']) > 2000000){
-					$isValid = false;
+
+				$imageManager = $this->getClass('HomeImageManagerModel');
+				if ($session->get('image_fail_flag') == null || $session->get('image_fail_flag') == false){
+					if (filesize($info['image']) > 2000000) {
+						$isValid = false;
+					}
+				}
+
+				$isImgEqual = empty(Filter::getString('product_image_name'));
+
+				if (!$isValid) {
+					$id_user = $session->get('id_user');
+					if ($session->get('image_fail_flag') == true){
+						$imageManager->RemoveProductImageFail($info['image_big'], $id_user);
+					}
+					$imageManager->AddProductImageFail("inputFile", $id_user);
+
+					$session->set('image_fail_flag', true);
+					$session->set('image_fail_name', $info['image_big']);
 				}
 
 				if ($session->get('saldo') == 0){
@@ -70,14 +89,29 @@ class HomeAddProductController extends Controller
 
 						$modelProduct = $this->getClass('HomeProductManagerModel');
 						$modelUser = $this->getClass('HomeUserManagerModel');
-						$imageManager = $this->getClass('HomeImageManagerModel');
 
 						// Processem la imatge:
+						$id_user = $session->get('id_user');
+						if ($session->get('image_fail_flag') == true) {
+
+							if ($isImgEqual == true) {
+								$info['image_small'] = $session->get('image_fail_name');
+								$info['image_big'] = $session->get('image_fail_name');
+								$imageManager->MoveProductImageFail($info['image_big'], $id_user);
+							} else {
+								$imageManager->RemoveProductImageFail($info['image_big'], $id_user);
+								$imageManager->AddProductImages("inputFile", $id_user);
+							}
+						} else {
+							$imageManager->AddProductImages("inputFile", $id_user);
+						}
 
 						$modelProduct->addProduct($info);
-						$imageManager->AddProductImages("inputFile");
 						$modelUser->pay($session->get('id_user'), 1);
 						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
+
+						$session->delete('image_fail_flag');
+						$session->delete('image_fail_name');
 
 						header('Location:' . URL_ABSOLUTE);
 
@@ -89,11 +123,19 @@ class HomeAddProductController extends Controller
 						$this->assign('product_stock', $info['stock']);
 						$this->assign('product_description', $info['description']);
 						$this->assign('product_date', $info['date']);
-						$this->assign('product_image', $info['image']);
+
+						// Agafa la string a partir de la '_'
+						$img_name = $session->get('image_fail_name');
+
+						$image_src = '../img/tmp_image/tmp_big_image/'.$user.'_'.$img_name;
+						$this->assign('product_image', $image_src);
 
 					}
 				}
 
+			} else {
+				$image_src = "http://placehold.it/100x100";
+				$this->assign('product_image', $image_src);
 			}
 
 		} else {
@@ -105,7 +147,6 @@ class HomeAddProductController extends Controller
 		}
 
 	}
-
 
 	/**
 	 * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).

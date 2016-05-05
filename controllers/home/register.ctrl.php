@@ -19,15 +19,12 @@ class HomeRegisterController extends Controller
 
 		$this->setLayout( $this->view );
 
-
 		//Agafar valors per la creació de l'usuari
 		$username = Filter::getString('username');
-		$email = Filter::getEmail('email');
-		$twitter = Filter::getString('twitter');
 
-		if($twitter == ''){
-			$twitter = 'null';
-		}
+		$email = Filter::getEmail('email');
+
+		$twitter = Filter::getString('twitter');
 
 		$password = Filter::getString('password');
 
@@ -42,6 +39,7 @@ class HomeRegisterController extends Controller
 			$image_manager->AddProfileImage("inputFile");
 
 			//Creem usuari
+			$user_id =
 			$img_name = $_FILES["inputFile"]["name"];
 			$model->createUser($username,$email,$twitter,$password,$img_name,$activation_code);
 
