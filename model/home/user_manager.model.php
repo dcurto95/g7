@@ -34,7 +34,7 @@ QUERY;
         $temp = $this->getAll($query);
 
         //Controlem que realment existeixi l'usuari
-        if($temp[0]!=null && !$temp[0]['valid']){
+        if(!empty($temp) && !$temp[0]['valid']){
             $query = <<<QUERY
             UPDATE user SET valid = true WHERE `activation_code`='$activation_code'
 QUERY;
