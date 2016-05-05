@@ -40,6 +40,13 @@
 				<div class="nav-wrapper deep-orange lighten-1">
 					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
+
+						<li>
+							<form method="post">
+									<input id="buscador" type="text" class="validate" placeholder="Search">
+							</form>
+						</li>
+
 						<!-- LOGIN -->
 						{if $isLogged eq true}
 							<li><img id="profile_image" style="margin-top: 12%; width: 50px; height: 50px"

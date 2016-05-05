@@ -14,6 +14,9 @@ class HomeProductController extends Controller
         $info = $this->getParams();
         $info = $info['url_arguments'];
 
+        $session = Session::getInstance();
+        $log_user = $session->get('id_user');
+
         if(!empty($info[0])) {
             //Miro quants productes hi ha amb el nom donat
             $allProducts = $model->getAllProductsFromName($info[0]);
@@ -41,6 +44,8 @@ class HomeProductController extends Controller
             $this->assign('descripcio', $product['description']);
             $this->assign('date', $product['date']);
             $this->assign('id_product', $product['id_product']);
+
+            $this->assign('isLogged', $log_user);
 
             $product_img = '/img/product_img_big/'.$product['image_big'];
 
