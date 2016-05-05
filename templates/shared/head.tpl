@@ -43,7 +43,7 @@
 					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 
-						<li><a href="{$url.global}/mv"><i class="material-icons">list</i></a></li>
+
 						<!-- LOGIN -->
 						{if $isLogged eq true}
 							<li><img id="profile_image" style="margin-top: 12%; width: 50px; height: 50px"
@@ -65,6 +65,7 @@
 						<!-- END LOGIN -->
 
 						<li><a href="{$url.global}/addProduct">ADD</a></li>
+						<li><a href="{$url.global}/mv"><i class="material-icons">list</i></a></li>
 
 					</ul>
 				</div>
