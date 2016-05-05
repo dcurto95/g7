@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 02-05-2016 a las 16:31:30
+-- Tiempo de generación: 05-05-2016 a las 19:53:44
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 5.6.10
 
@@ -31,15 +31,16 @@ CREATE TABLE `product` (
   `image_big` varchar(200) NOT NULL,
   `views` int(11) NOT NULL DEFAULT '0',
   `id_user` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `product`
 --
 
 INSERT INTO `product` (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image_small`, `image_big`, `views`, `id_user`) VALUES
-  (2, 'producte', 3, 42, '', '23 April, 2016', '', '', 0, 0),
-  (6, 'horari', 12, 31, 'This is horari!', '2 May, 2016', 'S2 Horari.png', 'S2 Horari.png', 0, 1);
+  (6, 'horari', 12, 31, 'This is horari!', '2 May, 2016', '1_S2 Horari.png', '1_S2 Horari.png', 0, 1),
+  (8, 'doge', 23, 32, 'Much wow!', '5 May, 2016', 'doge.jpg', 'doge.jpg', 0, 1),
+  (10, 'squirtle', 12, 32, 'Vamo a calmarno!', '5 May, 2016', 'squirtle.jpg', 'squirtle.jpg', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -57,14 +58,14 @@ CREATE TABLE `user` (
   `activation_code` varchar(30) NOT NULL,
   `saldo` float DEFAULT '0',
   `valid` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `email`, `twitter`, `password`, `image`, `activation_code`, `saldo`, `valid`) VALUES
-  (1, 'albert', 'a@a.a', NULL, 'llaurado', 'Animacio_Ref.jpg', '123', 992, 1);
+  (1, 'albert', 'a@a.a', NULL, 'llaurado', 'Animacio_Ref.jpg', '123', 988, 1);
 
 -- --------------------------------------------------------
 
@@ -87,11 +88,6 @@ INSERT INTO `Visit` (`visitas`) VALUES
 -- Índices para tablas volcadas
 --
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-ALTER TABLE `product` ADD `user` INT NOT NULL AFTER `views`;
 --
 -- Indices de la tabla `product`
 --
@@ -112,10 +108,9 @@ ADD PRIMARY KEY (`id_user`);
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-MODIFY `id_product` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id_product` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=101;
-
+MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
