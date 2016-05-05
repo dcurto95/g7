@@ -62,7 +62,7 @@ class HomeAddProductController extends Controller
 
 				$imageManager = $this->getClass('HomeImageManagerModel');
 				if ($session->get('image_fail_flag') == null || $session->get('image_fail_flag') == false){
-					if (filesize($info['image_big']) > 2000000) {
+					if ($_FILES["inputFile"]["size"] > 2 * 1024 * 1024 ) {
 						$isValid = false;
 					}
 				}
