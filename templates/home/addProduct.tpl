@@ -20,8 +20,13 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
+                <h7 class="deep-orange-text lighten-1">Description</h7>
                 <textarea id="description" name="description" class="materialize-textarea">{$product_description}</textarea>
-                <label for="description">Description</label>
+                <script>
+                    // Replace the <textarea id="description"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace( 'description' );
+                </script>
             </div>
         </div>
         <div class="row">
