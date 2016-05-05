@@ -1,12 +1,26 @@
 {$modules.head}
-
-<h1 class="light-blue-text"> I'M HOME!  </h1>
-
-
-
 <div class="row">
-    <div class="col s12 center-align">
 
+    <ul class="collection with-header">
+
+        <li class="collection-header"><h4>Most Viewed Products </h4></li>
+        {foreach from=$prouducts item=p}
+            <li class="collection-item avatar">
+                <a href="{$url.global}/p/{$p.name}" class="title">{$p.name}</a>
+                <p>{$p.description} <br>
+                    {$p.date}
+                </p>
+                <p class="secondary-content"> {$p.views} <i class="material-icons">visibility</i></p>
+            </li>
+
+        {/foreach}
+    </ul>
+
+
+
+
+
+    <div class="col s12 center-align">
         <ul class="pagination">
             <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
             <li class="active"><a href="#!">1</a></li>

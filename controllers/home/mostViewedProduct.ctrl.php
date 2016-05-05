@@ -12,8 +12,13 @@ class HomeMostViewedProductController extends Controller
 
     public function build()
     {
+
         $info = $this->getParams();
         $model = $this->getClass('HomeProductManagerModel');
+
+        $mostViewedProducts = $model->getMostViewedProducts();
+
+        $this->assign('prouducts',$mostViewedProducts);
 
         $this->setLayout( $this->view );
 
