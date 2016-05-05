@@ -35,6 +35,8 @@
 	<script src="{$url.global}/js/modal-init.js"></script>
 	<script src="{$url.global}/js/datepicker-init.js"></script>
 
+	
+
 </body>
 
 </html>

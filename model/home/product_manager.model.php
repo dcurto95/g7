@@ -23,12 +23,13 @@ class HomeProductManagerModel extends Model{
         $image_small    = $info['image_small'];
         $image_big      = $info['image_big'];
         $views          = 0;
+        $id_user        = $info['id_user'];
 
         $query = <<<QUERY
         INSERT INTO `G7DB2`.`product`
-            (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image_small`, `image_big`, `views`)
+            (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image_small`, `image_big`, `views`, `id_user`)
         VALUES
-            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image_small', '$image_big', '$views');
+            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image_small', '$image_big', '$views', $id_user);
 QUERY;
 
         $this->execute($query);

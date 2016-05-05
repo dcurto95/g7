@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="{$url.global}/css/materialize.min.css">
 	<link rel="stylesheet" href="{$url.global}/css/style.css">
 
+	<script src="//cdn.ckeditor.com/4.5.8/standard/ckeditor.js"></script>
+
 </head>
 <body>
 	<header>
@@ -41,11 +43,6 @@
 					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 
-						<li>
-							<form method="post">
-									<input id="buscador" type="text" class="validate" placeholder="Search">
-							</form>
-						</li>
 
 						<!-- LOGIN -->
 						{if $isLogged eq true}
@@ -66,7 +63,9 @@
 							</li>
 						{/if}
 						<!-- END LOGIN -->
+
 						<li><a href="{$url.global}/addProduct">ADD</a></li>
+						<li><a href="{$url.global}/mv"><i class="material-icons">list</i></a></li>
 
 					</ul>
 				</div>

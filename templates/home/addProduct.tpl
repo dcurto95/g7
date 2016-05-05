@@ -20,8 +20,13 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
+                <h7 class="deep-orange-text lighten-1">Description</h7>
                 <textarea id="description" name="description" class="materialize-textarea">{$product_description}</textarea>
-                <label for="description">Description</label>
+                <script>
+                    // Replace the <textarea id="description"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace( 'description' );
+                </script>
             </div>
         </div>
         <div class="row">
@@ -34,14 +39,14 @@
             <div class="file-field input-field col s8">
                 <div class="btn waves-effect waves-light deep-orange lighten-2 col s4">
                     <span>Product image</span>
-                    <input type="file" name="inputFile" id="inputFile">
+                    <input type="file" name="inputFile" id="inputFile" >
                 </div>
                 <div class="file-path-wrapper col s8">
-                    <input class="file-path validate" type="text" value="{$product_date}">
+                    <input class="file-path validate" type="text" name="product_image_name" value="{$product_image_name}" required>
                 </div>
             </div>
             <div class="file-field input-field col s4">
-                <img id="image_upload_preview" class="img-circle" src="http://placehold.it/100x100" alt="your image" />
+                <img id="image_upload_preview" class="img-circle" src="{$product_image}" alt="your image" />
             </div>
 
         </div>
