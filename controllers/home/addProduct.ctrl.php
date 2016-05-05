@@ -31,6 +31,8 @@ class HomeAddProductController extends Controller
 
 				$isValid = true;
 
+				$info['id_user'] = $user;
+
 				$info['name'] = Filter::getString('product_name');
 				if (strlen($info['name']) > 50){
 					$isValid = false;
