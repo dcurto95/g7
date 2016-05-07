@@ -15,69 +15,27 @@
             </div>
         </div>
     </div>
-    <div class="col s3 m3">
-        <div class="card">
-            <div class="card-image">
-                <img src="img/bg_image.jpg">
-                <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-            </div>
-        </div>
-    </div>
-    <div class="col s3 m3">
+    {foreach from=$mvProduct item=p}
+        <div class="col s3 m3">
 
-        <div class="card">
-            <div class="card-image">
-                <img src="img/bg_image.jpg">
-                <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-            </div>
-        </div>
-     </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}">
+                    <a href="{$url.global}/p/{$p.name}" class="card-title">{$p.name}</a>
 
-    <div class="col s3 m3">
-        <div class="card">
-            <div class="card-image">
-                <img src="img/bg_image.jpg">
-                <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>{$p.description|truncate:50}</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
             </div>
-            <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-            </div>
-        </div>
-    </div>
 
-    <div class="col s3 m3">
-        <div class="card">
-            <div class="card-image">
-                <img src="img/bg_image.jpg">
-                <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-            </div>
         </div>
-    </div>
+    {/foreach}
+
+
 </div>
 
 <div class="row">

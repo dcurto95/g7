@@ -21,17 +21,18 @@
     <div class="col s12 center-align">
         <ul class="pagination">
 
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            {if !$is_first}
+
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            {/if}
             <li class="active"><a href="#!">1</a></li>
             <li class="waves-effect"><a href="{$url.global}/mv/2">2</a></li>
             <li class="waves-effect"><a href="{$url.global}/mv/3">3</a></li>
             <li class="waves-effect"><a href="{$url.global}/mv/4">4</a></li>
 
-
-
-
-
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            {if !$is_last}
+             <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            {/if}
         </ul>
 
     </div>

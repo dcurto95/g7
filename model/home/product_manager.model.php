@@ -109,7 +109,7 @@ QUERY;
         return $product;
     }
 
-    public function getMostViewedProducts()
+    public function getMostViewedProducts($max)
     {
         /*
         Es mostrarà un llistat dels 5 producte més visionats (vegeu següent apartat).
@@ -118,10 +118,17 @@ QUERY;
         públic d’aquest producte
 
         */
-
-        $query = <<<QUERY
+        if ($max == 0){
+            $query = <<<QUERY
         SELECT * FROM `product` ORDER BY `views` desc
 QUERY;
+        }else{
+            $query = <<<QUERY
+        SELECT * FROM `product` ORDER BY `views` desc limit 5
+QUERY;
+        }
+
+
 
         $product = $this->getAll($query);
 

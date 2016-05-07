@@ -10,7 +10,7 @@ class HomeMostViewedProductController extends Controller
 {
     protected $view = 'home/mostViewedProduct.tpl';
 
-    protected $error_view = 'error/error404.tpl';
+    protected $error_view = 'error/error403.tpl';
 
     public function build()
     {
@@ -27,7 +27,7 @@ class HomeMostViewedProductController extends Controller
 
         echo $which;
 
-        $mostViewedProducts = $model->getMostViewedProducts();
+        $mostViewedProducts = $model->getMostViewedProducts(0);
         $numProducts = count($mostViewedProducts);
 
         $num_pagines = (int)($numProducts/10)-1;
