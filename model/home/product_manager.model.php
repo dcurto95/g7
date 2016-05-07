@@ -44,7 +44,7 @@ QUERY;
         $product = $this->getAll($query);
 
 
-        return $product;
+        return $product[0];
     }
 
     public function getAllProductsFromName($productName){
@@ -126,6 +126,44 @@ QUERY;
         $product = $this->getAll($query);
 
         return $product;
+    }
+
+    public function deleteProduct($id_product){
+        $query = <<<QUERY
+        DELETE FROM `product` WHERE `id_product` = '$id_product'
+QUERY;
+        $this->execute($query);
+
+    }
+
+    public function editProduct($info){
+
+        $id_product = $info['id_product'];
+        $name           = addslashes($info['name']);
+        $price          = $info['price'];
+        $stock          = $info['stock'];
+        $description    = addslashes($info['description']);
+        $date           = addslashes($info['date']);
+        $image_small    = $info['image_small'];
+        $image_big      = $info['image_big'];
+        $views          = $info['views'];
+        $id_user        = $info['id_user'];
+
+        $query = <<<QUERY
+        UPDATE `product` SET
+            `name` = '$name',
+            `price` = '$price',
+            `stock` = '$stock',
+            `description` = '$description',
+            `date` = '$date',
+            `image_small` = '$image_small',
+            `image_big` = '$image_big',
+            `views` = '$views',
+            `id_user` = '$id_user'
+        WHERE `id_product` = '$id_product';
+QUERY;
+        $this->execute($query);
+
     }
 
 }
