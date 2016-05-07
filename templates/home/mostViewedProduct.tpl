@@ -6,8 +6,9 @@
         <li class="collection-header"><h4>Most Viewed Products </h4></li>
         {foreach from=$prouducts item=p}
             <li class="collection-item avatar">
+                <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}" alt="" class="circle">
                 <a href="{$url.global}/p/{$p.name}" class="title">{$p.name}</a>
-                <p>{$p.description} <br>
+                <p>{$p.description|truncate:50} <br>
                     {$p.date}
                 </p>
                 <p class="secondary-content"> {$p.views} <i class="material-icons">visibility</i></p>
@@ -17,17 +18,19 @@
     </ul>
 
 
-
-
-
     <div class="col s12 center-align">
         <ul class="pagination">
+
             <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
             <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="{$url.global}/mv/2">2</a></li>
+            <li class="waves-effect"><a href="{$url.global}/mv/3">3</a></li>
+            <li class="waves-effect"><a href="{$url.global}/mv/4">4</a></li>
+
+
+
+
+
             <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
         </ul>
 
