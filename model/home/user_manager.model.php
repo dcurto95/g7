@@ -153,6 +153,22 @@ QUERY;
 QUERY;
         $this->execute($query);
 
+        //Incrementem el contador de productes venuts per l'usuari
+
+        $query = <<<QUERY
+        SELECT * FROM `user` WHERE `id_user` = '$id_venedor'
+QUERY;
+
+        $venedor = $this->getAll($query);
+
+        $sold_products = $venedor[0]['sold_products'];
+        $sold_products = $sold_products + 1;
+
+        $query = <<<QUERY
+        UPDATE user SET sold_products = '$sold_products' WHERE `id_user` = '$id_venedor'
+QUERY;
+        $this->execute($query);
+
         //mirem l'estock que queda i calculem el que quedarà
         $stock = $product[0]['stock'];
         $stock = $stock - 1;

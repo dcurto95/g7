@@ -22,11 +22,43 @@
         </div>
 
         <p>Price: {$preu}€</p>
-        <p>Expiry day: {$date}</p>
+        <p>Expiry day: {$date}. {$left_days} day(s) left.</p>
         <p>Aviable stock: {$stock}</p>
-        <p>Sold Products: {$soldProducts}.</p>
         <p>Description: {$descripcio}</p>
-        
+        <p>Views: {$views}</p>
+        <p>Exit factor:
+
+        {if $exit_factor >= 1}
+            <i id="factor_si" class="tiny material-icons">stars</i>
+        {else}
+            <i id="factor_no" class="tiny material-icons">stars</i>
+        {/if}
+
+        {if $exit_factor >= 2}
+            <i id="factor_si" class="tiny material-icons">stars</i>
+        {else}
+            <i id="factor_no" class="tiny material-icons">stars</i>
+        {/if}
+
+        {if $exit_factor >= 3}
+            <i id="factor_si" class="tiny material-icons">stars</i>
+        {else}
+            <i id="factor_no" class="tiny material-icons">stars</i>
+        {/if}
+
+        {if $exit_factor >= 4}
+            <i id="factor_si" class="tiny material-icons">stars</i>
+        {else}
+            <i id="factor_no" class="tiny material-icons">stars</i>
+        {/if}
+
+        {if $exit_factor >= 5}
+            <i id="factor_si" class="tiny material-icons">stars</i>
+        {else}
+            <i id="factor_no" class="tiny material-icons">stars</i>
+        {/if}
+
+        </p>
         {if $isLogged gt 0}
             <a class="waves-effect waves-light btn" href="{$url.global}/buyProduct/{$id_product}"><i class="material-icons right">shopping_basket</i>Buy</a>
         {/if}
