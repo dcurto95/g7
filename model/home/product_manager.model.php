@@ -36,6 +36,21 @@ QUERY;
 
     }
 
+    public function increaseView($id_product){
+
+        $product = $this->getProduct($id_product);
+
+        $views = $product[0]['views'];
+        $views = $views+1;
+
+        $query = <<<QUERY
+        UPDATE `product` SET views = '$views' WHERE id_product = '$id_product';
+QUERY;
+
+        $this->execute($query);
+
+    }
+
     public function getProduct($id){
         $query = <<<QUERY
         SELECT * FROM `product` WHERE `id_product` = '$id'

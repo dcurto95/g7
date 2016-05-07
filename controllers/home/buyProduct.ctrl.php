@@ -21,7 +21,7 @@ class HomeBuyProductController extends Controller
         $user = $session->get('id_user');
 
         if (!empty($info[0])) {
-            $product_id = $model->getProductFromName($info[0]);
+            $product_id = $model->getProduct($info[0])[0]['id_product'];
 
 
             if ($product_id > 0) {

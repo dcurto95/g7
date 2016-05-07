@@ -57,6 +57,7 @@ CREATE TABLE `user` (
   `image` varchar(300) DEFAULT NULL,
   `activation_code` varchar(30) NOT NULL,
   `saldo` float DEFAULT '0',
+  `sold_products` int(10) unsigned NOT NULL,
   `valid` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -64,8 +65,8 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `email`, `twitter`, `password`, `image`, `activation_code`, `saldo`, `valid`) VALUES
-  (1, 'albert', 'a@a.a', NULL, 'llaurado', 'Animacio_Ref.jpg', '123', 988, 1);
+INSERT INTO `user` (`id_user`, `username`, `email`, `twitter`, `password`, `image`, `activation_code`, `saldo`,`sold_products`, `valid`) VALUES
+  (1, 'albert', 'a@a.a', NULL, 'llaurado', 'Animacio_Ref.jpg', '123', 988, 0, 1);
 
 -- --------------------------------------------------------
 

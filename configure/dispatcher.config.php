@@ -13,10 +13,10 @@ $config['login']			    = 'HomeLoginController';
 $config['logout']			    = 'HomeLogoutController';
 $config['addProduct']		    = 'HomeAddProductController';
 $config['editProduct']		    = 'HomeEditProductController';
-$config['buyProduct']		    = 'HomeBuyProductController';
-
 $config['p']                    = 'HomeProductController';
-$config['mv']                   = 'HomeMostViewedProductController';
+$config['buyProduct']           = 'HomeBuyProductController';
+$config['validate']             = 'HomeValidateController';
+$config['find']                 = 'HomeFindProductsController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 
