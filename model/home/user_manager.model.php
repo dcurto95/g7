@@ -34,7 +34,7 @@ QUERY;
         $temp = $this->getAll($query);
 
         //Controlem que realment existeixi l'usuari
-        if($temp[0]!=null && !$temp[0]['valid']){
+        if(!empty($temp) && !$temp[0]['valid']){
             $query = <<<QUERY
             UPDATE user SET valid = true WHERE `activation_code`='$activation_code'
 QUERY;
@@ -150,6 +150,22 @@ QUERY;
 
         $query = <<<QUERY
         UPDATE user SET saldo = '$total_money' WHERE `id_user` = '$id_venedor'
+QUERY;
+        $this->execute($query);
+
+        //Incrementem el contador de productes venuts per l'usuari
+
+        $query = <<<QUERY
+        SELECT * FROM `user` WHERE `id_user` = '$id_venedor'
+QUERY;
+
+        $venedor = $this->getAll($query);
+
+        $sold_products = $venedor[0]['sold_products'];
+        $sold_products = $sold_products + 1;
+
+        $query = <<<QUERY
+        UPDATE user SET sold_products = '$sold_products' WHERE `id_user` = '$id_venedor'
 QUERY;
         $this->execute($query);
 

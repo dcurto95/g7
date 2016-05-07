@@ -113,4 +113,22 @@ class HomeImageManagerModel extends Model{
 
     }
 
+    public function changeProductImages($name, $image_name, $id_user){
+
+        $this->RemoveProductImages($image_name, $id_user);
+
+        $this->AddProductImages($name, $id_user);
+
+    }
+
+    public function RemoveProductImages($image_name, $user_id){
+
+        $img_path_big = '../htdocs/img/product_img_big/'.$user_id.'_'.$image_name;
+        unlink($img_path_big);
+
+        $img_path_small = '../htdocs/img/product_img_tiny/'.$user_id.'_'.$image_name;
+        unlink($img_path_small);
+
+    }
+
 }

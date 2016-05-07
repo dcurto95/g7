@@ -20,8 +20,13 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
+                <h7 class="deep-orange-text lighten-1">Description</h7>
                 <textarea id="description" name="description" class="materialize-textarea">{$product_description}</textarea>
-                <label for="description">Description</label>
+                <script>
+                    // Replace the <textarea id="description"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace( 'description' );
+                </script>
             </div>
         </div>
         <div class="row">
@@ -37,7 +42,7 @@
                     <input type="file" name="inputFile" id="inputFile">
                 </div>
                 <div class="file-path-wrapper col s8">
-                    <input class="file-path validate" type="text" value="{$product_image_name}">
+                    <input class="file-path validate" type="text" value="">
                 </div>
             </div>
             <div class="file-field input-field col s4">
@@ -45,7 +50,7 @@
             </div>
 
         </div>
-        <input class="btn waves-effect waves-light light-blue lighten-1" type="submit" id ="submit" name="submit" value="ADD">
+        <input class="btn waves-effect waves-light light-blue lighten-1" type="submit" id ="submit" name="submit" value="EDIT">
         <button class="modal-trigger btn waves-effect waves-light red lighten-1 " href="#modalRemove" type="submit" id ="submit" name="submit">REMOVE</button>
     </form>
 </div>

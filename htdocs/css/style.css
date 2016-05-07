@@ -82,7 +82,11 @@ span.badge.coin:after{
     padding: 3%;
 }
 
-#product_price{
-    /*font-family: "Bernard MT Condensed";*/
+#factor_si{
+    color: green;
+
+}
+#factor_no{
+    color: red;
 }
 

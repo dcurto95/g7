@@ -25,9 +25,13 @@ class HomeMostViewedProductController extends Controller
             $which = $info['url_arguments'][0];
         }
 
+<<<<<<< HEAD
         echo $which;
 
         $mostViewedProducts = $model->getMostViewedProducts(0);
+=======
+        $mostViewedProducts = $model->getMostViewedProducts();
+>>>>>>> dcurto95/Dev
         $numProducts = count($mostViewedProducts);
 
         $num_pagines = (int)($numProducts/10)-1;
@@ -38,7 +42,6 @@ class HomeMostViewedProductController extends Controller
 
         if ($which > $num_pagines){
             $this->setLayout($this->error_view);
-            echo "Madafaka";
         } else {
             $this->assign('next', ($which + 1));
             $this->assign('previous', ($which - 1));

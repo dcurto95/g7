@@ -14,12 +14,16 @@ class HomeProductController extends Controller
         $info = $this->getParams();
         $info = $info['url_arguments'];
 
+        $session = Session::getInstance();
+        $log_user = $session->get('id_user');
+
         if(!empty($info[0])) {
             //Miro quants productes hi ha amb el nom donat
             $allProducts = $model->getAllProductsFromName($info[0]);
 
             //si hi ha més d'un poducte, hauré de decidir quin mostro. sino, mostro el primer.
             if(sizeof($allProducts)>1){
+
                 //si m'ha passat un número de producte i no és més gran que els que tinc guardats, el mostro (sino mostro el primer)
                 if(!empty($info[1]) && $info[1]<=sizeof($allProducts)-1) {
                     $product_number = $info[1];
@@ -30,26 +34,58 @@ class HomeProductController extends Controller
                 $product_number = 0;
             }
 
-            $product_id = $model->getProduct($allProducts[$product_number]['id_product'])[0]['id_product'];
+            $product_id = $model->getProduct($allProducts[$product_number]['id_product'])['id_product'];
+
         }
 
         if($product_id > 0) {
-            $product = $model->getProduct($product_id)[0];
+
+            $model->increaseView($product_id);
+
+            $product = $model->getProduct($product_id);
             $this->assign('name', $product['name']);
             $this->assign('preu', $product['price']);
             $this->assign('stock', $product['stock']);
             $this->assign('descripcio', $product['description']);
+            $this->assign('views', $product['views']);
+
+            $now = time(); // or your date as well
+            $your_date = strtotime($product['date']);
+            $datediff = $now - $your_date;
+            $dies_restants =  floor($datediff/(60*60*24));
+
             $this->assign('date', $product['date']);
-            $product_img = '/img/product_img_big/'.$product['image_big'];
+            $this->assign('left_days', $dies_restants);
+            $this->assign('id_product', $product['id_product']);
+
+            $this->assign('isLogged', $log_user);
+
+            $product_img = '/img/product_img_big/'.$product['id_user'].'_'.$product['image_big'];
 
             $this->assign('img_path', $product_img);
-            $this->assign('soldProducts', 0);
 
             $user = $modelUsuaris->getUser($product['id_user']);
 
             $this->assign('user', $user['username']);
             $user_img = '/img/profile_img/'.$user['image'];
             $this->assign('profile', $user_img);
+
+            $exit_factor = $user['sold_products'];
+
+            if($exit_factor > 20){
+                $exit_factor = 5;
+            }else if($exit_factor > 15){
+                $exit_factor = 4;
+            }else if($exit_factor > 10){
+                $exit_factor = 3;
+            }else if($exit_factor > 5){
+                $exit_factor = 2;
+            }else if($exit_factor > 0){
+                $exit_factor = 1;
+            }else{
+                $exit_factor = 0;
+            }
+            $this->assign('exit_factor', $exit_factor);
 
             $this->setLayout($this->view);
         }else{

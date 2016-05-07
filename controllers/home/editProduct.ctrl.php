@@ -41,12 +41,13 @@ class HomeEditProductController extends Controller
 				$prod = $model->getProduct($prod_id);
 
 				$this->assign('product_name', $prod['name']);
+				$this->assign('product_name', $prod['name']);
 				$this->assign('product_price', $prod['price']);
 				$this->assign('product_stock', $prod['stock']);
 				$this->assign('product_description', $prod['description']);
 				$this->assign('product_date', $prod['date']);
 				$this->assign('product_image_name', $prod['image_big']);
-				$product_img = '/img/product_img_big/'.$prod['image_big'];
+				$product_img = '/img/product_img_big/'.$prod['id_user'].'_'.$prod['image_big'];
 				$this->assign('product_image', $product_img);
 
 				$this->setLayout($view);
@@ -58,6 +59,9 @@ class HomeEditProductController extends Controller
 				if ($is_submit) {
 
 					$isValid = true;
+
+					$info['id_product'] = $prod['id_product'];
+					$info['id_user'] = $prod['id_user'];
 
 					$info['name'] = Filter::getString('product_name');
 					if (strlen($info['name']) > 50) {
@@ -77,15 +81,10 @@ class HomeEditProductController extends Controller
 					$info['description'] = Filter::getString('description');
 
 					$info['date'] = Filter::getString('date');
-					$today = strtotime(date("j F, Y"));
-					$givenDate = strtotime($info['date']);
-					if ($givenDate < $today) {
-						$isValid = false;
-					}
 
 					$info['image_small'] = $_FILES["inputFile"]["name"];
 					$info['image_big'] = $_FILES["inputFile"]["name"];
-					if (filesize($info['image']) > 2000000) {
+					if ($_FILES["inputFile"]["size"] > 2 * 1024 * 1024 ) {
 						$isValid = false;
 					}
 
@@ -100,12 +99,18 @@ class HomeEditProductController extends Controller
 							$modelUser = $this->getClass('HomeUserManagerModel');
 							$imageManager = $this->getClass('HomeImageManagerModel');
 
-							$modelProduct->deleteProduct($prod_id);
-							$modelProduct->addProduct($info);
+							$flag = false;
+							if ($info['image_big'] == ''){
+								$info['image_big'] = $prod['image_big'];
+								$info['image_small'] = $prod['image_small'];
+								$flag = true;
+							}
 
-							$id_user = $session->get('id_user');
+							$modelProduct->editProduct($info);
 
-							$imageManager->AddProductImages("inputFile", $id_user);
+							if ($flag == false) {
+								$imageManager->changeProductImages("inputFile", $prod['image_big'], $prod['id_user']);
+							}
 
 							$modelUser->pay($session->get('id_user'), 1);
 							$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
@@ -115,12 +120,15 @@ class HomeEditProductController extends Controller
 						} else {
 
 							// Reomplir els camps!
-							$this->assign('product_name', $info['name']);
-							$this->assign('product_price', $info['price']);
-							$this->assign('product_stock', $info['stock']);
-							$this->assign('product_description', $info['description']);
-							$this->assign('product_date', $info['date']);
-							$this->assign('product_image', $info['image']);
+							$this->assign('product_name', $prod['name']);
+							$this->assign('product_name', $prod['name']);
+							$this->assign('product_price', $prod['price']);
+							$this->assign('product_stock', $prod['stock']);
+							$this->assign('product_description', $prod['description']);
+							$this->assign('product_date', $prod['date']);
+							$this->assign('product_image_name', $prod['image_big']);
+							$product_img = '/img/product_img_big/'.$prod['id_user'].'_'.$prod['image_big'];
+							$this->assign('product_image', $product_img);
 
 						}
 					}
@@ -128,7 +136,12 @@ class HomeEditProductController extends Controller
 				} elseif ($is_remove) {
 					// Remove product form DB:
 					$modelProduct = $this->getClass('HomeProductManagerModel');
+					$imageManager = $this->getClass('HomeImageManagerModel');
+
 					$modelProduct->deleteProduct($prod_id);
+					$imageManager->RemoveProductImages($prod['image_big'], $prod['id_user']);
+
+					header('Location:' . URL_ABSOLUTE);
 				}
 			}
 		} else {
