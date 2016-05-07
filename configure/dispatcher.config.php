@@ -17,6 +17,7 @@ $config['p']                    = 'HomeProductController';
 $config['buyProduct']           = 'HomeBuyProductController';
 $config['validate']             = 'HomeValidateController';
 $config['find']                 = 'HomeFindProductsController';
+$config['mv']                   = 'HomeMostViewedProductController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 

@@ -40,7 +40,7 @@ QUERY;
 
         $product = $this->getProduct($id_product);
 
-        $views = $product[0]['views'];
+        $views = $product['views'];
         $views = $views+1;
 
         $query = <<<QUERY

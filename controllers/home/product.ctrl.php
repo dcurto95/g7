@@ -23,6 +23,7 @@ class HomeProductController extends Controller
 
             //si hi ha més d'un poducte, hauré de decidir quin mostro. sino, mostro el primer.
             if(sizeof($allProducts)>1){
+
                 //si m'ha passat un número de producte i no és més gran que els que tinc guardats, el mostro (sino mostro el primer)
                 if(!empty($info[1]) && $info[1]<=sizeof($allProducts)-1) {
                     $product_number = $info[1];
@@ -33,14 +34,15 @@ class HomeProductController extends Controller
                 $product_number = 0;
             }
 
-            $product_id = $model->getProduct($allProducts[$product_number]['id_product'])[0]['id_product'];
+            $product_id = $model->getProduct($allProducts[$product_number]['id_product'])['id_product'];
+
         }
 
         if($product_id > 0) {
 
             $model->increaseView($product_id);
 
-            $product = $model->getProduct($product_id)[0];
+            $product = $model->getProduct($product_id);
             $this->assign('name', $product['name']);
             $this->assign('preu', $product['price']);
             $this->assign('stock', $product['stock']);
@@ -58,7 +60,7 @@ class HomeProductController extends Controller
 
             $this->assign('isLogged', $log_user);
 
-            $product_img = '/img/product_img_big/'.$product['image_big'];
+            $product_img = '/img/product_img_big/'.$product['id_user'].'_'.$product['image_big'];
 
             $this->assign('img_path', $product_img);
 
