@@ -120,7 +120,7 @@ QUERY;
         */
 
         $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `views` DESC LIMIT 5
+        SELECT * FROM `product` ORDER BY `views` desc
 QUERY;
 
         $product = $this->getAll($query);
