@@ -25,13 +25,12 @@ class HomeMostViewedProductController extends Controller
             $which = $info['url_arguments'][0];
         }
 
-<<<<<<< HEAD
+
         echo $which;
 
         $mostViewedProducts = $model->getMostViewedProducts(0);
-=======
-        $mostViewedProducts = $model->getMostViewedProducts();
->>>>>>> dcurto95/Dev
+
+
         $numProducts = count($mostViewedProducts);
 
         $num_pagines = (int)($numProducts/10)-1;
