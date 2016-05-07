@@ -9,9 +9,13 @@
                 <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}" alt="" class="circle">
                 <a href="{$url.global}/p/{$p.name}" class="title">{$p.name}</a>
                 <p>{$p.description|truncate:50} <br>
-                    {$p.date}
+                    {$p.date} <br>
+                    Visites  {$p.views_percentage}%
                 </p>
-                <p class="secondary-content"> {$p.views} <i class="material-icons">visibility</i></p>
+                <p class="secondary-content"> {$p.views} <i class="material-icons">visibility</i><br>
+                    {$p.ventes}<i class="material-icons">shopping_cart</i>
+                </p>
+
             </li>
 
         {/foreach}
@@ -21,17 +25,27 @@
     <div class="col s12 center-align">
         <ul class="pagination">
 
-            {if !$is_first}
-
+            {if $is_first}
                 <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            {else}
+                <li class="waves-effect"><a href="{$url.global}/mv/{$previous}"><i class="material-icons">chevron_left</i></a></li>
             {/if}
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="{$url.global}/mv/2">2</a></li>
-            <li class="waves-effect"><a href="{$url.global}/mv/3">3</a></li>
-            <li class="waves-effect"><a href="{$url.global}/mv/4">4</a></li>
 
-            {if !$is_last}
-             <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            {foreach from=$num_pag item=n}
+
+                {if $n == $actual}
+                    <li class="active"><a href="#">{$n}</a></li>
+
+                {else}
+                    <li class="waves-effect"><a href="{$url.global}/mv/{$n}">{$n}</a></li>
+                {/if}
+
+
+            {/foreach}
+            {if $is_last}
+                <li class="disabled"><a href="#"><i class="material-icons">chevron_right</i></a></li>
+            {else}
+                <li class="waves-effect"><a href="{$url.global}/mv/{$next}"><i class="material-icons">chevron_right</i></a></li>
             {/if}
         </ul>
 
