@@ -154,6 +154,20 @@ QUERY;
         return $product[0]['total'];
     }
 
+
+    public function getLastInsertImages(){
+
+        $query = <<<QUERY
+        SELECT id_user,image_small FROM `product` ORDER BY `id_product` DESC LIMIT 4
+QUERY;
+        $images = $this->getAll($query);
+
+        return $images;
+
+    }
+
+
+
     public function deleteProduct($id_product){
         $query = <<<QUERY
         DELETE FROM `product` WHERE `id_product` = '$id_product'

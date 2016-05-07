@@ -13,9 +13,16 @@ class HomeHomeController extends Controller
 		$info = $this->getParams();
 		$model = $this->getClass('HomeProductManagerModel');
 
+		$latestProduct = $model->getLatestProduct();
 		$mostViewedProducts = $model->getMostViewedProducts(1);
+		$latestImages = $model->getLastInsertImages();
 
+
+		$this->assign('image',$latestImages);
 		$this->assign('mvProduct',$mostViewedProducts);
+		$this->assign('lastProduct',$latestProduct);
+
+		print_r($latestProduct);
 
 		$this->setLayout($this->view);
 

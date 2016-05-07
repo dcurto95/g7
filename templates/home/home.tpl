@@ -7,7 +7,7 @@
     <div class="col s12 m12">
         <div class="card medium">
             <div class="card-image">
-                <img src="img/bg_image.jpg">
+                <img src=/img/product_img_big/{$lastProduct.id_user}_{$lastProduct.image_big}">
                 <span class="card-title">Card Title</span>
             </div>
             <div class="card-action">
@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    <h3 class="light-blue-text center-align"> MOST VIEWED PRODUCTS </h3>
     {foreach from=$mvProduct item=p}
         <div class="col s3 m3">
 
@@ -36,24 +37,19 @@
     {/foreach}
 
 
-</div>
+    <div class = center-align>
+        <h3 class="light-blue-text"> LATEST UPLOADED PRODUCT PHOTOS  </h3>
+        {foreach from =$image item = i}
 
-<div class="row">
-    <div class="col s12 center-align">
+            <img src ="img/product_img_tiny/{$i.id_user}_{$i.image_small}">
 
-        <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-        </ul>
-
+        {/foreach}
     </div>
 
+
+
 </div>
+
 
 <a class="twitter-timeline" href="https://twitter.com/hashtag/LSStore" data-widget-id="722405726187089921">Tweets sobre #LSStore</a>
 
