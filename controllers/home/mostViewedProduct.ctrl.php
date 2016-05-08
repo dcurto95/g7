@@ -75,8 +75,6 @@ class HomeMostViewedProductController extends Controller
 
         }
 
-
-
     }
 
     public function loadModules() {

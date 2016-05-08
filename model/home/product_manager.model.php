@@ -3,16 +3,6 @@
 
 class HomeProductManagerModel extends Model{
 
-
-    /*
-     * Ojo! -> Les STRINGS estan escapades (\*), cal desescaparles per llegir-les!
-     *
-     * Revisar funcions:
-     *      addslashes (...);
-     *      stripcslashes(...);
-     *
-     * */
-
     public function addProduct($info){
 
         $name           = addslashes($info['name']);
@@ -189,6 +179,10 @@ QUERY;
         WHERE `id_product` = '$id_product';
 QUERY;
         $this->execute($query);
+
+    }
+
+    public function getProductURL(){
 
     }
 

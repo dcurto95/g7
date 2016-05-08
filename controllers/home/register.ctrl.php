@@ -14,52 +14,72 @@ class HomeRegisterController extends Controller
 		$username_regex = '([A-Za-z]{6,})';
 		$this->assign('username_regex', $username_regex);
 
-		$twitter_regex = '@\w+';
+		$twitter_regex = '(@\w+)';
 		$this->assign('twitter_regex', $twitter_regex);
 
 		$this->setLayout( $this->view );
 
 		//Agafar valors per la creació de l'usuari
 		$username = Filter::getString('username');
+		$isValid = sizeof(preg_match($username_regex, $username)) > 0;
 
-		$email = Filter::getEmail('email');
+		$email = Filter::getString('email');
+		if($isValid) {
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+				$isValid = false;
+			}
+		}
 
 		$twitter = Filter::getString('twitter');
+		if ($isValid && $twitter != '') {
+			$isValid = sizeof(preg_match($twitter_regex, $twitter)) > 0;
+		}
 
 		$password = Filter::getString('password');
+		if ($isValid) {
+			$isValid = (strlen($password) <= 8) && (strlen($password) >= 6);
+		}
+
+		//$isValid = false;
 
 		$activation_code = uniqid('AC');
 
 		$is_submit = Filter::getString('submit');
 
 		if($is_submit){
+			if ($isValid) {
+				$image_manager = $this->getClass('HomeImageManagerModel');
 
-			$image_manager = $this->getClass('HomeImageManagerModel');
+				$image_manager->AddProfileImage("inputFile");
 
-			$image_manager->AddProfileImage("inputFile");
-
-			//Creem usuari
-			$user_id =
-			$img_name = $_FILES["inputFile"]["name"];
-			$model->createUser($username,$email,$twitter,$password,$img_name,$activation_code);
+				//Creem usuari
+				$img_name = $_FILES["inputFile"]["name"];
+				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
 
-			// Mail:
-			$subject = "This is subject";
+				// Mail:
+				$subject = "This is subject";
 
-			$message = "<b>This is HTML message.</b>";
-			$message .= "<h1>This is headline.</h1>";
+				$message = "<b>This is HTML message.</b>";
+				$message .= "<h1>This is headline.</h1>";
 
-			$retval = mail($email,$subject,$message);
+				$retval = mail($email, $subject, $message);
 
-			if( $retval == true ) {
-				//echo "Message sent successfully...";
-			}else {
-				//print_r(error_get_last());
-				//echo "Message could not be sent...";
+				if ($retval == true) {
+					//echo "Message sent successfully...";
+				} else {
+					//print_r(error_get_last());
+					//echo "Message could not be sent...";
+				}
+
+				header('Location:' . URL_ABSOLUTE);
+			} else {
+				// Reomplir els camps!
+				$this->assign('username', $username);
+				$this->assign('email', $email);
+				$this->assign('password', $password);
+				$this->assign('twitter', $twitter);
 			}
-
-			header('Location:' . URL_ABSOLUTE);
 
 		}
 	}
