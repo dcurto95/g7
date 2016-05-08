@@ -18,24 +18,13 @@ class HomeProductController extends Controller
         $log_user = $session->get('id_user');
 
         if(!empty($info[0])) {
-            //Miro quants productes hi ha amb el nom donat
-            $allProducts = $model->getAllProductsFromName($info[0]);
+            $product_name = $model->productURLToName($info[0]);
 
-            //si hi ha més d'un poducte, hauré de decidir quin mostro. sino, mostro el primer.
-            if(sizeof($allProducts)>1){
-
-                //si m'ha passat un número de producte i no és més gran que els que tinc guardats, el mostro (sino mostro el primer)
-                if(!empty($info[1]) && $info[1]<=sizeof($allProducts)-1) {
-                    $product_number = $info[1];
-                }else{
-                    $product_number = 0;
-                }
-            }else{
-                $product_number = 0;
+            if ($info[1] == ''){
+                $product_id = $model->getProductFromName($product_name);
+            } else {
+                $product_id = $info[1];
             }
-
-            $product_id = $model->getProduct($allProducts[$product_number]['id_product'])['id_product'];
-
         }
 
         if($product_id > 0) {

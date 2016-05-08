@@ -20,7 +20,7 @@ class HomeProductManagerModel extends Model{
         INSERT INTO `G7DB2`.`product`
             (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image_small`, `image_big`, `views`, `id_user`, `ventes`)
         VALUES
-            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image_small', '$image_big', '$views', $id_user, );
+            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image_small', '$image_big', '$views', $id_user, $ventes);
 QUERY;
 
         $this->execute($query);
@@ -182,7 +182,39 @@ QUERY;
 
     }
 
-    public function getProductURL(){
+    public function getUserProducts($user_id){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_user` = '$user_id'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
+    }
+
+    public function getProductURL($id_product){
+
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$id_product'
+QUERY;
+
+        $aux_product = $this->getAll($query);
+        $product = $aux_product[0];
+
+        $product_name = $this->productNameToURL($product['name']);
+
+        $productURL = '/p/'.$product_name.'/'.$product['id_product'];
+
+        return $productURL;
+    }
+
+    public function productNameToURL($product_name){
+        return preg_replace('/[\s_]/', '-', $product_name);
+    }
+
+    public function productURLToName($product_url_name){
+
+        return preg_replace('/-/', ' ', $product_url_name);
 
     }
 

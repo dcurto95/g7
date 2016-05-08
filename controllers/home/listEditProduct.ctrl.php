@@ -31,14 +31,14 @@ class HomeListEditProductController extends Controller
                 $which = $info['url_arguments'][0];
             }
 
-            $total = $model->getTotalViews();
-            $mostViewedProducts = $model->getMostViewedProducts(0);
+            $editableProducts = $model->getUserProducts($user);
 
-
-            $numProducts = count($mostViewedProducts);
+            //print_r($editableProducts);
+            
+            $numProducts = count($editableProducts);
 
             $num_pagines = (int)($numProducts/10);
-            if($numProducts%10>0){
+            if($numProducts % 10 > 0){
                 $num_pagines++;
             }
 
@@ -50,12 +50,12 @@ class HomeListEditProductController extends Controller
             for ($i = 0 ; $i < 10; $i++){
                 $index = $i + (10 * ($which - 1));
                 if ($index < $numProducts) {
-                    $array_prod[$i] = $mostViewedProducts[$index];
-                    $array_prod[$i]['views_percentage'] = round(($array_prod[$i]['views']/$total)*100);
+                    $array_prod[$i] = $editableProducts[$index];
+                    $array_prod[$i]['url'] = $model->getProductURL($array_prod[$i]['id_product']);
                 }
             }
 
-            if ($which > $num_pagines){
+            if ($which > $num_pagines && $num_pagines > 0){
                 $this->setLayout($this->error_view404);
             } else {
                 $this->assign('next', ($which + 1));
@@ -67,7 +67,7 @@ class HomeListEditProductController extends Controller
                     $this->assign('is_first', false);
                 }
 
-                if ($which == $num_pagines) {
+                if ($which >= $num_pagines) {
                     $this->assign('is_last', true);
                 } else {
                     $this->assign('is_last', false);
