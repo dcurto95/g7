@@ -21,4 +21,5 @@ $config['mv']                   = 'HomeMostViewedProductController';
 $config['listEditProduct']      = 'HomeListEditProductController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
+$config['error']                = 'ErrorErrorInsertCoinController';
 

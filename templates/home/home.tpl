@@ -12,7 +12,7 @@
                 <a href="{$url.global}/p/{$lastProduct.name}" class="card-title">{$lastProduct.name}</a>
             </div>
             <div class="card-action">
-                 <a href="{$url.global}/p/{$lastProduct .name}">{$lastProduct.name}</a>
+                 <a href="{$url.global}/p/{$lastProduct.name}">{$lastProduct.name}</a>
             </div>
         </div>
     </div>
