@@ -203,7 +203,13 @@ QUERY;
 
         $product_name = $this->productNameToURL($product['name']);
 
-        $productURL = '/p/'.$product_name.'/'.$product['id_product'];
+        if(sizeof($this->getAllProductsFromName($product['name'])) > 1){
+            $product_ending = '/'.$product['id_product'];
+        } else {
+            $product_ending = '';
+        }
+
+        $productURL = '/p/'.$product_name.$product_ending;
 
         return $productURL;
     }
