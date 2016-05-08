@@ -27,6 +27,16 @@ QUERY;
 
     }
 
+    public function getLastInsertID(){
+
+        $query = <<<QUERY
+        SELECT LAST_INSERT_ID() FROM `product`;
+QUERY;
+
+        return ($this->getAll($query)[0]['LAST_INSERT_ID()']);
+
+    }
+
     public function increaseView($id_product){
 
         $product = $this->getProduct($id_product);
