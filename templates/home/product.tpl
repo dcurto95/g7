@@ -7,7 +7,7 @@
 
     <div class = "col s6 center-align">
 
-        <img id="product_img"class="activator center-align" src="{$img_path}">
+        <img id="product_img"class="materialboxed center-align" data-caption="{$name}" src="{$img_path}">
 
     </div>
     <div class = "col s6 left-align">
