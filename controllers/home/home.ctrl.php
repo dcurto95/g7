@@ -22,7 +22,6 @@ class HomeHomeController extends Controller
 		$this->assign('mvProduct',$mostViewedProducts);
 		$this->assign('lastProduct',$latestProduct);
 
-		print_r($latestProduct);
 
 		$this->setLayout($this->view);
 

@@ -122,7 +122,7 @@ QUERY;
 QUERY;
         $product = $this->getAll($query);
 
-        return $product;
+        return $product[0];
     }
 
     public function getMostViewedProducts($max)

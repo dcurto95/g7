@@ -17,6 +17,8 @@
 	<!-- link rel="stylesheet" href="{$url.global}/css/bootstrap.min.css" -->
 	<link rel="stylesheet" href="{$url.global}/css/materialize.min.css">
 	<link rel="stylesheet" href="{$url.global}/css/style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		  rel="stylesheet">
 
 	<script src="//cdn.ckeditor.com/4.5.8/standard/ckeditor.js"></script>
 
