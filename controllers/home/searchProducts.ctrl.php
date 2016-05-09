@@ -3,15 +3,24 @@
  * Home Controller: Controller example.
 
  */
-class HomeFindProductsController extends Controller
+class HomeSearchProductsController extends Controller
 {
-    protected $view = 'home/findProducts.tpl';
+    protected $view = 'home/searchProducts.tpl';
     protected $error_view = 'error/error404.tpl';
 
     public function build()
     {
 
+        $model = $this->getClass('HomeProductManagerModel');
 
+        $name = Filter::getString('search');
+        $is_submit = Filter::getString('submit');
+        if($is_submit){
+
+            $product = $model->searchProduct($name);
+            $this->assign("search",$product);
+            $this->assign("active", true);
+        }
         $this->setLayout($this->view);
     }
 

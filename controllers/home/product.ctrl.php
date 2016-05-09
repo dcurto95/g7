@@ -27,6 +27,11 @@ class HomeProductController extends Controller
                 $product_id = $model->getProductFromName($product_name);
             } else {
                 $product_id = $info[1];
+                $product = $model->getProduct($product_id);
+                if (strcmp($product['name'], $product_name) != 0){
+                    // El nom no coincideix amb l'ID, cal mirar a la taula d'URL
+                    $product_id = $model->checkNameInURL($product_id, $product_name);
+                }
             }
         }
 

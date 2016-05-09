@@ -65,11 +65,12 @@ class HomeRegisterController extends Controller
 
 				$retval = mail($email, $subject, $message);
 
+
 				if ($retval == true) {
-					//echo "Message sent successfully...";
+					echo "Message sent successfully...";
 				} else {
 					//print_r(error_get_last());
-					//echo "Message could not be sent...";
+					echo "Message could not be sent...";
 				}
 
 				header('Location:' . URL_ABSOLUTE);

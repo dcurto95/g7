@@ -44,8 +44,11 @@ $config['HomeEditProductController']            = PATH_CONTROLLERS . 'home/editP
 $config['HomeProductController']	            = PATH_CONTROLLERS . 'home/product.ctrl.php';
 $config['HomeBuyProductController']	            = PATH_CONTROLLERS . 'home/buyProduct.ctrl.php';
 $config['HomeValidateController']	            = PATH_CONTROLLERS . 'home/validate.ctrl.php';
+
+
 $config['HomeFindProductsController']           = PATH_CONTROLLERS . 'home/findProducts.ctrl.php';
 $config['HomeValidateInfoController']           = PATH_CONTROLLERS . 'home/validateInfo.ctrl.php';
+$config['HomeSearchProductsController']         = PATH_CONTROLLERS . 'home/searchProducts.ctrl.php';
 $config['HomeMostViewedProductController']	    = PATH_CONTROLLERS . 'home/mostViewedProduct.ctrl.php';
 $config['HomeListEditProductController']	    = PATH_CONTROLLERS . 'home/listEditProduct.ctrl.php';
 
