@@ -81,7 +81,34 @@ QUERY;
 
         $product = $this->getAll($query);
 
-        return $product[0]['id_product'];
+        if(empty($product)){
+
+            $query2 = <<<QUERY
+        SELECT `id_product` FROM `url_old_new` WHERE `old_name` = '$productName'
+QUERY;
+
+            $names_product = $this->getAll($query2);
+
+            $id_product = $names_product[0]['id_product'];
+
+        } else {
+            $id_product = $product[0]['id_product'];
+        }
+
+        return $id_product;
+    }
+
+    public function checkNameInURL($id_product, $old_name){
+        $query = <<<QUERY
+        SELECT `id_product` FROM `url_old_new` WHERE `old_name` = '$old_name' AND `id_product`= '$id_product'
+QUERY;
+
+        $names_product = $this->getAll($query);
+
+        $id_product = $names_product[0]['id_product'];
+
+        return $id_product;
+
     }
 
     public function getPrice($productId){
@@ -98,8 +125,8 @@ QUERY;
         $query = <<<QUERY
         SELECT * FROM `product` WHERE `id_product` = '$productId'
 QUERY;
-        $product = $this->getAll($query);
 
+        $product = $this->getAll($query);
         return $product[0]['stock'];
     }
 
@@ -111,35 +138,32 @@ QUERY;
 
         $description = $this->getAll($query);
         $description =  $description[0]['description'];
-
         return $description;
-
     }
 
     public function getLatestProduct(){
         $query = <<<QUERY
         SELECT * FROM `product` ORDER BY `id_product` DESC LIMIT 1
 QUERY;
-        $product = $this->getAll($query);
 
+        $product = $this->getAll($query);
         return $product[0];
     }
 
     public function getMostViewedProducts($max)
     {
-
         if ($max == 0){
             $query = <<<QUERY
         SELECT * FROM `product` ORDER BY `views` desc
 QUERY;
+
         }else{
             $query = <<<QUERY
         SELECT * FROM `product` ORDER BY `views` desc limit 4
 QUERY;
+
         }
-
         $product = $this->getAll($query);
-
         return $product;
     }
 
@@ -150,20 +174,17 @@ QUERY;
 QUERY;
 
         $product = $this->getAll($query);
-
         return $product[0]['total'];
     }
 
 
     public function getLastInsertImages(){
-
         $query = <<<QUERY
         SELECT id_user,image_small FROM `product` ORDER BY `id_product` DESC LIMIT 4
 QUERY;
+
         $images = $this->getAll($query);
-
         return $images;
-
     }
 
 
@@ -172,13 +193,13 @@ QUERY;
         $query = <<<QUERY
         DELETE FROM `product` WHERE `id_product` = '$id_product'
 QUERY;
-        $this->execute($query);
 
+        $this->execute($query);
     }
 
     public function editProduct($info){
 
-        $id_product = $info['id_product'];
+        $id_product     = $info['id_product'];
         $name           = addslashes($info['name']);
         $price          = $info['price'];
         $stock          = $info['stock'];
@@ -188,6 +209,14 @@ QUERY;
         $image_big      = $info['image_big'];
         $views          = $info['views'];
         $id_user        = $info['id_user'];
+
+        $old_product = $this->getProduct($id_product);
+        $old_name = $old_product['name'];
+        $diferentNames = strcmp($name, $old_name) != 0;
+
+        if ($diferentNames == true){
+            $this->addProductURLChange($id_product, $name, $old_name);
+        }
 
         $query = <<<QUERY
         UPDATE `product` SET
@@ -202,8 +231,20 @@ QUERY;
             `id_user` = '$id_user'
         WHERE `id_product` = '$id_product';
 QUERY;
+
         $this->execute($query);
 
+    }
+
+    private function addProductURLChange($id_product, $new_name, $old_name){
+        $query = <<<QUERY
+        INSERT INTO `G7DB2`.`url_old_new`
+            (`id`, `id_product`, `new_name`, `old_name`)
+        VALUES
+            (NULL, '$id_product', '$new_name', '$old_name');
+QUERY;
+
+        $this->execute($query);
     }
 
     public function getUserProducts($user_id){
@@ -243,9 +284,23 @@ QUERY;
     }
 
     public function productURLToName($product_url_name){
-
         return preg_replace('/-/', ' ', $product_url_name);
+    }
 
+    public function checkDateAndStock($id_product){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$id_product'
+QUERY;
+        $product = $this->getAll($query);
+        $dataProducte = new DateTime($product[0]['date']);
+        $dataActual = new DateTime();
+        $data_ok = ($dataProducte >= $dataActual);
+
+        if ($data_ok && $product[0]['stock'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function searchProduct($search){
@@ -253,8 +308,7 @@ QUERY;
         $query = <<<QUERY
         SELECT * FROM `product` WHERE `name` LIKE '%$search%'
 QUERY;
-
-        $product = $this->getAll($query);
+            $product = $this->getAll($query);
         return $product;
     }
 

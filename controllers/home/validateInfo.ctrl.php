@@ -3,30 +3,25 @@
  * Home Controller: Controller example.
 
  */
-class HomeValidateController extends Controller
+class HomeValidateInfoController extends Controller
 {
-    protected $view = 'home/validate.tpl';
+    protected $view = 'home/validateInfo.tpl';
+    protected $error = 'error/error404.tpl';
 
     public function build(){
 
-        $model = $this->getClass('HomeUserManagerModel');
-
         $info = $this->getParams();
-        $info = $info['url_arguments'];
 
-        if(!empty($info)){
-            $correcte = $model->validateUser($info[0]);
-            if($correcte){
-                //Validacio OK
-                $this->assign('result', "Validation complete.");
-            }else{
-                //Validacio KO
-                header("HTTP/1.1 403 Forbidden");
-                $this->assign('result', "Validation incomplete.");
-            }
+        if(!empty($info['url_arguments'])){
+            $info = $info['url_arguments'];
+            $validationCode=$info[0];
+            $this->assign('validationCode', $validationCode);
+            $this->setLayout($this->view);
+        }else{
+            $this->setLayout($this->error);
         }
-        $this->setLayout($this->view);
     }
+
 
     /**
      * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).

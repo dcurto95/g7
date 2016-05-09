@@ -145,11 +145,7 @@ class HomeEditProductController extends Controller
 				}
 			}
 		} else {
-
-			$view = 'error/error403.tpl';
-			//var_dump(http_response_code(403));
-			$this->setLayout( $view );
-
+			header('Location:' . URL_ABSOLUTE.'/error403');
 		}
 
 	}

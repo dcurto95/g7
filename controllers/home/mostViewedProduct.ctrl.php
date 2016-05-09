@@ -10,10 +10,7 @@ class HomeMostViewedProductController extends Controller
 {
     protected $view = 'home/mostViewedProduct.tpl';
 
-    protected $error_view = 'error/error403.tpl';
-
-    public function build()
-    {
+    public function build(){
 
         $info = $this->getParams();
         $model = $this->getClass('HomeProductManagerModel');
@@ -52,7 +49,8 @@ class HomeMostViewedProductController extends Controller
         }
 
         if ($which > $num_pagines){
-            $this->setLayout($this->error_view);
+            header('Location:' . URL_ABSOLUTE.'/error403');
+
         } else {
             $this->assign('next', ($which + 1));
             $this->assign('previous', ($which - 1));

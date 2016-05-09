@@ -23,7 +23,6 @@ class HomeBuyProductController extends Controller
         if (!empty($info[0])) {
             $product_id = $model->getProduct($info[0])['id_product'];
 
-
             if ($product_id > 0) {
 
                 $money = $modelUsuaris->getMoney($user);
@@ -39,16 +38,14 @@ class HomeBuyProductController extends Controller
                 }else if($model->getStock($product_id) >= 1){
                     $this->setLayout($this->error_money);
                 }else{
-
-                    //CANVIAR PER ERROR DE QUE NO HI HA STOCK!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    $this->setLayout($this->error_money);
+                    //A aquí no s'hauria d'arrbar mai ja que es controla que hi hagi stock. Només s'hi podria accedir forçant la url.
+                    header('Location:' . URL_ABSOLUTE.'/error403');
                 }
             }else{
-                $this->setLayout($this->error_view);
+                header('Location:' . URL_ABSOLUTE.'/error404');
             }
         }else {
-
-            $this->setLayout($this->error_view);
+            header('Location:' . URL_ABSOLUTE.'/error404');
         }
 
     }

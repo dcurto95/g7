@@ -9,6 +9,9 @@ class HomeProductController extends Controller
     protected $error_view = 'error/error404.tpl';
 
     public function build(){
+
+        //header("HTTP/1.1 200 OK");
+
         $model = $this->getClass('HomeProductManagerModel');
         $modelUsuaris = $this->getClass('HomeUserManagerModel');
         $info = $this->getParams();
@@ -24,12 +27,19 @@ class HomeProductController extends Controller
                 $product_id = $model->getProductFromName($product_name);
             } else {
                 $product_id = $info[1];
+                $product = $model->getProduct($product_id);
+                if (strcmp($product['name'], $product_name) != 0){
+                    // El nom no coincideix amb l'ID, cal mirar a la taula d'URL
+                    $product_id = $model->checkNameInURL($product_id, $product_name);
+                }
             }
         }
 
-        if($product_id > 0) {
+        if($product_id > 0 && $model->checkDateAndStock($product_id)) {
 
             $model->increaseView($product_id);
+
+            //echo($model->checkDateAndStock($product_id));
 
             $product = $model->getProduct($product_id);
             $this->assign('name', $product['name']);
@@ -78,7 +88,7 @@ class HomeProductController extends Controller
 
             $this->setLayout($this->view);
         }else{
-            $this->setLayout($this->error_view);
+            header('Location:' . URL_ABSOLUTE.'/error404');
         }
     }
 

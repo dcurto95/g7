@@ -1,6 +1,6 @@
 {$modules.head}
 
-<h1 class="light-blue-text"> LOG IN </h1>
+<h1 class="light-blue-text"> WRONG LOG IN </h1>
 
 <form>
 	<div class="row">
