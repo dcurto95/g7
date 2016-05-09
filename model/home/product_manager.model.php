@@ -81,7 +81,34 @@ QUERY;
 
         $product = $this->getAll($query);
 
-        return $product[0]['id_product'];
+        if(sizeof($product == 0)){
+
+            $query2 = <<<QUERY
+        SELECT `id_product` FROM `url_old_new` WHERE `old_name` = '$productName'
+QUERY;
+
+            $names_product = $this->getAll($query2);
+
+            $id_product = $names_product[0]['id_product'];
+
+        } else {
+            $id_product = $product[0]['id_product'];
+        }
+
+        return $id_product;
+    }
+
+    public function checkNameInURL($id_product, $old_name){
+        $query = <<<QUERY
+        SELECT `id_product` FROM `url_old_new` WHERE `old_name` = '$old_name' AND `id_product`= '$id_product'
+QUERY;
+
+        $names_product = $this->getAll($query);
+
+        $id_product = $names_product[0]['id_product'];
+
+        return $id_product;
+
     }
 
     public function getPrice($productId){
@@ -178,7 +205,7 @@ QUERY;
 
     public function editProduct($info){
 
-        $id_product = $info['id_product'];
+        $id_product     = $info['id_product'];
         $name           = addslashes($info['name']);
         $price          = $info['price'];
         $stock          = $info['stock'];
@@ -188,6 +215,14 @@ QUERY;
         $image_big      = $info['image_big'];
         $views          = $info['views'];
         $id_user        = $info['id_user'];
+
+        $old_product = $this->getProduct($id_product);
+        $old_name = $old_product['name'];
+        $diferentNames = strcmp($name, $old_name) != 0;
+
+        if ($diferentNames == true){
+            $this->addProductURLChange($id_product, $name, $old_name);
+        }
 
         $query = <<<QUERY
         UPDATE `product` SET
@@ -204,6 +239,17 @@ QUERY;
 QUERY;
         $this->execute($query);
 
+    }
+
+    private function addProductURLChange($id_product, $new_name, $old_name){
+        $query = <<<QUERY
+        INSERT INTO `G7DB2`.`url_old_new`
+            (`id`, `id_product`, `new_name`, `old_name`)
+        VALUES
+            (NULL, '$id_product', '$new_name', '$old_name');
+QUERY;
+
+        $this->execute($query);
     }
 
     public function getUserProducts($user_id){
