@@ -248,4 +248,14 @@ QUERY;
 
     }
 
+    public function searchProduct($search){
+
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `name` LIKE '%$search%'
+QUERY;
+
+        $product = $this->getAll($query);
+        return $product;
+    }
+
 }
