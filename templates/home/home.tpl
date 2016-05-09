@@ -9,10 +9,10 @@
         <div class="card medium">
             <div class="card-image">
                 <img src="/img/product_img_big/{$lastProduct.id_user}_{$lastProduct.image_big}">
-                <a href="{$url.global}/p/{$lastProduct.name}" class="card-title">{$lastProduct.name}</a>
+                <a href="{$lastProduct.url}" class="card-title deep-orange lighten-1">{$lastProduct.name}</a>
             </div>
             <div class="card-action">
-                 <a href="{$url.global}/p/{$lastProduct.name}">{$lastProduct.name}</a>
+                 <a href="{$lastProduct.url}">{$lastProduct.name}</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <div class="card hoverable">
                 <div class="card-image">
                     <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}">
-                    <a href="{$url.global}/p/{$p.name}" class="card-title">{$p.name}</a>
+                    <a href="{$p.url}" class="card-title deep-orange lighten-1">{$p.name}</a>
 
                 </div>
                 <div class="card-content">
@@ -32,7 +32,7 @@
                     <p>Expiry Date:{$p.date}</p>
                 </div>
                 <div class="card-action">
-                    <a href="{$url.global}/p/{$p.name}" >View the product</a>
+                    <a href="{$p.url}" >View the product</a>
                 </div>
             </div>
 

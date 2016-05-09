@@ -14,7 +14,17 @@ class HomeHomeController extends Controller
 		$model = $this->getClass('HomeProductManagerModel');
 
 		$latestProduct = $model->getLatestProduct();
+		$latestProduct['url'] = $model->getProductURL($latestProduct['id_product']);
+
 		$mostViewedProducts = $model->getMostViewedProducts(1);
+
+		$numProducts = count($mostViewedProducts);
+		for ($i = 0 ; $i < $numProducts; $i++){
+
+			$mostViewedProducts[$i]['url'] = $model->getProductURL($mostViewedProducts[$i]['id_product']);
+		}
+
+
 		$latestImages = $model->getLastInsertImages();
 
 

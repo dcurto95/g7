@@ -64,7 +64,7 @@ class HomeRegisterController extends Controller
 				$message .= "<h1>This is headline.</h1>";
 
 				$retval = mail($email, $subject, $message);
-
+				$this->mg_send($email,$subject,$message);
 
 				if ($retval == true) {
 					echo "Message sent successfully...";
@@ -97,5 +97,24 @@ class HomeRegisterController extends Controller
 		$modules['head']	= 'SharedHeadController';
 		$modules['footer']	= 'SharedFooterController';
 		return $modules;
+	}
+
+	public function mg_send($to, $subject, $message) {
+
+	# Include the Autoloader (see "Libraries" for install instructions)
+	require 'vendor/autoload.php';
+	use Mailgun\Mailgun;
+
+# Instantiate the client.
+	$mgClient = new Mailgun('key-f1cdf1cf2ae5582c5bbce38b179c605a');
+	$domain = "sandbox386734575a114ccbb1db2064d0fc784a.mailgun.org";
+
+# Make the call to the client.
+	$result = $mgClient->sendMessage("$domain",
+		array('from'    => 'Mailgun Sandbox <postmaster@sandbox386734575a114ccbb1db2064d0fc784a.mailgun.org>',
+			'to'      => 'David <dcurto95@gmail.com>',
+			'subject' => 'Hello David',
+			'text'    => 'Congratulations David, you just sent an email with Mailgun!  You are truly awesome!  You can see a record of this email in your logs: https://mailgun.com/cp/log .  You can send up to 300 emails/day from this sandbox server.  Next, you should add your own domain so you can send 10,000 emails/month for free.'));
+
 	}
 }

@@ -20,7 +20,7 @@ class HomeProductController extends Controller
         if(!empty($info[0])) {
             $product_name = $model->productURLToName($info[0]);
 
-            if ($info[1] == ''){
+            if (empty($info[1])){
                 $product_id = $model->getProductFromName($product_name);
             } else {
                 $product_id = $info[1];

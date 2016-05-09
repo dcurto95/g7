@@ -44,19 +44,6 @@
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 
 
-						<!-- Buscador -->
-						<li>
-							<i class="material-icons">search</i>
-						</li>
-						<li>
-							<form>
-								<div class="input-field col s6">
-
-									<input placeholder="Search" id="first_name" type="text" class="post">
-								</div>
-							</form>
-						</li>
-
 
 						<!-- LOGIN -->
 						{if $isLogged eq true}
@@ -80,6 +67,11 @@
 
 						<li><a href="{$url.global}/addProduct">ADD</a></li>
 						<li><a href="{$url.global}/mv"><i class="material-icons">list</i></a></li>
+
+						<!-- Buscador -->
+						<li>
+							<a href = "{$url.global}/search"> <i class="material-icons">search</i></a>
+						</li>
 
 					</ul>
 				</div>
