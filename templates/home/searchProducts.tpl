@@ -4,7 +4,7 @@
 <form  method="post">
     <div class="row">
         <div class="input-field col s4">
-             <input type="text" placeholder="Enter the name of the product you want to search" name="search">
+             <input type="text" placeholder="Enter the name of the product you want to search" name="search" required>
         </div>
         <div class="input-field col s2">
             <input type="submit" class = "btn waves-effect waves-light" name="submit" value="Send" >
@@ -24,12 +24,12 @@
 
                 </div>
                 <div class="card-content">
-                    <p>Description:{$s.description|truncate:50}</p><br>
-                    <p>Price: {$s.price} &#8364</p><br>
-                    <p>Expiry Date:{$s.date}</p>
+                    <p><b>Description:</b>{$s.description|truncate:50}</p><br>
+                    <p><b>Price: </b> {$s.price} &#8364</p><br>
+                    <p> <b> Expiry Date:</b>{$s.date}</p>
                 </div>
-                <div class="card-action">
-                    <a href="{$s.url}" >View the product</a>
+                <div class="card-action center-align">
+                    <a href="{$s.url}"><b>View the product</b></a>
                 </div>
             </div>
 
