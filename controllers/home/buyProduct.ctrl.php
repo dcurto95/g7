@@ -21,7 +21,7 @@ class HomeBuyProductController extends Controller
         $user = $session->get('id_user');
 
         if (!empty($info[0])) {
-            $product_id = $model->getProduct($info[0])[0]['id_product'];
+            $product_id = $model->getProduct($info[0])['id_product'];
 
 
             if ($product_id > 0) {
@@ -33,7 +33,7 @@ class HomeBuyProductController extends Controller
 
                     $product = $model->getProduct($product_id);
 
-                    $this->assign('name', $product[0]['name']);
+                    $this->assign('name', $product['name']);
 
                     $this->setLayout($this->view);
                 }else if($model->getStock($product_id) >= 1){

@@ -1,6 +1,6 @@
 {$modules.head}
 
-<h1 class="light-blue-text"> REGISTER </h1>
+<h1 class="light-blue-text"> {$register_title} </h1>
 
 <div class="row">
 	<form class="col-md-12" method="post" action="" enctype = "multipart/form-data">

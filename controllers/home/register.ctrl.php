@@ -6,6 +6,7 @@
 class HomeRegisterController extends Controller
 {
 	protected $view = 'home/register.tpl';
+	protected $view_validate = 'home/register.tpl';
 
 	public function build()
 	{
@@ -16,6 +17,8 @@ class HomeRegisterController extends Controller
 
 		$twitter_regex = '@\w+';
 		$this->assign('twitter_regex', $twitter_regex);
+
+		$this->assign('register_title', 'REGISTER');
 
 		$this->setLayout( $this->view );
 
@@ -34,36 +37,40 @@ class HomeRegisterController extends Controller
 
 		if($is_submit){
 
-			$image_manager = $this->getClass('HomeImageManagerModel');
-
-			$image_manager->AddProfileImage("inputFile");
-
-			//Creem usuari
-			$user_id =
-			$img_name = $_FILES["inputFile"]["name"];
-			$model->createUser($username,$email,$twitter,$password,$img_name,$activation_code);
+			if ($model->validateUserNameAndMail($username,$email)) {
+				// Es correcte:
 
 
-			// Mail:
-			$subject = "This is subject";
+				$image_manager = $this->getClass('HomeImageManagerModel');
 
-			$message = "<b>This is HTML message.</b>";
-			$message .= "<h1>This is headline.</h1>";
+				$image_manager->AddProfileImage("inputFile");
 
-			$retval = mail($email,$subject,$message);
+				//Creem usuari
+				$img_name = $_FILES["inputFile"]["name"];
+				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
-			if( $retval == true ) {
-				//echo "Message sent successfully...";
-			}else {
-				//print_r(error_get_last());
-				//echo "Message could not be sent...";
+				// Mail:
+				$subject = "This is subject";
+
+				$message = "<b>This is HTML message.</b>";
+				$message .= "<h1>This is headline.</h1>";
+
+				$retval = mail($email, $subject, $message);
+
+				if ($retval == true) {
+					//echo "Message sent successfully...";
+				} else {
+					//print_r(error_get_last());
+					//echo "Message could not be sent...";
+				}
+
+				header('Location:' . URL_ABSOLUTE . '/validateInfo/' . $activation_code);
+			}else{
+				//No és correcte
+				$this->assign('register_title', 'WRONG REGISTRATION');
 			}
-
-			header('Location:' . URL_ABSOLUTE);
-
 		}
 	}
-
 
 	/**
 	 * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).
