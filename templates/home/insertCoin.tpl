@@ -27,7 +27,7 @@
 
 <h2 class="light-blue-text"> PRODUCTS BOUGHT: </h2>
 
-
+<!--
 <table class = "highlight centered">
     <thead>
     <tr>
@@ -46,7 +46,8 @@
         <td>{$p.seller}</td>
 
     </tbody>
+    {/foreach}
 </table>
-
+-->
 
 {$modules.footer}
