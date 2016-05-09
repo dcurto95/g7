@@ -28,7 +28,7 @@
 
 			<ul id="dropdown1" class="dropdown-content" style="margin-top: 4.5%;">
 				<li><a href="#" class="light-blue-text darken-3">Profile</a></li>
-				<li><a href="{$url.global}/insertcoin" class="light-blue-text darken-3">Insert Coin</a></li>
+				<li><a href="{$url.global}/listEditProduct" class="light-blue-text darken-3">Edit Prod.</a></li>
 				<li class="divider"></li>
 				<li>
 					<a href="{$url.global}/logout" class="white-text blue-grey darken-2">Log out</a>
@@ -67,7 +67,7 @@
 									{$username}<i class="material-icons right">arrow_drop_down</i>
 								</a>
 							</li>
-							<li><a href="#"><span class="coin badge">{$user_coins}</span></a></li>
+							<li><a href="{$url.global}/insertcoin"><span class="coin badge">{$user_coins}</span></a></li>
 						{/if}
 
 						{if $isLogged eq false}

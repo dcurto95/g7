@@ -30,6 +30,7 @@ $config['dispatcher']			    		=  PATH_ENGINE . 'dispatcher.class.php';
 $config['ErrorError404Controller']	            = PATH_CONTROLLERS . 'error/error404.ctrl.php';
 $config['ErrorError403Controller']	            = PATH_CONTROLLERS . 'error/error403.ctrl.php';
 $config['ErrorErrorMoneyController']            = PATH_CONTROLLERS . 'error/errorMoney.ctrl.php';
+$config['ErrorErrorInsertCoinController']       = PATH_CONTROLLERS . 'error/errorInsertCoin.ctrl.php';
 
 // Home Controllers
 $config['HomeHomeController']		            = PATH_CONTROLLERS . 'home/home.ctrl.php';
@@ -44,9 +45,9 @@ $config['HomeProductController']	            = PATH_CONTROLLERS . 'home/product.
 $config['HomeBuyProductController']	            = PATH_CONTROLLERS . 'home/buyProduct.ctrl.php';
 $config['HomeValidateController']	            = PATH_CONTROLLERS . 'home/validate.ctrl.php';
 $config['HomeFindProductsController']           = PATH_CONTROLLERS . 'home/findProducts.ctrl.php';
-$config['HomeValidateInfoController']            = PATH_CONTROLLERS . 'home/validateInfo.ctrl.php';
-
+$config['HomeValidateInfoController']           = PATH_CONTROLLERS . 'home/validateInfo.ctrl.php';
 $config['HomeMostViewedProductController']	    = PATH_CONTROLLERS . 'home/mostViewedProduct.ctrl.php';
+$config['HomeListEditProductController']	    = PATH_CONTROLLERS . 'home/listEditProduct.ctrl.php';
 
 
 // Shared controllers

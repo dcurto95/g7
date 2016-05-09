@@ -89,11 +89,8 @@ INSERT INTO `Visit` (`visitas`) VALUES
 -- Índices para tablas volcadas
 --
 
-<<<<<<< HEAD
-=======
-
 ALTER TABLE `product` ADD `user` INT NOT NULL AFTER `views`;
->>>>>>> b4aa95e2af2b7cc37874b073d2b109f7e0adca86
+
 --
 -- Indices de la tabla `product`
 --

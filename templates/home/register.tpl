@@ -6,22 +6,22 @@
 	<form class="col-md-12" method="post" action="" enctype = "multipart/form-data">
 		<div class="row">
 			<div class="input-field col s6">
-				<input placeholder="Your name" pattern="{$username_regex}" name="username" id="username" type="text" class="validate" required>
+				<input placeholder="Your name" pattern="{$username_regex}" name="username" id="username" type="text" class="validate" required value="{$username}">
 				<label for="username" data-error="Wrong, minimum 6 characters" data-success="Ok!">Username</label>
 			</div>
 			<div class="input-field col s6">
-				<input id="email" name="email" type="email" class="validate" required>
+				<input id="email" name="email" type="email" class="validate" required value="{$email}">
 				<label for="email" data-error="Wrong email" data-success="Ok!">Email</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
-				<input id="password" type="password" name="password" class="validate password-meter" required length="10" maxlength="10" minlength="6">
+				<input id="password" type="password" name="password" class="validate password-meter" required length="10" maxlength="10" minlength="6" value="{$password}">
 				<label for="password">Password</label>
 
 			</div>
 			<div class="input-field col s6">
-				<input placeholder="@name" pattern="{$twitter_regex}" name="twitter" id="twitter" type="text" class="validate">
+				<input placeholder="@name" pattern="{$twitter_regex}" name="twitter" id="twitter" type="text" class="validate" value="{$twitter}">
 				<label for="twitter" data-error="Wrong twitter account" data-success="Ok!">Twitter</label>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 {$modules.head}
 
 
-<h1 class="light-blue-text"> INSERT COINS: </h1>
+<h2 class="light-blue-text"> INSERT COINS: </h2>
 
 <form  class="col-md-12" action="" method = "post">
     <p>
@@ -24,6 +24,37 @@
     <input class="btn waves-effect waves-light" type="submit" name="action" id="action">
 
 </form>
+
+<h2 class="light-blue-text"> PRODUCTS BOUGHT: </h2>
+
+
+<table class = "highlight centered">
+    <thead>
+    <tr>
+        <th data-field="id">Name</th>
+        <th data-field="name">Product Price</th>
+        <th data-field="price">Seller</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td>Alvin</td>
+        <td>Eclair</td>
+        <td>$0.87</td>
+    </tr>
+    <tr>
+        <td>Alan</td>
+        <td>Jellybean</td>
+        <td>$3.76</td>
+    </tr>
+    <tr>
+        <td>Jonathan</td>
+        <td>Lollipop</td>
+        <td>$7.00</td>
+    </tr>
+    </tbody>
+</table>
 
 
 {$modules.footer}

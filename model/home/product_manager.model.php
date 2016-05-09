@@ -3,16 +3,6 @@
 
 class HomeProductManagerModel extends Model{
 
-
-    /*
-     * Ojo! -> Les STRINGS estan escapades (\*), cal desescaparles per llegir-les!
-     *
-     * Revisar funcions:
-     *      addslashes (...);
-     *      stripcslashes(...);
-     *
-     * */
-
     public function addProduct($info){
 
         $name           = addslashes($info['name']);
@@ -24,15 +14,26 @@ class HomeProductManagerModel extends Model{
         $image_big      = $info['image_big'];
         $views          = 0;
         $id_user        = $info['id_user'];
+        $ventes         = 0;
 
         $query = <<<QUERY
         INSERT INTO `G7DB2`.`product`
-            (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image_small`, `image_big`, `views`, `id_user`)
+            (`id_product`, `name`, `price`, `stock`, `description`, `date`, `image_small`, `image_big`, `views`, `id_user`, `ventes`)
         VALUES
-            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image_small', '$image_big', '$views', $id_user);
+            (NULL, '$name', '$price', '$stock', "$description", '$date', '$image_small', '$image_big', '$views', $id_user, $ventes);
 QUERY;
 
         $this->execute($query);
+
+    }
+
+    public function getLastInsertID(){
+
+        $query = <<<QUERY
+        SELECT LAST_INSERT_ID() FROM `product`;
+QUERY;
+
+        return ($this->getAll($query)[0]['LAST_INSERT_ID()']);
 
     }
 
@@ -97,8 +98,8 @@ QUERY;
         $query = <<<QUERY
         SELECT * FROM `product` WHERE `id_product` = '$productId'
 QUERY;
-        $product = $this->getAll($query);
 
+        $product = $this->getAll($query);
         return $product[0]['stock'];
     }
 
@@ -110,52 +111,63 @@ QUERY;
 
         $description = $this->getAll($query);
         $description =  $description[0]['description'];
-
         return $description;
-
     }
 
     public function getLatestProduct(){
         $query = <<<QUERY
         SELECT * FROM `product` ORDER BY `id_product` DESC LIMIT 1
 QUERY;
-        $product = $this->getAll($query);
 
-        return $product;
+        $product = $this->getAll($query);
+        return $product[0];
     }
 
     public function getMostViewedProducts($max)
     {
-        /*
-        Es mostrarà un llistat dels 5 producte més visionats (vegeu següent apartat).
-        Per cadascun d’ells es mostrarà el títol, els 50 primers caràcters de la descripcio
-        ́, la data de caducitat i el preu de venda. El títol ha de ser un link cap al visionat
-        públic d’aquest producte
-
-        */
         if ($max == 0){
             $query = <<<QUERY
         SELECT * FROM `product` ORDER BY `views` desc
 QUERY;
+
         }else{
             $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `views` desc limit 5
+        SELECT * FROM `product` ORDER BY `views` desc limit 4
 QUERY;
+
         }
-
-
-
         $product = $this->getAll($query);
-
         return $product;
     }
+
+
+    public function getTotalViews(){
+        $query = <<<QUERY
+        SELECT sum(views) as total FROM `product`
+QUERY;
+
+        $product = $this->getAll($query);
+        return $product[0]['total'];
+    }
+
+
+    public function getLastInsertImages(){
+        $query = <<<QUERY
+        SELECT id_user,image_small FROM `product` ORDER BY `id_product` DESC LIMIT 4
+QUERY;
+
+        $images = $this->getAll($query);
+        return $images;
+    }
+
+
 
     public function deleteProduct($id_product){
         $query = <<<QUERY
         DELETE FROM `product` WHERE `id_product` = '$id_product'
 QUERY;
-        $this->execute($query);
 
+        $this->execute($query);
     }
 
     public function editProduct($info){
@@ -184,8 +196,67 @@ QUERY;
             `id_user` = '$id_user'
         WHERE `id_product` = '$id_product';
 QUERY;
+
         $this->execute($query);
 
+    }
+
+    public function getUserProducts($user_id){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_user` = '$user_id'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
+    }
+
+    public function getProductURL($id_product){
+
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$id_product'
+QUERY;
+
+        $aux_product = $this->getAll($query);
+        $product = $aux_product[0];
+
+        $product_name = $this->productNameToURL($product['name']);
+
+        if(sizeof($this->getAllProductsFromName($product['name'])) > 1){
+            $product_ending = '/'.$product['id_product'];
+        } else {
+            $product_ending = '';
+        }
+
+        $productURL = '/p/'.$product_name.$product_ending;
+
+        return $productURL;
+    }
+
+    public function productNameToURL($product_name){
+        return preg_replace('/[\s_]/', '-', $product_name);
+    }
+
+    public function productURLToName($product_url_name){
+
+        return preg_replace('/-/', ' ', $product_url_name);
+
+    }
+
+    public function checkDateAndStock($id_product){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$id_product'
+QUERY;
+        $product = $this->getAll($query);
+        $dataProducte = new DateTime($product[0]['date']);
+        $dataActual = new DateTime();
+        $data_ok = ($dataProducte >= $dataActual);
+
+        if($data_ok && $product[0]['stock']>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

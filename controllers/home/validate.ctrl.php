@@ -6,7 +6,6 @@
 class HomeValidateController extends Controller
 {
     protected $view = 'home/validate.tpl';
-    protected $error_view = 'error/error404.tpl';
 
     public function build(){
 
@@ -22,13 +21,12 @@ class HomeValidateController extends Controller
                 $this->assign('result', "Validation complete.");
             }else{
                 //Validacio KO
+                header("HTTP/1.1 403 Forbidden");
                 $this->assign('result', "Validation incomplete.");
             }
         }
-
         $this->setLayout($this->view);
     }
-
 
     /**
      * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).

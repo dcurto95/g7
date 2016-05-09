@@ -4,6 +4,7 @@ class ErrorError404Controller extends Controller
 {
 	public function build( )
 	{
+		header("HTTP/1.1 404 Not Found");
 		$this->setLayout( 'error/error404.tpl' );
 	}
 

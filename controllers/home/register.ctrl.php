@@ -6,7 +6,6 @@
 class HomeRegisterController extends Controller
 {
 	protected $view = 'home/register.tpl';
-	protected $view_validate = 'home/register.tpl';
 
 	public function build()
 	{
@@ -15,32 +14,40 @@ class HomeRegisterController extends Controller
 		$username_regex = '([A-Za-z]{6,})';
 		$this->assign('username_regex', $username_regex);
 
-		$twitter_regex = '@\w+';
+		$twitter_regex = '(@\w+)';
 		$this->assign('twitter_regex', $twitter_regex);
-
-		$this->assign('register_title', 'REGISTER');
 
 		$this->setLayout( $this->view );
 
 		//Agafar valors per la creació de l'usuari
 		$username = Filter::getString('username');
+		$isValid = sizeof(preg_match($username_regex, $username)) > 0;
 
-		$email = Filter::getEmail('email');
+		$email = Filter::getString('email');
+		if($isValid) {
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+				$isValid = false;
+			}
+		}
 
 		$twitter = Filter::getString('twitter');
+		if ($isValid && $twitter != '') {
+			$isValid = sizeof(preg_match($twitter_regex, $twitter)) > 0;
+		}
 
 		$password = Filter::getString('password');
+		if ($isValid) {
+			$isValid = (strlen($password) <= 8) && (strlen($password) >= 6);
+		}
+
+		//$isValid = false;
 
 		$activation_code = uniqid('AC');
 
 		$is_submit = Filter::getString('submit');
 
 		if($is_submit){
-
-			if ($model->validateUserNameAndMail($username,$email)) {
-				// Es correcte:
-
-
+			if ($isValid) {
 				$image_manager = $this->getClass('HomeImageManagerModel');
 
 				$image_manager->AddProfileImage("inputFile");
@@ -48,6 +55,7 @@ class HomeRegisterController extends Controller
 				//Creem usuari
 				$img_name = $_FILES["inputFile"]["name"];
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
+
 
 				// Mail:
 				$subject = "This is subject";
@@ -64,13 +72,18 @@ class HomeRegisterController extends Controller
 					//echo "Message could not be sent...";
 				}
 
-				header('Location:' . URL_ABSOLUTE . '/validateInfo/' . $activation_code);
-			}else{
-				//No és correcte
-				$this->assign('register_title', 'WRONG REGISTRATION');
+				header('Location:' . URL_ABSOLUTE);
+			} else {
+				// Reomplir els camps!
+				$this->assign('username', $username);
+				$this->assign('email', $email);
+				$this->assign('password', $password);
+				$this->assign('twitter', $twitter);
 			}
+
 		}
 	}
+
 
 	/**
 	 * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).

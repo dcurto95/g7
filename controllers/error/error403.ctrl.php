@@ -4,6 +4,7 @@ class ErrorError403Controller extends Controller
 {
 	public function build( )
 	{
+		header("HTTP/1.1 403 Forbidden");
 		$this->setLayout( 'error/error403.tpl' );
 	}
 
@@ -15,6 +16,4 @@ class ErrorError403Controller extends Controller
 		return $modules;
 	}
 }
-
-
 ?>

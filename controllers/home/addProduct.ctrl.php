@@ -107,13 +107,16 @@ class HomeAddProductController extends Controller
 						}
 
 						$modelProduct->addProduct($info);
+						$id_product = $modelProduct->getLastInsertID();
 						$modelUser->pay($session->get('id_user'), 1);
 						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
 
 						$session->delete('image_fail_flag');
 						$session->delete('image_fail_name');
 
-						header('Location:' . URL_ABSOLUTE);
+						$url_product = $modelProduct->getProductURL($id_product);
+
+						header('Location:' . URL_ABSOLUTE .$url_product);
 
 					} else {
 

@@ -33,9 +33,11 @@ class HomeAuthController extends Controller
                 $this->assign('auth_status', 0);
             }else{
                 // Pantalla d'error
+                header('Location:' . URL_ABSOLUTE.'/error403');
                 $this->assign('auth_status', 1);
             }
         } else {
+            header('Location:' . URL_ABSOLUTE.'/error403');
             $this->assign('auth_status', 2);
         }
 

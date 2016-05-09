@@ -179,6 +179,16 @@ QUERY;
 QUERY;
         $this->execute($query);
 
+        //Actualitzem les ventes del producte
+        $ventes = $product[0]['ventes'];
+        $ventes = $ventes + 1;
+
+        //Pujem en 1 les ventes del producte
+        $query = <<<QUERY
+        UPDATE product SET `ventes` = '$ventes' WHERE `id_product` = '$id_product'
+QUERY;
+        $this->execute($query);
+
     }
 
     public function countVisits(){

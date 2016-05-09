@@ -3,18 +3,15 @@
 
     <ul class="collection with-header">
 
-        <li class="collection-header"><h4>Most Viewed Products </h4></li>
+        <li class="collection-header"><h4>Editable Products for {$userName}</h4></li>
         {foreach from=$prouducts item=p}
             <li class="collection-item avatar">
                 <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}" alt="" class="circle">
-                <a href="{$url.global}/p/{$p.name}" class="title">{$p.name}</a>
+                <a href="{$p.url}" class="title">{$p.name}</a>
                 <p>{$p.description|truncate:50} <br>
-                    {$p.date} <br>
-                    Visites  {$p.views_percentage}%
+                    {$p.date}
                 </p>
-                <p class="secondary-content"> {$p.views} <i class="material-icons">visibility</i><br>
-                    {$p.ventes}<i class="material-icons">shopping_cart</i>
-                </p>
+                <p class="secondary-content"><a href="{$url.global}/editProduct/{$p.id_product}" class="secondary-content">Edit/Remove <i class="material-icons">send</i></a></p>
 
             </li>
 

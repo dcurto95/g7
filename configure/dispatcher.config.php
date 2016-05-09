@@ -19,6 +19,10 @@ $config['validate']             = 'HomeValidateController';
 $config['find']                 = 'HomeFindProductsController';
 $config['mv']                   = 'HomeMostViewedProductController';
 $config['validateInfo']         = 'HomeValidateInfoController';
+$config['listEditProduct']      = 'HomeListEditProductController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
+$config['error']                = 'ErrorErrorInsertCoinController';
+$config['error404']             = 'ErrorError404Controller';
+$config['error403']             = 'ErrorError403Controller';
 

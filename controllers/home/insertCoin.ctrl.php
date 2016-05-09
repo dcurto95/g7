@@ -9,6 +9,7 @@
 class HomeInsertCoinController extends Controller
 {
     protected $view = 'home/insertCoin.tpl';
+    protected $error_view = 'error/errorInsertCoin.tpl';
 
 
     public function build()
@@ -17,7 +18,6 @@ class HomeInsertCoinController extends Controller
 
 
         $model = $this->getClass('HomeUserManagerModel');
-        $model->countVisits();
 
         $this->setLayout( $this->view );
 
@@ -32,6 +32,8 @@ class HomeInsertCoinController extends Controller
 
             if ($saldo+$money >1000){
                 // Superem maxim de diners... caldrà mostrar algo...
+                $this->setLayout( $this->error_view );
+
             }else{
                 $model->insertMoney($userId, $money);
 

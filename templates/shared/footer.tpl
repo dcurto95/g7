@@ -2,26 +2,21 @@
 </div>
 
 	<footer class="page-footer blue center-on-small-only yellow darken-3">
-		<!-- <div class="container-fluid">
+
+		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
-					<h5 class="white-text">Footer Content</h5>
-					<p class="grey-text text-lighten-4">Here you can use rows and columns here to organize your footer content.</p>
-				</div>
-				<div class="col-md-6">
-					<h5 class="white-text">Links</h5>
-					<ul>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-					</ul>
-				</div>
+				<ul>
+					<li><p class="grey-text text-lighten-3">David Curto</p></li>
+					<li><p class="grey-text text-lighten-3">Albert Llauradó</p></li>
+					<li><p class="grey-text text-lighten-3">Jordi Roig</p></li>
+
+				</ul>
 			</div>
-		</div> -->
-		<div class="footer-copyright text-center rgba-black-light">
-			<div class="container-fluid">
-				© 2016 Copyright: <i>Jordi Roig, David Curto, Albert Llauradó</i>.
+		</div>
+
+		<div class="footer-copyright">
+			<div class="container">
+				© 2014 Copyright Text
 			</div>
 		</div>
 	</footer>
