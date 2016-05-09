@@ -26,6 +26,7 @@ class HomeMostViewedProductController extends Controller
         $mostViewedProducts = $model->getMostViewedProducts(0);
 
 
+
         $numProducts = count($mostViewedProducts);
 
         $num_pagines = (int)($numProducts/10);
@@ -43,6 +44,7 @@ class HomeMostViewedProductController extends Controller
             if ($index < $numProducts) {
                 $array_prod[$i] = $mostViewedProducts[$index];
                 $array_prod[$i]['views_percentage'] = round(($array_prod[$i]['views']/$total)*100);
+                $array_prod[$i]['url'] = $model->getProductURL($array_prod[$i]['id_product']);
             }
         }
 

@@ -7,7 +7,7 @@
         {foreach from=$prouducts item=p}
             <li class="collection-item avatar">
                 <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}" alt="" class="circle">
-                <a href="{$url.global}/p/{$p.name}" class="title">{$p.name}</a>
+                <a href="{$p.url}" class="title">{$p.name}</a>
                 <p>{$p.description|truncate:50} <br>
                     {$p.date} <br>
                     Visites  {$p.views_percentage}%

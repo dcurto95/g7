@@ -312,4 +312,14 @@ QUERY;
         return $product;
     }
 
+    public function getBoughtProducts($user){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_venedor`= '$user'
+QUERY;
+
+        $product = $this->getAll($query);
+        return $product;
+
+    }
+
 }

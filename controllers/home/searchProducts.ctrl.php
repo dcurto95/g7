@@ -15,12 +15,20 @@ class HomeSearchProductsController extends Controller
 
         $name = Filter::getString('search');
         $is_submit = Filter::getString('submit');
+        $product = $model->searchProduct($name);
         if($is_submit){
 
             $product = $model->searchProduct($name);
-            $this->assign("search",$product);
-            $this->assign("active", true);
+           // $this->assign("search",$product);
+
         }
+        $numProducts = count($product);
+        for ($i = 0 ; $i < $numProducts; $i++){
+
+            $product[$i]['url'] = $model->getProductURL($product[$i]['id_product']);
+        }
+        $this->assign("search",$product);
+
         $this->setLayout($this->view);
     }
 

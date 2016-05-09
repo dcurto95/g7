@@ -64,7 +64,7 @@ class HomeRegisterController extends Controller
 				$message .= "<h1>This is headline.</h1>";
 
 				$retval = mail($email, $subject, $message);
-
+				$this->mg_send($email,$subject,$message);
 
 				if ($retval == true) {
 					echo "Message sent successfully...";
