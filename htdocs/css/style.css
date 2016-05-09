@@ -90,3 +90,7 @@ span.badge.coin:after{
     color: red;
 }
 
+.card-small {
+    width:400px;
+    left: 35%;
+}

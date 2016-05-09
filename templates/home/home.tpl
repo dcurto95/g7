@@ -1,14 +1,13 @@
 {$modules.head}
 
-<h1 class="light-blue-text"> I'M HOME!  </h1>
+<h1 class="light-blue-text center-align"> I'M HOME!  </h1>
 
 
-<div class="row">
-
-    <div class="col s12 m12">
-        <div class="card medium">
+<div class="row center-align" >
+    <div class="center-align">
+        <div class="card card-small">
             <div class="card-image">
-                <img src="/img/product_img_big/{$lastProduct.id_user}_{$lastProduct.image_big}">
+                <img  class = "responsive-img" src="/img/product_img_big/{$lastProduct.id_user}_{$lastProduct.image_big}">
                 <a href="{$lastProduct.url}" class="card-title deep-orange lighten-1">{$lastProduct.name}</a>
             </div>
             <div class="card-action">
