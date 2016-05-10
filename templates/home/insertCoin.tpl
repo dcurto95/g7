@@ -27,7 +27,7 @@
 
 <h2 class="light-blue-text"> PRODUCTS BOUGHT: </h2>
 
-<!--
+
 <table class = "highlight centered">
     <thead>
     <tr>
@@ -41,13 +41,13 @@
 
     {foreach from=$product item=p}
     <tr>
-        <td>{$p.name}</td>
-        <td>{$p.price}</td>
-        <td>{$p.seller}</td>
+        <td> <a href = "{$p.url}">{$p.nom_producte}</a></td>
+        <td>{$p.cost}</td>
+        <td>{$p.nom_venedor}</td>
 
     </tbody>
     {/foreach}
 </table>
--->
+
 
 {$modules.footer}

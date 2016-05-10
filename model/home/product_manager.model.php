@@ -121,6 +121,18 @@ QUERY;
         return $product[0]['price'];
     }
 
+
+    public function getName($productId){
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `id_product` = '$productId'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product[0]['name'];
+    }
+
+
     public function getStock($productId){
         $query = <<<QUERY
         SELECT * FROM `product` WHERE `id_product` = '$productId'
@@ -315,14 +327,19 @@ QUERY;
         return $p;
     }
 
-    public function getBoughtProducts($user){
+
+    public function getSellerID($product_id){
+
         $query = <<<QUERY
-        SELECT * FROM `product` WHERE `id_venedor`= '$user'
+        SELECT * FROM `product` WHERE `id_product` = '$product_id'
 QUERY;
 
         $product = $this->getAll($query);
-        return $product;
+        return $product[0]['id_user'];
+
     }
+
+
 
     public function getCompres($id_user){
         $query = <<<QUERY
@@ -332,9 +349,12 @@ QUERY;
         return $products;
     }
 
-    public function addCompra($comprador, $producte){
+    public function addCompra($comprador,$producte,$nom,$preu,$nomSeller){
+        echo $nom;
+        echo $preu;
+
         $query = <<<QUERY
-        INSERT INTO `compres`(`comprador`, `producte`) VALUES ('$comprador', '$producte')
+        INSERT INTO `compres`(`comprador`, `producte`,`nom_producte`,`cost`,`nom_venedor`) VALUES ('$comprador', '$producte','$nom','$preu','$nomSeller');
 QUERY;
         $this->execute($query);
     }

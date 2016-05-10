@@ -29,7 +29,11 @@ class HomeBuyProductController extends Controller
 
                 if($money >= $model->getPrice($product_id) && $model->getStock($product_id) >= 1) {
                     $modelUsuaris->buy($user, $product_id);
-
+                    $preu =  $model->getPrice($product_id);
+                    $nom =   $model->getName($product_id);
+                    $sellerID = $model->getSellerID($product_id);
+                    $sellerName = $modelUsuaris->getUser($sellerID);
+                    $model->addCompra($user, $product_id,$nom,$preu,$sellerName['username']);
                     $product = $model->getProduct($product_id);
 
                     $this->assign('name', $product['name']);
