@@ -361,10 +361,12 @@ QUERY;
 
     public function getCorrectProducts($products){
         $num = count($products);
-
+        $aux=0;
         for ($i = 0 ; $i < $num ; $i++){
             if($this->checkDateAndStock($products[$i]['id_product'])){
-                $p[$i] = $products[$i];
+
+                $p[$aux] = $products[$i];
+                $aux=$aux+1;
             }
 
         }
