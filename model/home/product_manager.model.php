@@ -322,7 +322,21 @@ QUERY;
 
         $product = $this->getAll($query);
         return $product;
+    }
 
+    public function getCompres($id_user){
+        $query = <<<QUERY
+        SELECT * FROM `compres` WHERE `comprador`= '$id_user'
+QUERY;
+        $products = $this->getAll($query);
+        return $products;
+    }
+
+    public function addCompra($comprador, $producte){
+        $query = <<<QUERY
+        INSERT INTO `compres`(`comprador`, `producte`) VALUES ('$comprador', '$producte')
+QUERY;
+        $this->execute($query);
     }
 
     public function getCorrectProducts($products){
