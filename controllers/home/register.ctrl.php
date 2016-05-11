@@ -63,15 +63,17 @@ class HomeRegisterController extends Controller
 				$message = "<b>This is HTML message.</b>";
 				$message .= "<h1>This is headline.</h1>";
 
-				$retval = mail($email, $subject, $message);
+				//$retval = mail($email, $subject, $message);
+				echo("abans");
 				$this->mg_send($email,$subject,$message);
 
-				if ($retval == true) {
+				/*if ($retval == true) {
 					echo "Message sent successfully...";
 				} else {
 					//print_r(error_get_last());
 					echo "Message could not be sent...";
-				}
+				}*/
+				echo("despres");
 
 				header('Location:' . URL_ABSOLUTE);
 			} else {
@@ -85,6 +87,35 @@ class HomeRegisterController extends Controller
 		}
 	}
 
+	function mg_send($to, $subject, $message) {
+
+		$ch = curl_init();
+
+		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+		curl_setopt($ch, CURLOPT_USERPWD, 'api:'.MAILGUN_API);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+		$plain = strip_tags(br2nl($message));
+
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+		curl_setopt($ch, CURLOPT_URL, 'https://api.mailgun.net/v2/'.DOMAIN.'/messages');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, array('from' => 'support@'.DOMAIN,
+			'to' => $to,
+			'subject' => $subject,
+			'html' => $message,
+			'text' => $plain));
+
+		$j = json_decode(curl_exec($ch));
+
+		$info = curl_getinfo($ch);
+
+		if($info['http_code'] != 200)
+			error("Fel 313: Vänligen meddela detta via E-post till support@".DOMAIN);
+
+		curl_close($ch);
+
+		return $j;
+	}
 
 	/**
 	 * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).
