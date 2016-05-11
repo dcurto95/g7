@@ -20,6 +20,7 @@ $config['search']               = 'HomeSearchProductsController';
 $config['mv']                   = 'HomeMostViewedProductController';
 $config['validateInfo']         = 'HomeValidateInfoController';
 $config['listEditProduct']      = 'HomeListEditProductController';
+$config['u']                    = 'HomeUserController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 $config['error']                = 'ErrorErrorInsertCoinController';

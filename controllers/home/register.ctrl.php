@@ -50,12 +50,13 @@ class HomeRegisterController extends Controller
 			if ($isValid) {
 				$image_manager = $this->getClass('HomeImageManagerModel');
 
-				$image_manager->AddProfileImage("inputFile");
-
 				//Creem usuari
 				$img_name = $_FILES["inputFile"]["name"];
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
+
+
+				$image_manager->AddProfileImage("inputFile");
 
 				// Mail:
 				$subject = "This is subject";
@@ -64,16 +65,16 @@ class HomeRegisterController extends Controller
 				$message .= "<h1>This is headline.</h1>";
 
 				//$retval = mail($email, $subject, $message);
-				echo("abans");
 				$this->mg_send($email,$subject,$message);
 
-				/*if ($retval == true) {
+				/*
+				if ($retval == true) {
 					echo "Message sent successfully...";
 				} else {
 					//print_r(error_get_last());
 					echo "Message could not be sent...";
-				}*/
-				echo("despres");
+				}
+				*/
 
 				header('Location:' . URL_ABSOLUTE);
 			} else {
@@ -87,7 +88,7 @@ class HomeRegisterController extends Controller
 		}
 	}
 
-	function mg_send($to, $subject, $message) {
+	public function mg_send($to, $subject, $message) {
 
 		$ch = curl_init();
 
@@ -95,7 +96,7 @@ class HomeRegisterController extends Controller
 		curl_setopt($ch, CURLOPT_USERPWD, 'api:'.MAILGUN_API);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-		$plain = strip_tags(br2nl($message));
+		$plain = strip_tags(nl2br($message));
 
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 		curl_setopt($ch, CURLOPT_URL, 'https://api.mailgun.net/v2/'.DOMAIN.'/messages');
@@ -116,6 +117,7 @@ class HomeRegisterController extends Controller
 
 		return $j;
 	}
+
 
 	/**
 	 * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).

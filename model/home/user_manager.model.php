@@ -207,6 +207,41 @@ QUERY;
 QUERY;
         $this->execute($query);
 
-
     }
+
+    // No esta feta!!!
+    public function getUserFromName($userName){
+        $query = <<<QUERY
+        SELECT `id_product` FROM `product` WHERE `name` = '$userName'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        if(empty($product)){
+
+            $query2 = <<<QUERY
+        SELECT `id_product` FROM `url_old_new` WHERE `old_name` = '$productName'
+QUERY;
+
+            $names_product = $this->getAll($query2);
+
+            $id_product = $names_product[0]['id_product'];
+
+        } else {
+            $id_product = $product[0]['id_product'];
+        }
+
+        return $id_product;
+    }
+
+    // No esta feta!!!
+    public function userNameToURL($user_name){
+        return preg_replace('/[\s_]/', '-', $user_name);
+    }
+
+    // No esta feta!!!
+    public function userURLToName($user_url_name){
+        return preg_replace('/-/', ' ', $user_url_name);
+    }
+
 }

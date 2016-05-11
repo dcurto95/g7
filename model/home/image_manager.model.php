@@ -4,12 +4,12 @@
 class HomeImageManagerModel extends Model{
 
 
-    public function AddProfileImage($name, $user_id){
+    public function AddProfileImage($name){
 
         // Codi d'adició de la imatge:
         $image = $_FILES["$name"]["name"];
         $filetmp = $_FILES["$name"]["tmp_name"];
-        $img_path = '../htdocs/img/profile_img/'.$user_id.'_'.$image;
+        $img_path = '../htdocs/img/profile_img/'.$image;
         move_uploaded_file($filetmp,$img_path);
 
         $this->ResizeImg($img_path, 200, 200);
