@@ -117,3 +117,9 @@ MODIFY `id_product` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 ALTER TABLE `user`
 MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+
+CREATE TABLE compres(
+id_compres INT AUTO_INCREMENT,
+comprador INT,
+producte INT,
+PRIMARY KEY(id_compres));

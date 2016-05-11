@@ -38,22 +38,15 @@
     </thead>
 
     <tbody>
+
+    {foreach from=$product item=p}
     <tr>
-        <td>Alvin</td>
-        <td>Eclair</td>
-        <td>$0.87</td>
-    </tr>
-    <tr>
-        <td>Alan</td>
-        <td>Jellybean</td>
-        <td>$3.76</td>
-    </tr>
-    <tr>
-        <td>Jonathan</td>
-        <td>Lollipop</td>
-        <td>$7.00</td>
-    </tr>
+        <td> <a href = "{$p.url}">{$p.nom_producte}</a></td>
+        <td>{$p.cost}</td>
+        <td>{$p.nom_venedor}</td>
+
     </tbody>
+    {/foreach}
 </table>
 
 

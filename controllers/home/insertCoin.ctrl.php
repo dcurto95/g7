@@ -18,6 +18,25 @@ class HomeInsertCoinController extends Controller
 
 
         $model = $this->getClass('HomeUserManagerModel');
+        $modelP = $this->getClass('HomeProductManagerModel');
+
+
+        $session = Session::getInstance();
+        $userId = $session->get('id_user');
+
+
+        $product = $modelP->getCompres($userId);
+
+        $numProducts = count($product);
+        for ($i = 0 ; $i < $numProducts ; $i++){
+            $product[$i]['url'] = $modelP->getProductURL($product[$i]['producte']);
+        }
+
+        //Falta  mirar stock i data
+
+       // print_r($product);
+
+        $this->assign("product",$product);
 
         $this->setLayout( $this->view );
 
