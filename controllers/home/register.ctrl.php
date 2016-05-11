@@ -54,8 +54,6 @@ class HomeRegisterController extends Controller
 				$img_name = $_FILES["inputFile"]["name"];
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
-
-
 				$image_manager->AddProfileImage("inputFile");
 
 				// Mail:
