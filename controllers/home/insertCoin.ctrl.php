@@ -71,6 +71,8 @@ class HomeInsertCoinController extends Controller
     }
 
 
+
+
     /**
      * With this method you can load other modules that we will need in our page. You will have these modules availables in your template inside the "modules" array (example: {$modules.head}).
      * The sintax is the following:
