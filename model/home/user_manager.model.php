@@ -6,9 +6,9 @@ class HomeUserManagerModel extends Model{
     public function createUser($username,$email,$twitter,$password,$image,$activation_code){
         $query = <<<QUERY
             INSERT INTO user
-                (username, email, twitter, password, image, activation_code)
+                (`username`, `email`, `twitter`, `password`, `image`, `activation_code`, `valid`, `sold_products`, `saldo`)
             VALUES
-                ('$username', '$email', '$twitter', '$password', '$image', '$activation_code')
+                ('$username', '$email', '$twitter', '$password', '$image', '$activation_code', 0, 0, 0)
 QUERY;
         $this->execute($query);
     }
@@ -212,7 +212,7 @@ QUERY;
     // No esta feta!!!
     public function getUserFromName($userName){
         $query = <<<QUERY
-        SELECT `id_product` FROM `product` WHERE `name` = '$userName'
+        SELECT `id_product` FROM `user` WHERE `name` = '$userName'
 QUERY;
 
         $product = $this->getAll($query);
@@ -232,6 +232,11 @@ QUERY;
         }
 
         return $id_product;
+    }
+
+    // No esta feta!
+    public function getUserURL($user_name){
+        return '/u/';
     }
 
     // No esta feta!!!
