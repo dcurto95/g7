@@ -50,12 +50,13 @@ class HomeRegisterController extends Controller
 			if ($isValid) {
 				$image_manager = $this->getClass('HomeImageManagerModel');
 
-				$image_manager->AddProfileImage("inputFile");
-
 				//Creem usuari
 				$img_name = $_FILES["inputFile"]["name"];
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
+
+
+				$image_manager->AddProfileImage("inputFile");
 
 				// Mail:
 				$subject = "This is subject";
