@@ -52,16 +52,11 @@ class HomeAddProductController extends Controller
 
 				$info['date'] = Filter::getString('date');
 
-				echo 	$info['date'];
 				$today = strtotime(date("j F, Y"));
 				$givenDate = strtotime($info['date']);
 				if ($givenDate < $today){
 					$isValid = false;
 				}
-
-
-
-
 
 				$info['image_small'] = $_FILES["inputFile"]["name"];
 				$info['image_big'] 	 = $_FILES["inputFile"]["name"];

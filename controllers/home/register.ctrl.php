@@ -29,6 +29,8 @@ class HomeRegisterController extends Controller
 		if($isValid) {
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				$isValid = false;
+			} else {
+				$isValid = $model->validateUserNameAndMail($username,$email);
 			}
 		}
 
