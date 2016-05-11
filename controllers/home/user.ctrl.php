@@ -3,16 +3,16 @@
  * Home Controller: Controller example.
 
  */
-class HomeProductController extends Controller
+class HomeUserController extends Controller
 {
-    protected $view = 'home/product.tpl';
+    protected $view = 'home/user.tpl';
     protected $error_view = 'error/error404.tpl';
 
     public function build(){
 
         //header("HTTP/1.1 200 OK");
 
-        $model = $this->getClass('HomeProductManagerModel');
+        $model = $this->getClass('HomeUserManagerModel');
         $modelUsuaris = $this->getClass('HomeUserManagerModel');
         $info = $this->getParams();
         $info = $info['url_arguments'];
@@ -21,27 +21,27 @@ class HomeProductController extends Controller
         $log_user = $session->get('id_user');
 
         if(!empty($info[0])) {
-            $product_name = $model->productURLToName($info[0]);
+            $product_name = $model->userURLToName($info[0]);
 
-            if (empty($info[1])){
-                $product_id = $model->getProductFromName($product_name);
+            if ($info[1] == ''){
+                $product_id = $model->getUserFromName($product_name);
             } else {
                 $product_id = $info[1];
-                $product = $model->getProduct($product_id);
+                $product = $model->getUser($product_id);
                 if (strcmp($product['name'], $product_name) != 0){
                     // El nom no coincideix amb l'ID, cal mirar a la taula d'URL
-                    $product_id = $model->checkNameInURL($product_id, $product_name);
+                    $product_id = -1;
                 }
             }
         }
 
-        if($product_id > 0 && $model->checkDateAndStock($product_id)) {
+        if($product_id > 0) {
 
             $model->increaseView($product_id);
 
             //echo($model->checkDateAndStock($product_id));
 
-            $product = $model->getProduct($product_id);
+            $product = $model->getUser($product_id);
             $this->assign('name', $product['name']);
             $this->assign('preu', $product['price']);
             $this->assign('stock', $product['stock']);

@@ -51,7 +51,7 @@ $config['HomeValidateInfoController']           = PATH_CONTROLLERS . 'home/valid
 $config['HomeSearchProductsController']         = PATH_CONTROLLERS . 'home/searchProducts.ctrl.php';
 $config['HomeMostViewedProductController']	    = PATH_CONTROLLERS . 'home/mostViewedProduct.ctrl.php';
 $config['HomeListEditProductController']	    = PATH_CONTROLLERS . 'home/listEditProduct.ctrl.php';
-
+$config['HomeUserController']	                = PATH_CONTROLLERS . 'home/user.ctrl.php';
 
 // Shared controllers
 $config['SharedHeadController']		            = PATH_CONTROLLERS . 'shared/head.ctrl.php';
