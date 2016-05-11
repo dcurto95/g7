@@ -9,6 +9,8 @@ class HomeRegisterController extends Controller
 
 	public function build()
 	{
+		$this->assign('register_title', 'REGISTER:');
+
 		$model = $this->getClass('HomeUserManagerModel');
 
 		$username_regex = '([A-Za-z]{6,})';
@@ -40,8 +42,6 @@ class HomeRegisterController extends Controller
 			$isValid = (strlen($password) <= 8) && (strlen($password) >= 6);
 		}
 
-		//$isValid = false;
-
 		$activation_code = uniqid('AC');
 
 		$is_submit = Filter::getString('submit');
@@ -54,31 +54,28 @@ class HomeRegisterController extends Controller
 				$img_name = $_FILES["inputFile"]["name"];
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
-
-
 				$image_manager->AddProfileImage("inputFile");
 
 				// Mail:
-				$subject = "This is subject";
+				/*$subject = "This is subject";
 
 				$message = "<b>This is HTML message.</b>";
 				$message .= "<h1>This is headline.</h1>";
 
-				//$retval = mail($email, $subject, $message);
+				$retval = mail($email, $subject, $message);
 				$this->mg_send($email,$subject,$message);
 
-				/*
 				if ($retval == true) {
 					echo "Message sent successfully...";
 				} else {
 					//print_r(error_get_last());
 					echo "Message could not be sent...";
-				}
-				*/
+				}*/
 
 				header('Location:' . URL_ABSOLUTE);
 			} else {
 				// Reomplir els camps!
+				$this->assign('register_title', 'REGISTER INCORRECT, TRY AGAIN:');
 				$this->assign('username', $username);
 				$this->assign('email', $email);
 				$this->assign('password', $password);
@@ -86,36 +83,6 @@ class HomeRegisterController extends Controller
 			}
 
 		}
-	}
-
-	public function mg_send($to, $subject, $message) {
-
-		$ch = curl_init();
-
-		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-		curl_setopt($ch, CURLOPT_USERPWD, 'api:'.MAILGUN_API);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-		$plain = strip_tags(nl2br($message));
-
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-		curl_setopt($ch, CURLOPT_URL, 'https://api.mailgun.net/v2/'.DOMAIN.'/messages');
-		curl_setopt($ch, CURLOPT_POSTFIELDS, array('from' => 'support@'.DOMAIN,
-			'to' => $to,
-			'subject' => $subject,
-			'html' => $message,
-			'text' => $plain));
-
-		$j = json_decode(curl_exec($ch));
-
-		$info = curl_getinfo($ch);
-
-		if($info['http_code'] != 200)
-			error("Fel 313: Vänligen meddela detta via E-post till support@".DOMAIN);
-
-		curl_close($ch);
-
-		return $j;
 	}
 
 
