@@ -9,6 +9,8 @@ class HomeRegisterController extends Controller
 
 	public function build()
 	{
+		$this->assign('register_title', 'REGISTER:');
+
 		$model = $this->getClass('HomeUserManagerModel');
 
 		$username_regex = '([A-Za-z]{6,})';
@@ -40,8 +42,6 @@ class HomeRegisterController extends Controller
 			$isValid = (strlen($password) <= 8) && (strlen($password) >= 6);
 		}
 
-		//$isValid = false;
-
 		$activation_code = uniqid('AC');
 
 		$is_submit = Filter::getString('submit');
@@ -57,7 +57,7 @@ class HomeRegisterController extends Controller
 				$image_manager->AddProfileImage("inputFile");
 
 				// Mail:
-				$subject = "This is subject";
+				/*$subject = "This is subject";
 
 				$message = "<b>This is HTML message.</b>";
 				$message .= "<h1>This is headline.</h1>";
@@ -70,11 +70,12 @@ class HomeRegisterController extends Controller
 				} else {
 					//print_r(error_get_last());
 					echo "Message could not be sent...";
-				}
+				}*/
 
 				header('Location:' . URL_ABSOLUTE);
 			} else {
 				// Reomplir els camps!
+				$this->assign('register_title', 'REGISTER INCORRECT, TRY AGAIN:');
 				$this->assign('username', $username);
 				$this->assign('email', $email);
 				$this->assign('password', $password);
