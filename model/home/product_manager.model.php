@@ -159,7 +159,6 @@ QUERY;
 QUERY;
 
         $product = $this->getAll($query);
-        $p = $this->getCorrectProducts($product);
         return $product[0];
     }
 
@@ -177,7 +176,6 @@ QUERY;
 
         }
         $product = $this->getAll($query);
-       // $p = $this->getCorrectProducts($product);
         return $product;
     }
 
@@ -323,8 +321,7 @@ QUERY;
         SELECT * FROM `product` WHERE `name` LIKE '%$search%'
 QUERY;
         $products = $this->getAll($query);
-        $p = $this->getCorrectProducts($products);
-        return $p;
+        return $products;
     }
 
 
@@ -359,19 +356,6 @@ QUERY;
         $this->execute($query);
     }
 
-    public function getCorrectProducts($products){
-        $num = count($products);
-        $aux=0;
-        for ($i = 0 ; $i < $num ; $i++){
-            if($this->checkDateAndStock($products[$i]['id_product'])){
 
-                $p[$aux] = $products[$i];
-                $aux=$aux+1;
-            }
-
-        }
-
-        return $p;
-    }
 
 }
