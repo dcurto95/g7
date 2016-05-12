@@ -212,31 +212,26 @@ QUERY;
     // No esta feta!!!
     public function getUserFromName($userName){
         $query = <<<QUERY
-        SELECT `id_product` FROM `user` WHERE `name` = '$userName'
+        SELECT `id_user` FROM `user` WHERE `username` = '$userName'
 QUERY;
 
-        $product = $this->getAll($query);
+        $user = $this->getAll($query);
 
-        if(empty($product)){
+        if(empty($user)){
 
-            $query2 = <<<QUERY
-        SELECT `id_product` FROM `url_old_new` WHERE `old_name` = '$productName'
-QUERY;
-
-            $names_product = $this->getAll($query2);
-
-            $id_product = $names_product[0]['id_product'];
+            $id_user = -1;
 
         } else {
-            $id_product = $product[0]['id_product'];
+            $id_user = $user[0]['id_user'];
         }
 
-        return $id_product;
+        return $id_user;
     }
 
     // No esta feta!
     public function getUserURL($user_name){
-        return '/u/';
+        $user_name_url = $this->userNameToURL($user_name);
+        return '/u/'.$user_name_url;
     }
 
     // No esta feta!!!
