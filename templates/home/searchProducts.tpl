@@ -1,16 +1,21 @@
 {$modules.head}
 
 
+
 <form  method="post">
     <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s4 ">
              <input type="text" placeholder="Enter the name of the product you want to search" name="search" required>
         </div>
         <div class="input-field col s2">
             <input type="submit" class = "btn waves-effect waves-light" name="submit" value="Send" >
         </div>
      </div>
+
 </form>
+
+
+
 <div class="row">
 
     {foreach from=$search item=s}
@@ -37,6 +42,7 @@
     {/foreach}
 
 </div>
+
 {$modules.footer}
 
 

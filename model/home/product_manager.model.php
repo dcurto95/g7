@@ -346,6 +346,13 @@ QUERY;
     }
 
     public function getCompres($id_user){
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
+        /*
+         * REVISAR LA DATA QUE SIGUI FUTURA I TAMBE EL SALDO !!!
+         *
+         */
+
         $query = <<<QUERY
         SELECT * FROM `compres` WHERE `comprador`= '$id_user'
 QUERY;

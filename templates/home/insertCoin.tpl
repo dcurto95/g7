@@ -1,6 +1,16 @@
 {$modules.head}
 
 
+
+{if $error eq 1}
+    <div class="row">
+        <div class="col s12 m12 ">
+            <div class="card-panel red ">
+                <span class="white-text"> Error , you can insert coins if you have reached 1000 coins</span>
+            </div>
+        </div>
+    </div>
+{/if}
 <h2 class="light-blue-text"> INSERT COINS: </h2>
 
 <form  class="col-md-12" action="" method = "post">
@@ -24,6 +34,7 @@
     <input class="btn waves-effect waves-light" type="submit" name="action" id="action">
 
 </form>
+
 
 <h2 class="light-blue-text"> PRODUCTS BOUGHT: </h2>
 

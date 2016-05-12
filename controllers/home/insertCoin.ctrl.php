@@ -51,7 +51,8 @@ class HomeInsertCoinController extends Controller
 
             if ($saldo+$money >1000){
                 // Superem maxim de diners... caldrà mostrar algo...
-                $this->setLayout( $this->error_view );
+                $this->assign("error",TRUE);
+               // $this->setLayout( $this->error_view );
 
             }else{
                 $model->insertMoney($userId, $money);
