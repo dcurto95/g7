@@ -64,8 +64,10 @@ QUERY;
     }
 
     public function getAllProductsFromName($productName){
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         $query = <<<QUERY
-        SELECT * FROM `product` WHERE `name` = '$productName' ORDER BY `id_product`
+        SELECT * FROM `product` WHERE `name` = '$productName' AND `date`>= '$date' AND `stock` > '0' ORDER BY `id_product`
 QUERY;
 
         $product = $this->getAll($query);
@@ -154,24 +156,30 @@ QUERY;
     }
 
     public function getLatestProduct(){
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `id_product` DESC LIMIT 1
+        SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0'  ORDER BY `id_product` DESC LIMIT 1
 QUERY;
 
         $product = $this->getAll($query);
+
         return $product[0];
     }
 
     public function getMostViewedProducts($max)
     {
+
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         if ($max == 0){
             $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `views` desc
+        SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0' ORDER BY `views` desc
 QUERY;
 
         }else{
             $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `views` desc limit 4
+        SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0' ORDER BY `views` desc limit 4
 QUERY;
 
         }
@@ -317,8 +325,10 @@ QUERY;
 
     public function searchProduct($search){
 
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         $query = <<<QUERY
-        SELECT * FROM `product` WHERE `name` LIKE '%$search%'
+        SELECT * FROM `product` WHERE `name` LIKE '%$search%' AND `date`>= '$date' AND `stock` > '0'
 QUERY;
         $products = $this->getAll($query);
         return $products;
@@ -333,10 +343,7 @@ QUERY;
 
         $product = $this->getAll($query);
         return $product[0]['id_user'];
-
     }
-
-
 
     public function getCompres($id_user){
         $query = <<<QUERY
@@ -355,7 +362,6 @@ QUERY;
 QUERY;
         $this->execute($query);
     }
-
 
 
 }

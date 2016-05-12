@@ -49,7 +49,7 @@ CREATE TABLE `product` (
   `price` float unsigned NOT NULL,
   `stock` int(10) unsigned NOT NULL,
   `description` varchar(500) NOT NULL,
-  `date` varchar(50) NOT NULL,
+  `date` DATE NOT NULL,
   `image_small` varchar(200) NOT NULL,
   `image_big` varchar(200) NOT NULL,
   `views` int(11) NOT NULL DEFAULT '0',
