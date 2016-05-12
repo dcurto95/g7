@@ -22,6 +22,7 @@ class HomeHomeController extends Controller
 		for ($i = 0 ; $i < $numProducts; $i++){
 
 			$mostViewedProducts[$i]['url'] = $model->getProductURL($mostViewedProducts[$i]['id_product']);
+			$mostViewedProducts[$i]['description'] = substr($mostViewedProducts[$i]['description'], 0, 50);
 		}
 
 

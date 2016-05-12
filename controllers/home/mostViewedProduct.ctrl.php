@@ -45,6 +45,8 @@ class HomeMostViewedProductController extends Controller
                 $array_prod[$i] = $mostViewedProducts[$index];
                 $array_prod[$i]['views_percentage'] = round(($array_prod[$i]['views']/$total)*100);
                 $array_prod[$i]['url'] = $model->getProductURL($array_prod[$i]['id_product']);
+                $array_prod[$i]['description'] = substr($array_prod[$i]['description'], 0, 50);
+
             }
         }
 

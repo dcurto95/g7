@@ -64,8 +64,10 @@ QUERY;
     }
 
     public function getAllProductsFromName($productName){
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         $query = <<<QUERY
-        SELECT * FROM `product` WHERE `name` = '$productName' ORDER BY `id_product`
+        SELECT * FROM `product` WHERE `name` = '$productName' AND `date`>= '$date' AND `stock` > '0' ORDER BY `id_product`
 QUERY;
 
         $product = $this->getAll($query);
@@ -154,30 +156,34 @@ QUERY;
     }
 
     public function getLatestProduct(){
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `id_product` DESC LIMIT 1
+        SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0'  ORDER BY `id_product` DESC LIMIT 1
 QUERY;
 
         $product = $this->getAll($query);
-        $p = $this->getCorrectProducts($product);
+
         return $product[0];
     }
 
     public function getMostViewedProducts($max)
     {
+
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         if ($max == 0){
             $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `views` desc
+        SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0' ORDER BY `views` desc
 QUERY;
 
         }else{
             $query = <<<QUERY
-        SELECT * FROM `product` ORDER BY `views` desc limit 4
+        SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0' ORDER BY `views` desc limit 4
 QUERY;
 
         }
         $product = $this->getAll($query);
-       // $p = $this->getCorrectProducts($product);
         return $product;
     }
 
@@ -319,12 +325,13 @@ QUERY;
 
     public function searchProduct($search){
 
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
         $query = <<<QUERY
-        SELECT * FROM `product` WHERE `name` LIKE '%$search%'
+        SELECT * FROM `product` WHERE `name` LIKE '%$search%' AND `date`>= '$date' AND `stock` > '0'
 QUERY;
         $products = $this->getAll($query);
-        $p = $this->getCorrectProducts($products);
-        return $p;
+        return $products;
     }
 
 
@@ -336,12 +343,16 @@ QUERY;
 
         $product = $this->getAll($query);
         return $product[0]['id_user'];
-
     }
 
-
-
     public function getCompres($id_user){
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+
+        /*
+         * REVISAR LA DATA QUE SIGUI FUTURA I TAMBE EL SALDO !!!
+         *
+         */
+
         $query = <<<QUERY
         SELECT * FROM `compres` WHERE `comprador`= '$id_user'
 QUERY;
@@ -359,19 +370,5 @@ QUERY;
         $this->execute($query);
     }
 
-    public function getCorrectProducts($products){
-        $num = count($products);
-        $aux=0;
-        for ($i = 0 ; $i < $num ; $i++){
-            if($this->checkDateAndStock($products[$i]['id_product'])){
-
-                $p[$aux] = $products[$i];
-                $aux=$aux+1;
-            }
-
-        }
-
-        return $p;
-    }
 
 }

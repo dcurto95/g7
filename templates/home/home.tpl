@@ -26,7 +26,7 @@
 
                 </div>
                 <div class="card-content">
-                    <p><b>Description: </b>{$p.description|truncate:50}</p><br>
+                    <p><b>Description: </b>{$p.description}</p><br>
                     <p><b> Price: </b>{$p.price} &#8364</p><br>
                     <p><b>Expiry Date:</b>{$p.date}</p>
                 </div>
