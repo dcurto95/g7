@@ -13,7 +13,7 @@
             </div>
             </div>
         </li>
-        
+
         {foreach from=$comments item=c}
             <li class="collection-item avatar">
                 <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}" alt="" class="circle">
