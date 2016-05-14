@@ -74,7 +74,7 @@ class HomeRegisterController extends Controller
 					echo "Message could not be sent...";
 				}*/
 
-				header('Location:' . URL_ABSOLUTE);
+				header('Location:' . URL_ABSOLUTE.'/validateInfo/'.$activation_code);
 			} else {
 				// Reomplir els camps!
 				$this->assign('register_title', 'REGISTER INCORRECT, TRY AGAIN:');

@@ -42,7 +42,7 @@
                     <input type="file" name="inputFile" id="inputFile" >
                 </div>
                 <div class="file-path-wrapper col s8">
-                    <input class="file-path validate" type="text" name="product_image_name" value="{$product_image_name}" required>
+                    <input class="file-path validate" type="text" name="product_image_name" value="{$product_image_name}" >
                 </div>
             </div>
             <div class="file-field input-field col s4">

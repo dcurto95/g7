@@ -54,14 +54,14 @@ QUERY;
 
     public function getProduct($id){
         $query = <<<QUERY
-        SELECT * FROM `product` WHERE `id_product` = '$id'
+        SELECT * FROM `product` WHERE `id_product` = $id
 QUERY;
+
+        $product = $this->getAll($query);
 
         if(empty($product)){
             return null;
         }else{
-            $product = $this->getAll($query);
-
             return $product[0];
         }
 
@@ -363,9 +363,6 @@ QUERY;
     }
 
     public function addCompra($comprador,$producte,$nom,$preu,$nomSeller){
-        echo $nom;
-        echo $preu;
-
         $query = <<<QUERY
         INSERT INTO `compres`(`comprador`, `producte`,`nom_producte`,`cost`,`nom_venedor`) VALUES ('$comprador', '$producte','$nom','$preu','$nomSeller');
 QUERY;

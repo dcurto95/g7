@@ -11,6 +11,7 @@ class HomeAddProductController extends Controller
 
 		$session = Session::getInstance();
 
+
 		$user = $session->get('id_user');
 
 		if ($user != null){
@@ -63,6 +64,7 @@ class HomeAddProductController extends Controller
 
 				$imageManager = $this->getClass('HomeImageManagerModel');
 				if ($session->get('image_fail_flag') == null || $session->get('image_fail_flag') == false){
+					$session->set('image_fail_flag',false);
 					if ($_FILES["inputFile"]["size"] > 2 * 1024 * 1024 ) {
 						$isValid = false;
 					}
@@ -81,8 +83,11 @@ class HomeAddProductController extends Controller
 					$session->set('image_fail_name', $info['image_big']);
 				}
 
-				if ($session->get('saldo') == 0){
+				$modelUser = $this->getClass('HomeUserManagerModel');
+				$availableMoney = $modelUser->getMoney($user);
+				if ($availableMoney == 0){
 					// Anem a una pantalla d'error! -> Falta de diners.
+
 					header('Location:' .URL_ABSOLUTE .'/requireMoney');
 				} else {
 

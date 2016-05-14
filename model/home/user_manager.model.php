@@ -13,7 +13,8 @@ QUERY;
         $this->execute($query);
     }
 
-    public function getUser($id){
+    public function getUser($id)
+    {
         $query = <<<QUERY
         SELECT
                 *
@@ -24,7 +25,11 @@ QUERY;
 QUERY;
         $user = $this->getAll($query);
 
-        return $user[0];
+        if (empty($user)) {
+            return null;
+        } else{
+            return $user[0];
+          }
     }
 
     public function validateUser($activation_code){

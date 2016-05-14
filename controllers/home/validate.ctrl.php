@@ -18,11 +18,11 @@ class HomeValidateController extends Controller
             $correcte = $model->validateUser($info[0]);
             if($correcte){
                 //Validacio OK
-                $this->assign('result', "Validation complete.");
+                $this->assign('result', "Welcome!.");
             }else{
                 //Validacio KO
                 header("HTTP/1.1 403 Forbidden");
-                $this->assign('result', "Validation incomplete.");
+                $this->assign('result', "Validation Incorrect.");
             }
         }
         $this->setLayout($this->view);
