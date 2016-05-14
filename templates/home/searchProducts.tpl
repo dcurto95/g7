@@ -16,12 +16,14 @@
 
 <div class="input-field col s12">
     <select>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <option value="" disabled selected>Sort by</option>
+        <option value="1">Newest</option>
+        <<option value="2">Most Viewed</option>
+        <option value="3">Price:$$-$</option>
+        <option value="4">Price:$-$$</option>
+
     </select>
-    <label>Materialize Select</label>
+    <label>Sort by</label>
 </div>
 
 

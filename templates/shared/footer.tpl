@@ -31,7 +31,7 @@
 	<script src="{$url.global}/js/modal-init.js"></script>
 	<script src="{$url.global}/js/datepicker-init.js"></script>
 	<script src="{$url.global}/js/carousel.js"></script>
-<script src="{$url.global}/js/select-init.js"></script>
+	<script src="{$url.global}/js/select-init.js"></script>
 
 </body>
 
