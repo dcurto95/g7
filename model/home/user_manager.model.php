@@ -131,7 +131,7 @@ QUERY;
 QUERY;
 
         $product = $this->getAll($query);
-
+        
         $price = $product[0]['price'];
 
         $money = $this->getMoney($id_user);
