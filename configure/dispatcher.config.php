@@ -21,9 +21,12 @@ $config['mv']                   = 'HomeMostViewedProductController';
 $config['validateInfo']         = 'HomeValidateInfoController';
 $config['listEditProduct']      = 'HomeListEditProductController';
 $config['u']                    = 'HomeUserController';
+$config['myComments']           = 'HomeMyCommentsController';
+$config['editComment']          = 'HomeEditCommentController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 $config['error']                = 'ErrorErrorInsertCoinController';
 $config['error404']             = 'ErrorError404Controller';
 $config['error403']             = 'ErrorError403Controller';
+$config['errorComment']         = 'ErrorErrorCommentController';
 

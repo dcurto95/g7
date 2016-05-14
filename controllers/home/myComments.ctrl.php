@@ -3,9 +3,9 @@
  * Home Controller: Controller example.
 
  */
-class HomeUserController extends Controller
+class HomeMyCommentsController extends Controller
 {
-    protected $view = 'home/user.tpl';
+    protected $view = 'home/myComments.tpl';
     protected $error_view = 'error/error404.tpl';
 
     public function build(){
@@ -14,30 +14,19 @@ class HomeUserController extends Controller
 
         $modelUser = $this->getClass('HomeUserManagerModel');
 
-        $info = $this->getParams();
-        $info = $info['url_arguments'];
-
         $session = Session::getInstance();
-        $id_usr_src = $user = $session->get('id_user');
+        $id_usr = $user = $session->get('id_user');
 
-        $is_logged = ($id_usr_src != null);
+        $is_logged = ($id_usr != null);
 
         if ($is_logged == false){
             header('Location:' . URL_ABSOLUTE.'/errorComment');
         } else {
 
-            if (!empty($info[0])) {
-                $userName = $modelUser->userURLToName($info[0]);
-                $id_user = $modelUser->getUserFromName($userName);
-            } else {
-                header('Location:' . URL_ABSOLUTE . '/error404');
-            }
-
-            if ($id_user > 0) {
 
                 $modelComments = $this->getClass('HomeCommentsManagerModel');
 
-                $user_info = $modelUser->getUser($id_user);
+                $user_info = $modelUser->getUser($id_usr);
 
                 $user_img = '/img/profile_img/' . $user_info['image'];
 
@@ -46,18 +35,10 @@ class HomeUserController extends Controller
 
                 $this->assign('isLogged', $is_logged);
 
-                $is_submit = Filter::getString('submit');
-
-                if ($is_submit) {
-                    $comment = Filter::getString('comment');
-                    $id_usr_dst = $id_user;
-                    $modelComments->addComment($id_usr_src, $id_usr_dst, $comment);
-                }
-
-                $comments = $modelComments->getUserComments($id_user);
+                $comments = $modelComments->getUserCommentsSrc($id_usr);
 
                 for ($i = 0; $i < sizeof($comments); $i++) {
-                    $user = $modelUser->getUser($comments[$i]['id_usr_src']);
+                    $user = $modelUser->getUser($comments[$i]['id_usr_dst']);
                     $comments[$i]['user'] = $user;
                     $comments[$i]['user_url'] = $modelUser->getUserURL($user['username']);
                 }
@@ -65,9 +46,6 @@ class HomeUserController extends Controller
                 $this->assign('comments', $comments);
 
                 $this->setLayout($this->view);
-            } else {
-                header('Location:' . URL_ABSOLUTE . '/error404');
-            }
         }
     }
 

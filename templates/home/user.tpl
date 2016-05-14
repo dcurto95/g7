@@ -5,27 +5,39 @@
 
         <li class="collection-header">
             <div class="row ">
-            <div class="col s2">
-                <img src="{$user_img}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            </div>
-            <div class="col s10">
-                <h4 style="margin-top: 5%;">Usuari: {$user_name} </h4>
-            </div>
+                <div class="col s2">
+                    <img src="{$user_img}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </div>
+                <div class="col s10">
+                    <h4 style="margin-top: 5%;">User: {$user_name} </h4>
+                </div>
             </div>
         </li>
+        {if $isLogged eq true}
+        <li class="collection-item avatar">
+            <form class="" method="post" action="" enctype = "multipart/form-data">
+                <div class="row">
+                    <div class="input-field ">
+                        <h7 class="deep-orange-text lighten-1">Comment</h7>
+                        <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
+                        <script>
+                            // Replace the <textarea id="description"> with a CKEditor
+                            // instance, using default configuration.
+                            CKEDITOR.replace( 'comment' );
+                        </script>
+                    </div>
+                </div>
+                <input class="btn waves-effect waves-light light-blue lighten-1" type="submit" id ="submit" name="submit" value="SEND">
+            </form>
+        </li>
+        {/if}
 
         {foreach from=$comments item=c}
             <li class="collection-item avatar">
-                <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}" alt="" class="circle">
-                <a href="{$url.global}" class="title">{$p.name}</a>
-                <p>{$p.description|truncate:50} <br>
-                    {$p.date} <br>
-                    Visites  {$p.views_percentage}%
-                </p>
-                <p class="secondary-content"> {$p.views} <i class="material-icons">visibility</i><br>
-                    {$p.ventes}<i class="material-icons">shopping_cart</i>
-                </p>
-
+                <img src="/img/profile_img/{$c.user.image}" alt="" class="circle">
+                <a href="#" class="title">{$c.user.username}</a>
+                <p>{$c.date}</p>
+                <p>{$c.comment|truncate:50}</p>
             </li>
 
         {/foreach}

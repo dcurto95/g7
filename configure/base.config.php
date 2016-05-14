@@ -30,6 +30,7 @@ $config['dispatcher']			    		=  PATH_ENGINE . 'dispatcher.class.php';
 $config['ErrorError404Controller']	            = PATH_CONTROLLERS . 'error/error404.ctrl.php';
 $config['ErrorError403Controller']	            = PATH_CONTROLLERS . 'error/error403.ctrl.php';
 $config['ErrorErrorMoneyController']            = PATH_CONTROLLERS . 'error/errorMoney.ctrl.php';
+$config['ErrorErrorCommentController']          = PATH_CONTROLLERS . 'error/errorComment.ctrl.php';
 $config['ErrorErrorInsertCoinController']       = PATH_CONTROLLERS . 'error/errorInsertCoin.ctrl.php';
 
 // Home Controllers
@@ -52,6 +53,8 @@ $config['HomeSearchProductsController']         = PATH_CONTROLLERS . 'home/searc
 $config['HomeMostViewedProductController']	    = PATH_CONTROLLERS . 'home/mostViewedProduct.ctrl.php';
 $config['HomeListEditProductController']	    = PATH_CONTROLLERS . 'home/listEditProduct.ctrl.php';
 $config['HomeUserController']	                = PATH_CONTROLLERS . 'home/user.ctrl.php';
+$config['HomeMyCommentsController']	            = PATH_CONTROLLERS . 'home/myComments.ctrl.php';
+$config['HomeEditCommentController']	        = PATH_CONTROLLERS . 'home/editComment.ctrl.php';
 
 // Shared controllers
 $config['SharedHeadController']		            = PATH_CONTROLLERS . 'shared/head.ctrl.php';
