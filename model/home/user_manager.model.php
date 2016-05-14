@@ -209,7 +209,7 @@ QUERY;
 
     }
 
-    // No esta feta!!!
+    
     public function getUserFromName($userName){
         $query = <<<QUERY
         SELECT `id_user` FROM `user` WHERE `username` = '$userName'
@@ -228,18 +228,18 @@ QUERY;
         return $id_user;
     }
 
-    // No esta feta!
+
     public function getUserURL($user_name){
         $user_name_url = $this->userNameToURL($user_name);
         return '/u/'.$user_name_url;
     }
 
-    // No esta feta!!!
+
     public function userNameToURL($user_name){
         return preg_replace('/[\s_]/', '-', $user_name);
     }
 
-    // No esta feta!!!
+
     public function userURLToName($user_url_name){
         return preg_replace('/-/', ' ', $user_url_name);
     }
