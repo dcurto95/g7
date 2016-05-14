@@ -27,9 +27,11 @@ class HomeInsertCoinController extends Controller
 
         $product = $modelP->getCompres($userId);
 
+
         $numProducts = count($product);
         for ($i = 0 ; $i < $numProducts ; $i++){
             $product[$i]['url'] = $modelP->getProductURL($product[$i]['producte']);
+            $product[$i]['url_seller'] = $model-> getUserURL($product[$i]['nom_venedor']);
         }
 
         //Falta  mirar stock i data

@@ -42,11 +42,14 @@ class HomeListEditProductController extends Controller
                 $num_pagines++;
             }
 
-            for ($i = 1 ; $i <= $num_pagines; $i++){
-                $array_pag[$i]= $i;
+
+            $array_pag[0]= 1;
+            for ($i = 1 ; $i < $num_pagines; $i++){
+                $array_pag[$i]= $i+1;
             }
             $this->assign('num_pag',$array_pag);
 
+            $array_prod = null;
             for ($i = 0 ; $i < 10; $i++){
                 $index = $i + (10 * ($which - 1));
                 if ($index < $numProducts) {

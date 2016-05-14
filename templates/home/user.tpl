@@ -38,6 +38,10 @@
                 <a href="#" class="title">{$c.user.username}</a>
                 <p>{$c.date}</p>
                 <p>{$c.comment|truncate:50}</p>
+                {if $c.editable eq true}
+                    <p class="secondary-content"><a href="{$url.global}/editComment/{$c.id}" class="secondary-content">Edit/Remove <i class="material-icons">send</i></a></p>
+                {/if}
+
             </li>
 
         {/foreach}

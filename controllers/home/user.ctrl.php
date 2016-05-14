@@ -60,6 +60,7 @@ class HomeUserController extends Controller
                     $user = $modelUser->getUser($comments[$i]['id_usr_src']);
                     $comments[$i]['user'] = $user;
                     $comments[$i]['user_url'] = $modelUser->getUserURL($user['username']);
+                    $comments[$i]['editable'] = ($id_usr_src == $comments[$i]['id_usr_src']);
                 }
 
                 $this->assign('comments', $comments);

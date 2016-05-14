@@ -33,12 +33,14 @@ class HomeMostViewedProductController extends Controller
         if($numProducts%10>0){
             $num_pagines++;
         }
+        $num_pagines++;
 
         for ($i = 1 ; $i <= $num_pagines; $i++){
             $array_pag[$i]= $i;
         }
         $this->assign('num_pag',$array_pag);
 
+        $array_prod = null;
         for ($i = 0 ; $i < 10; $i++){
             $index = $i + (10 * ($which - 1));
             if ($index < $numProducts) {
@@ -51,7 +53,7 @@ class HomeMostViewedProductController extends Controller
         }
 
         if ($which > $num_pagines){
-            header('Location:' . URL_ABSOLUTE.'/error403');
+            header('Location:' . URL_ABSOLUTE.'/error404');
 
         } else {
             $this->assign('next', ($which + 1));

@@ -1,13 +1,16 @@
 {$modules.head}
 
-<form method="post">
-    <div class = "row">
-        <div class="input-field col s8">
-            <input id="search" type="search" required>
-            <label for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
+
+
+<form  method="post">
+    <div class="row center-align">
+        <div class="input-field col s4 ">
+            <i class="material-icons prefix">search</i>
+            <input type="text" placeholder="Enter the name of the product you want to search" name="search" required>
+
         </div>
-        <div class="input-field col s4">
+
+               <div class="input-field col s4">
             <select>
                 <option selected="selected" value="1">Newest</option>
                 <<option value="2">Most Viewed</option>
@@ -17,7 +20,10 @@
             </select>
             <label>Sort by</label>
         </div>
-    </div>
+        <div class="input-field col s2">
+            <input type="submit" class = "btn waves-effect waves-light" name="submit" value="Send" >
+        </div>
+     </div>
 
 </form>
 

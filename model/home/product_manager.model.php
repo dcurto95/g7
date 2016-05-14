@@ -57,10 +57,14 @@ QUERY;
         SELECT * FROM `product` WHERE `id_product` = '$id'
 QUERY;
 
-        $product = $this->getAll($query);
+        if(empty($product)){
+            return null;
+        }else{
+            $product = $this->getAll($query);
 
+            return $product[0];
+        }
 
-        return $product[0];
     }
 
     public function getAllProductsFromName($productName){
@@ -163,8 +167,11 @@ QUERY;
 QUERY;
 
         $product = $this->getAll($query);
-
-        return $product[0];
+        if (empty($product)){
+            return null;
+        }else {
+            return $product[0];
+        }
     }
 
     public function getMostViewedProducts($max)
@@ -279,12 +286,7 @@ QUERY;
 
     public function getProductURL($id_product){
 
-        $query = <<<QUERY
-        SELECT * FROM `product` WHERE `id_product` = '$id_product'
-QUERY;
-
-        $aux_product = $this->getAll($query);
-        $product = $aux_product[0];
+        $product = $this->getProduct($id_product);
 
         $product_name = $this->productNameToURL($product['name']);
 

@@ -8,11 +8,11 @@
                 <h2>
                     Not Logged</h2>
                 <div class="error-details">
-                    To be able to comment you must log in or register.
+                    <p>To be able to comment you must log in or register.</p>
                 </div>
                 <div class="error-actions">
-                    <a href="{$url.global}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        Take Me Home </a>
+                    <a href="{$url.global}/register" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Go to Register </a>
                 </div>
             </div>
         </div>
