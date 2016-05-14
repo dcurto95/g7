@@ -24,6 +24,10 @@ class SharedHeadController extends Controller
 			$this->assign('username', $username);
 			$this->assign('user_coins', $user_coins);
 
+			$model = $this->getClass('HomeUserManagerModel');
+			$user_url = $model->getUserURL($username);
+			$this->assign('url_user', $user_url);
+
 		} else {
 
 			$this->assign('isLogged', false);

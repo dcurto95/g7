@@ -27,7 +27,7 @@
 			<!-- Dropdown -->
 
 			<ul id="dropdown1" class="dropdown-content" style="margin-top: 4.5%;">
-				<li><a href="#" class="light-blue-text darken-3">Profile</a></li>
+				<li><a href="{$url.global}{$url_user}" class="light-blue-text darken-3">Profile</a></li>
 				<li><a href="{$url.global}/listEditProduct" class="light-blue-text darken-3">Edit Prod.</a></li>
 				<li class="divider"></li>
 				<li>
