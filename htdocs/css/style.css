@@ -94,3 +94,8 @@ span.badge.coin:after{
     width:400px;
     left: 35%;
 }
+
+.carousel-item{
+    width:100px;
+
+}

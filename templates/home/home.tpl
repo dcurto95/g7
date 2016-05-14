@@ -41,20 +41,24 @@
 
     <div class = center-align>
         <h3 class="light-blue-text"> LATEST UPLOADED PRODUCT PHOTOS  </h3>
+
+            {foreach from =$image item = i}
+
+               <img src ="img/product_img_tiny/{$i.id_user}_{$i.image_small}">
+
+            {/foreach}
+        </div>
+
+    <div class = center-align>
+        <h3 class="light-blue-text"> LATEST UPLOADED PRODUCT PHOTOS  </h3>
+        <div class="carousel">
         {foreach from =$image item = i}
 
-            <img src ="img/product_img_tiny/{$i.id_user}_{$i.image_small}">
+        <a class="carousel-item" ><img src ="img/product_img_tiny/{$i.id_user}_{$i.image_small}"></a>
 
         {/foreach}
     </div>
 
-    <div class="carousel">
-        <p>Hey where is Carousel. It should be here</p>
-        <a class="carousel-item" ><img src="img/product_img_tiny/1_banana.jpg"></a>
-        <a class="carousel-item"><img src="img/product_img_tiny/1_banana.jpg"></a>
-        <a class="carousel-item" ><img src="img/product_img_tiny/1_banana.jpg"></a>
-        <a class="carousel-item" ><img src="img/product_img_tiny/1_banana.jpg"></a>
-    </div>
 
 
 </div>
@@ -76,15 +80,7 @@
         {/literal}
     </script>
 
-    <script>
-        {literal}
-        $(document).ready(function(){
-            console.log("Hey I am in carousel");
-            $('.carousel').carousel();
-        });
-        {/literal}
 
-    </script>
 
 </div>
 
