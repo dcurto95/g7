@@ -14,7 +14,8 @@ class HomeHomeController extends Controller
 		$model = $this->getClass('HomeProductManagerModel');
 
 		$latestProduct = $model->getLatestProduct();
-		$latestProduct['url'] = $model->getProductURL($latestProduct['id_product']);
+
+
 
 		$mostViewedProducts = $model->getMostViewedProducts(1);
 
@@ -31,7 +32,16 @@ class HomeHomeController extends Controller
 
 		$this->assign('image',$latestImages);
 		$this->assign('mvProduct',$mostViewedProducts);
-		$this->assign('lastProduct',$latestProduct);
+
+		if ($latestProduct !=null){
+			$latestProduct['url'] = $model->getProductURL($latestProduct['id_product']);
+			$this->assign('lastProduct',$latestProduct);
+
+			$this->assign('showLastProduct', true);
+
+		}else{
+			$this->assign('showLastProduct', false);
+		}
 
 
 		$this->setLayout($this->view);

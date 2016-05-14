@@ -52,9 +52,15 @@
 
     {foreach from=$product item=p}
     <tr>
-        <td> <a href = "{$p.url}">{$p.nom_producte}</a></td>
+        {if $p.validLink eq true}
+            <td> <a href = "{$p.url}">{$p.nom_producte}</a></td>
+        {else}
+            <td> <a href = "#">{$p.nom_producte}</a></td>
+        {/if}
         <td>{$p.cost}</td>
         <td><a href = "{$url.global}{$p.url_seller}">{$p.nom_venedor}</a></td>
+
+
 
     </tbody>
     {/foreach}

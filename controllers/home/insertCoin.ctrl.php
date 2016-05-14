@@ -26,11 +26,15 @@ class HomeInsertCoinController extends Controller
 
 
         $product = $modelP->getCompres($userId);
-
+        $date =  (new \DateTime())->format('Y-m-d H:i:s');
 
         $numProducts = count($product);
+
         for ($i = 0 ; $i < $numProducts ; $i++){
+            $p = ($modelP->getProduct($product[$i]['producte']));
+
             $product[$i]['url'] = $modelP->getProductURL($product[$i]['producte']);
+            $product[$i]['validLink'] =  (($p['stock']>0) &&  ($p['date'] > $date));
             $product[$i]['url_seller'] = $model-> getUserURL($product[$i]['nom_venedor']);
         }
 

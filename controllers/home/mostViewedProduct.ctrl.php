@@ -33,10 +33,12 @@ class HomeMostViewedProductController extends Controller
         if($numProducts%10>0){
             $num_pagines++;
         }
-        $num_pagines++;
-
-        for ($i = 1 ; $i <= $num_pagines; $i++){
-            $array_pag[$i]= $i;
+        if($num_pagines == 0){
+            $num_pagines++;
+        }
+        $array_pag[0]= 1;
+        for ($i = 1 ; $i < $num_pagines; $i++){
+            $array_pag[$i]= $i +1;
         }
         $this->assign('num_pag',$array_pag);
 

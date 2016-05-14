@@ -46,13 +46,16 @@ class HomeProductController extends Controller
             $this->assign('descripcio', $product['description']);
             $this->assign('views', $product['views']);
 
-            $now = time(); // or your date as well
-            $your_date = strtotime($product['date']);
-            $datediff = $now - $your_date;
-            $dies_restants =  floor($datediff/(60*60*24));
+            $date = (new \DateTime())->format('Y-m-d H:i:s');
+
+            $diff = abs(strtotime($product['date']) - strtotime($date));
+            $years = floor($diff / (365*60*60*24));
+            $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+            $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
 
             $this->assign('date', $product['date']);
-            $this->assign('left_days', $dies_restants);
+            $this->assign('left_days', $days);
             $this->assign('id_product', $product['id_product']);
 
             $this->assign('isLogged', $log_user);

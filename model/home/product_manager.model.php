@@ -79,6 +79,16 @@ QUERY;
         return $product;
     }
 
+    public function getAllProductsFromNameNoLimit($productName){
+
+        $query = <<<QUERY
+        SELECT * FROM `product` WHERE `name` = '$productName'
+QUERY;
+
+        $product = $this->getAll($query);
+
+        return $product;
+    }
 
     public function getProductFromName($productName){
         $query = <<<QUERY
@@ -177,21 +187,26 @@ QUERY;
     public function getMostViewedProducts($max)
     {
 
-        $date =  (new \DateTime())->format('Y-m-d H:i:s');
+        $date = (new \DateTime())->format('Y-m-d H:i:s');
 
-        if ($max == 0){
+        if ($max == 0) {
             $query = <<<QUERY
         SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0' ORDER BY `views` desc
 QUERY;
 
-        }else{
+        } else {
             $query = <<<QUERY
         SELECT * FROM `product` WHERE `date`>= '$date' AND `stock` > '0' ORDER BY `views` desc limit 4
 QUERY;
 
         }
+
         $product = $this->getAll($query);
-        return $product;
+        if (empty($product)) {
+            return null;
+        } else {
+            return $product;
+        }
     }
 
 
@@ -290,7 +305,7 @@ QUERY;
 
         $product_name = $this->productNameToURL($product['name']);
 
-        if(sizeof($this->getAllProductsFromName($product['name'])) > 1){
+        if(sizeof($this->getAllProductsFromNameNoLimit($product['name'])) > 1){
             $product_ending = '/'.$product['id_product'];
         } else {
             $product_ending = '';
