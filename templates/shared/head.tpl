@@ -27,7 +27,7 @@
 			<!-- Dropdown -->
 
 			<ul id="dropdown1" class="dropdown-content" style="margin-top: 4.5%;">
-				<li><a href="{$url.global}{$url_user}" class="light-blue-text darken-3">Profile</a></li>
+				<li><a href="{$url.global}/myComments" class="light-blue-text darken-3">Comments</a></li>
 				<li><a href="{$url.global}/listEditProduct" class="light-blue-text darken-3">Edit Prod.</a></li>
 				<li class="divider"></li>
 				<li>
@@ -42,8 +42,6 @@
 				<div class="nav-wrapper deep-orange lighten-1">
 					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
-
-
 
 						<!-- LOGIN -->
 						{if $isLogged eq true}

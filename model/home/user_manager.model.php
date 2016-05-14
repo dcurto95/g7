@@ -210,7 +210,7 @@ QUERY;
 
     }
 
-    
+
     public function getUserFromName($userName){
         $query = <<<QUERY
         SELECT `id_user` FROM `user` WHERE `username` = '$userName'
