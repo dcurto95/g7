@@ -17,16 +17,16 @@
                 <img src="{$profile}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
             </div>
             <div class="col s10">
-                <h5>Provider: <a href="#">{$user}</a></h5>
+                <h5>Provider:{$user}</h5>
             </div>
         </div>
 
-        <p>Price: {$preu}€</p>
-        <p>Expiry day: {$date}. {$left_days} day(s) left.</p>
-        <p>Aviable stock: {$stock}</p>
-        <p>Description: {$descripcio}</p>
-        <p>Views: {$views}</p>
-        <p>Exit factor:
+        <p><b>Price:</b> {$preu}€</p>
+        <p><b>Expiry day:</b> {$date}. {$left_days} day(s) left.</p>
+        <p><b>Aviable stock:</b> {$stock}</p>
+        <p><b>Description:</b> {$descripcio}</p>
+        <p><b>Views:</b> {$views}</p>
+        <p><b>Exit factor:</b>
 
         {if $exit_factor >= 1}
             <i id="factor_si" class="tiny material-icons">stars</i>

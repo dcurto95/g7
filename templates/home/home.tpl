@@ -1,8 +1,5 @@
 {$modules.head}
 
-<h1 class="light-blue-text center-align"> I'M HOME!  </h1>
-
-
 <div class="row center-align" >
     <div class="center-align">
         <div class="card card-small">
@@ -18,7 +15,6 @@
     <h3 class="light-blue-text center-align"> MOST VIEWED PRODUCTS </h3>
     {foreach from=$mvProduct item=p}
         <div class="col s3 m3">
-
             <div class="card hoverable">
                 <div class="card-image">
                     <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}">
@@ -40,30 +36,20 @@
 
 
     <div class = center-align>
-        <h3 class="light-blue-text"> LATEST UPLOADED PRODUCT PHOTOS  </h3>
+        <h3 class="light-blue-text"> LATEST UPLOADED PRODUCT PHOTOS </h3>
 
             {foreach from =$image item = i}
 
                <img src ="img/product_img_tiny/{$i.id_user}_{$i.image_small}">
 
             {/foreach}
-        </div>
-
-    <div class = center-align>
-        <h3 class="light-blue-text"> LATEST UPLOADED PRODUCT PHOTOS  </h3>
-        <div class="carousel">
-        {foreach from =$image item = i}
-
-        <a class="carousel-item" ><img src ="img/product_img_tiny/{$i.id_user}_{$i.image_small}"></a>
-
-        {/foreach}
     </div>
 
 
 
-</div>
 
-<div class = center-align>
+
+
     <h3 class="light-blue-text"> LATEST TWEETS  </h3>
     <a class="twitter-timeline" href="https://twitter.com/hashtag/LSStore" data-widget-id="722405726187089921">Tweets sobre #LSStore</a>
     <script> {literal}

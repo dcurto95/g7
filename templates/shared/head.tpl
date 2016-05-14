@@ -118,5 +118,5 @@
 			</form>
 		</div>
 
-		<div class="space-50" style="height: 100px"></div>
+		<div class="space-50" style="height: 30px"></div>
 

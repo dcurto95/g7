@@ -133,15 +133,16 @@ QUERY;
         $product = $this->getAll($query);
         
         $price = $product[0]['price'];
-
         $money = $this->getMoney($id_user);
-
         $total_money = $money - $price;
 
         $query = <<<QUERY
         UPDATE user SET saldo = '$total_money' WHERE `id_user`='$id_user'
 QUERY;
             $this->execute($query);
+
+
+        $money = $this->getMoney($id_user);
 
         //Calculem i actualitzem els diners que tindrè el venedor.
         $id_venedor = $product[0]['id_user'];

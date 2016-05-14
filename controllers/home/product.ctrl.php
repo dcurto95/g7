@@ -42,6 +42,7 @@ class HomeProductController extends Controller
             //echo($model->checkDateAndStock($product_id));
 
             $product = $model->getProduct($product_id);
+
             $this->assign('name', $product['name']);
             $this->assign('preu', $product['price']);
             $this->assign('stock', $product['stock']);

@@ -95,7 +95,9 @@ span.badge.coin:after{
     left: 35%;
 }
 
-.carousel-item{
-    width:100px;
-
+h3 .light-blue-text{
+    margin-top:20px;
+    color:red;
 }
+
+
