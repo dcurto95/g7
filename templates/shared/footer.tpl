@@ -16,20 +16,20 @@
 
 		<div class="footer-copyright">
 			<div class="container">
-				© 2014 Copyright Text
+				Copyright © 2016  G7 All rights reserved
 			</div>
 		</div>
 	</footer>
-	
-	<script src="{$url.global}/js/bootstrap.min.js"></script>
+
 	<script src="{$url.global}/js/jquery.min.js"></script>
 	<script src="{$url.global}/js/jquery-easing.js"></script>
+
+	<!--<script src="{$url.global}/js/bootstrap.min.js"></script> -->
 	<script src="{$url.global}/js/materialize.min.js"></script>
 	<script src="{$url.global}/js/password-meter.js"></script>
 	<script src="{$url.global}/js/register.js"></script>
 	<script src="{$url.global}/js/modal-init.js"></script>
 	<script src="{$url.global}/js/datepicker-init.js"></script>
-
 	
 
 </body>

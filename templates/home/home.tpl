@@ -48,6 +48,13 @@
         {/foreach}
     </div>
 
+    <div class="carousel">
+        <p>Hey where is Carousel. It should be here</p>
+        <a class="carousel-item" ><img src="img/product_img_tiny/1_banana.jpg"></a>
+        <a class="carousel-item"><img src="img/product_img_tiny/1_banana.jpg"></a>
+        <a class="carousel-item" ><img src="img/product_img_tiny/1_banana.jpg"></a>
+        <a class="carousel-item" ><img src="img/product_img_tiny/1_banana.jpg"></a>
+    </div>
 
 
 </div>
@@ -68,6 +75,17 @@
         }(document, "script", "twitter-wjs");
         {/literal}
     </script>
+
+    <script>
+        {literal}
+        $(document).ready(function(){
+            console.log("Hey I am in carousel");
+            $('.carousel').carousel();
+        });
+        {/literal}
+
+    </script>
+
 </div>
 
 
