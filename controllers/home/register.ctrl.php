@@ -54,27 +54,36 @@ class HomeRegisterController extends Controller
 
 				//Creem usuari
 				$img_name = $_FILES["inputFile"]["name"];
+
+				if (Filter::getString('img_path') != '') {
+					$image_manager->AddProfileImage("inputFile");
+				}
+
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
-				$image_manager->AddProfileImage("inputFile");
-
 				// Mail:
-				/*$subject = "This is subject";
+				$subject = "Welcome to Barrets.com";
 
-				$message = "<b>This is HTML message.</b>";
-				$message .= "<h1>This is headline.</h1>";
+				$message = "<html><body><p>To validate the mail click on the following link: <p>";
+				$link_validate = URL_ABSOLUTE.'/validateInfo/'.$activation_code;
+				$message .= "<a href='$link_validate'>Validate</a>";
+				$message .= "</body></html>";
 
-				$retval = mail($email, $subject, $message);
-				$this->mg_send($email,$subject,$message);
+				$headers = "From: Barrets.com\r\n";
+				$headers .= "MIME-Version: 1.0\r\n";
+				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-				if ($retval == true) {
+				$retval = mail($email, $subject, $message, $headers);
+
+				/*if ($retval == true) {
 					echo "Message sent successfully...";
 				} else {
 					//print_r(error_get_last());
 					echo "Message could not be sent...";
 				}*/
 
-				header('Location:' . URL_ABSOLUTE.'/validateInfo/'.$activation_code);
+				header('Location:' . URL_ABSOLUTE);
+				//header('Location:' . URL_ABSOLUTE.'/validateInfo/'.$activation_code);
 			} else {
 				// Reomplir els camps!
 				$this->assign('register_title', 'REGISTER INCORRECT, TRY AGAIN:');

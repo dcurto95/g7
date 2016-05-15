@@ -40,7 +40,7 @@
 
 			<nav>
 				<div class="nav-wrapper deep-orange lighten-1">
-					<a href="{$url.global}" class="brand-logo">G7 DEV</a>
+					<a href="{$url.global}" class="brand-logo">BARRETS.com</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
 
 						<!-- LOGIN -->

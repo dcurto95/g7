@@ -60,14 +60,14 @@ class HomeProductController extends Controller
 
             $this->assign('isLogged', $log_user);
 
-            $product_img = '/img/product_img_big/'.$product['id_user'].'_'.$product['image_big'];
+            $product_img = '../img/product_img_big/'.$product['id_user'].'_'.$product['image_big'];
 
             $this->assign('img_path', $product_img);
 
             $user = $modelUsuaris->getUser($product['id_user']);
 
             $this->assign('user', $user['username']);
-            $user_img = '/img/profile_img/'.$user['image'];
+            $user_img = '../img/profile_img/'.$user['image'];
             $this->assign('profile', $user_img);
 
             $exit_factor = $user['sold_products'];
