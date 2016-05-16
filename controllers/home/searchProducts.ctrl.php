@@ -10,16 +10,40 @@ class HomeSearchProductsController extends Controller
 
     public function build()
     {
-
         $model = $this->getClass('HomeProductManagerModel');
-
         $name = Filter::getString('search');
+        echo "Ordenat per".$sort = Filter::getString("sortby");
+        echo "Has buscat".$name;
+
+        $option = "views";
+        $order =0;
+        switch($sort){
+            case 'mv':
+                $option="views";
+                $order = 0;
+                break;
+            case 'newest':
+                $option= "id_product";
+                $order = 0;
+                break;
+            case 'expensive':
+                $option ="price";
+                $order = 0;
+                break;
+            case 'cheap':
+                $option ="price";
+                $order = 1;
+                break;
+        }
+
+
+
         $is_submit = Filter::getString('submit');
-        $product = $model->searchProduct($name);
+        $product = $model->searchProduct($name,$option,$order);
         if($is_submit){
 
-            $product = $model->searchProduct($name);
-           // $this->assign("search",$product);
+            $product = $model->searchProduct($name,$option,$order);
+
 
         }
         $numProducts = count($product);
@@ -28,7 +52,7 @@ class HomeSearchProductsController extends Controller
             $product[$i]['url'] = $model->getProductURL($product[$i]['id_product']);
         }
         $this->assign("search",$product);
-
+       // $this->assign("lastSearch",$name);
         $this->setLayout($this->view);
     }
 

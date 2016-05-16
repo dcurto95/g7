@@ -1,31 +1,49 @@
 {$modules.head}
 
 
+<div class="row center-align">
+    <form  method="post" name ="form">
+            <div class="input-field col s4 ">
+                <i class="material-icons prefix">search</i>
+                <input type="text" placeholder="Enter the name of the product you want to search" name="search" value ={$lastSearch}>
+            </div>
 
-<form  method="post">
-    <div class="row center-align">
-        <div class="input-field col s4 ">
-            <i class="material-icons prefix">search</i>
-            <input type="text" placeholder="Enter the name of the product you want to search" name="search" required>
+        <div class="input-field col s4">
+        <select  id="sortby" name="sortby" onchange="this.form.submit()">
+            <option value="" disabled selected >Order by</option>
+            <option value="mv" name ="mv">Most Viewed</option>
+            <option value="newest" name = "newest">Newest</option>
+            <option value="expensive" name = "expensive">Price:$$-$</option>
+            <option value="cheap" name ="cheap">Price:$-$$</option>
 
-        </div>
+        </select>
+        <label>Sort by</label>
+         </div>
 
-               <div class="input-field col s4">
-            <select>
-                <option selected="selected" value="1">Newest</option>
-                <<option value="2">Most Viewed</option>
-                <option value="3">Price:$$-$</option>
-                <option value="4">Price:$-$$</option>
-
-            </select>
-            <label>Sort by</label>
-        </div>
         <div class="input-field col s2">
             <input type="submit" class = "btn waves-effect waves-light" name="submit" value="Send" >
         </div>
-     </div>
 
-</form>
+    </form>
+
+</div>
+<!--
+    <div class="input-field col s4">
+        <form method="post" name="form1" id="form1">
+            <select  id="sortby" name="sortby" onchange="this.form.submit()">
+                <option value="" disabled selected >Order by</option>
+                <option value="mv" name ="mv">Most Viewed</option>
+                <option value="newest" name = "newest">Newest</option>
+                <option value="expensive" name = "expensive">Price:$$-$</option>
+                <option value="cheap" name ="cheap">Price:$-$$</option>
+
+            </select>
+            <label>Sort by</label>
+
+        </form>
+
+    </div>
+-->
 
 <div class="row">
 
@@ -53,6 +71,36 @@
     {/foreach}
 
 </div>
+
+
+
+<script>
+
+    {literal}
+
+    $(document).ready(function(){
+
+
+
+        // Each time you change your sort list, send AJAX request
+       // console.log("hey ho");
+       // console.log($("#sortby").val());
+       /* $("#sortby").change(function(){
+            console.log($("#sortby").val());
+            $.ajax({
+                        method: "GET",
+                        url: "http://g7.dev/search",
+                        data: { sortby:$("#sortby").val() }
+                    })
+                    // Copy the AJAX response in the table
+                    .done(function( msg ) {
+                        console.log("hey ho");
+                    });
+        });*/
+    });
+    {/literal}
+
+</script>
 
 {$modules.footer}
 

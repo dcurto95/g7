@@ -340,12 +340,17 @@ QUERY;
         }
     }
 
-    public function searchProduct($search){
+    public function searchProduct($search,$option,$order){
 
         $date =  (new \DateTime())->format('Y-m-d H:i:s');
 
+        if ($order == 0){
+            $order = "DESC";
+        }else{
+            $order   = "ASC";
+        }
         $query = <<<QUERY
-        SELECT * FROM `product` WHERE `name` LIKE '%$search%' AND `date`>= '$date' AND `stock` > '0'
+        SELECT * FROM `product` WHERE `name` LIKE '%$search%' AND `date`>= '$date' AND `stock` > '0' ORDER BY  `$option`$order
 QUERY;
         $products = $this->getAll($query);
         return $products;

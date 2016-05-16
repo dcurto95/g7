@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="{$url.global}/css/materialize.min.css">
 	<link rel="stylesheet" href="{$url.global}/css/style.css">
 
+	<script src="{$url.global}/js/jquery.min.js"></script>
+
 	<script src="//cdn.ckeditor.com/4.5.8/standard/ckeditor.js"></script>
 
 </head>
