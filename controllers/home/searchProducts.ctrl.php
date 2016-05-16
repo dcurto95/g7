@@ -12,8 +12,8 @@ class HomeSearchProductsController extends Controller
     {
         $model = $this->getClass('HomeProductManagerModel');
         $name = Filter::getString('search');
-        echo "Ordenat per".$sort = Filter::getString("sortby");
-        echo "Has buscat".$name;
+        $sort = Filter::getString("sortby");
+
 
         $option = "views";
         $order =0;
@@ -34,8 +34,12 @@ class HomeSearchProductsController extends Controller
                 $option ="price";
                 $order = 1;
                 break;
-        }
+            default:
+                $option="views";
+                $order = 0;
+                break;
 
+        }
 
 
         $is_submit = Filter::getString('submit');
