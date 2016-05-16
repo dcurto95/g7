@@ -10,7 +10,7 @@
                     <a href="{$lastProduct.url}" class="card-title deep-orange lighten-1">{$lastProduct.name}</a>
                 </div>
                 <div class="card-action">
-                    <a href="{$lastProduct.url}">{$lastProduct.name}</a>
+                    <a href="{$lastProduct.url}">{$lastProduct.name|truncate:20}</a>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <div class="card hoverable">
                     <div class="card-image">
                         <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}">
-                        <a href="{$p.url}" class="card-title deep-orange lighten-1">{$p.name}</a>
+                        <a href="{$p.url}" class="card-title deep-orange lighten-1">{$p.name|truncate:20}</a>
 
                     </div>
                     <div class="card-content">

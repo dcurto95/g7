@@ -38,7 +38,7 @@
             <div class="card hoverable">
                 <div class="card-image">
                     <img src="/img/product_img_big/{$s.id_user}_{$s.image_big}">
-                    <a href="{$s.url}" class="card-title deep-orange lighten-1">{$s.name}</a>
+                    <a href="{$s.url}" class="card-title deep-orange lighten-1">{$s.name|truncate:20}</a>
 
                 </div>
                 <div class="card-content">
