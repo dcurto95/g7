@@ -31,6 +31,7 @@
                         <p><b>Description: </b>{$p.description}</p><br>
                         <p><b> Price: </b>{$p.price} &#8364</p><br>
                         <p><b>Expiry Date:</b>{$p.date}</p>
+
                     </div>
                     <div class="card-action center-align">
                         <a href="{$p.url}" ><b>View the product</b></a>
