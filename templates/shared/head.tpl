@@ -108,6 +108,11 @@
 							<a href="{$url.global}/register">Register</a>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col s6">
+							<a href="{$url.global}/forgotPassword">Forgot your password?</a>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<input class="modal-action modal-close btn-flat waves-effect waves-ripple"
