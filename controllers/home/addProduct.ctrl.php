@@ -53,8 +53,11 @@ class HomeAddProductController extends Controller
 
 				$info['date'] = Filter::getString('date');
 
-				$today = strtotime(date("j F, Y"));
+				$date = (new \DateTime())->format('Y-m-d H:i:s');
+
 				$givenDate = strtotime($info['date']);
+				$today =strtotime($date);
+
 				if ($givenDate < $today){
 					$isValid = false;
 				}
@@ -63,29 +66,48 @@ class HomeAddProductController extends Controller
 				$info['image_big'] 	 = $_FILES["inputFile"]["name"];
 
 				$imageManager = $this->getClass('HomeImageManagerModel');
+
 				if ($session->get('image_fail_flag') == null || $session->get('image_fail_flag') == false){
 					$session->set('image_fail_flag',false);
 					if ($_FILES["inputFile"]["size"] > 2 * 1024 * 1024 ) {
 						$isValid = false;
 					}
-				}
 
+					$path = $_FILES["inputFile"]["name"];
+					$ext = pathinfo($path, PATHINFO_EXTENSION);
+
+
+					if (strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
+						$session->set('not_image',true);
+						$isValid = false;
+					}else{
+						$session->set('not_image',false);
+					}
+				}
+				$isImg = ($session->get('not_image') !=null && $session->get('not_image')== false );
 				$isImgEqual = empty(Filter::getString('product_image_name'));
 
-				if (!$isValid) {
-					$id_user = $session->get('id_user');
-					if ($session->get('image_fail_flag') == true){
-						$imageManager->RemoveProductImageFail($info['image_big'], $id_user);
+				if (!$isValid && $isImg == true) {
+					if ($isImgEqual == false){
+
+						$id_user = $session->get('id_user');
+						if ($session->get('image_fail_flag') == true ){
+							$imageManager->RemoveProductImageFail($info['image_big'], $id_user);
+						}
+						$imageManager->AddProductImageFail("inputFile", $id_user);
+
+
+						$session->set('image_fail_name', $info['image_big']);
 					}
-					$imageManager->AddProductImageFail("inputFile", $id_user);
-
 					$session->set('image_fail_flag', true);
-					$session->set('image_fail_name', $info['image_big']);
-				}
 
+				}
+				if($session->get('not_img') != null && $session->get('not_img') == true){
+					$isValid = false;
+				}
 				$modelUser = $this->getClass('HomeUserManagerModel');
 				$availableMoney = $modelUser->getMoney($user);
-				if ($availableMoney == 0){
+				if ($availableMoney < $info['stock']){
 					// Anem a una pantalla d'error! -> Falta de diners.
 
 					header('Location:' .URL_ABSOLUTE .'/requireMoney');
@@ -98,27 +120,30 @@ class HomeAddProductController extends Controller
 
 						// Processem la imatge:
 						$id_user = $session->get('id_user');
-						if ($session->get('image_fail_flag') == true) {
+						if ($session->get('image_fail_flag') == true ) {
+
+							$info['image_small'] = $session->get('image_fail_name');
+							$info['image_big'] = $session->get('image_fail_name');
 
 							if ($isImgEqual == true) {
-								$info['image_small'] = $session->get('image_fail_name');
-								$info['image_big'] = $session->get('image_fail_name');
 								$imageManager->MoveProductImageFail($info['image_big'], $id_user);
 							} else {
 								$imageManager->RemoveProductImageFail($info['image_big'], $id_user);
 								$imageManager->AddProductImages("inputFile", $id_user);
 							}
 						} else {
+
 							$imageManager->AddProductImages("inputFile", $id_user);
 						}
 
 						$modelProduct->addProduct($info);
 						$id_product = $modelProduct->getLastInsertID();
-						$modelUser->pay($session->get('id_user'), 1);
+						$modelUser->pay($session->get('id_user'), $info['stock']);
 						$session->set('saldo', $modelUser->getMoney($session->get('id_user')));
 
 						$session->delete('image_fail_flag');
 						$session->delete('image_fail_name');
+						$session->delete('not_image');
 
 						$url_product = $modelProduct->getProductURL($id_product);
 
@@ -133,17 +158,19 @@ class HomeAddProductController extends Controller
 						$this->assign('product_description', $info['description']);
 						$this->assign('product_date', $info['date']);
 
+						$session->set('image_fail_name',$info['image_small']);
+
 						// Agafa la string a partir de la '_'
 						$img_name = $session->get('image_fail_name');
 
-						$image_src = '../img/tmp_image/tmp_big_image/'.$user.'_'.$img_name;
+						$image_src = '/img/tmp_image/tmp_big_image/'.$user.'_'.$img_name;
 						$this->assign('product_image', $image_src);
 
 					}
 				}
 
 			} else {
-				$image_src = "http://placehold.it/100x100";
+				$image_src = "http://www.teeuwissen.nl/img/default.jpg";
 				$this->assign('product_image', $image_src);
 			}
 
