@@ -234,6 +234,28 @@ QUERY;
         return $id_user;
     }
 
+    public function getUserFromEmail($email){
+        $query = <<<QUERY
+        SELECT * FROM `user` WHERE `email` = '$email'
+QUERY;
+
+        $user = $this->getAll($query);
+
+        if(empty($user)){
+
+            return null;
+
+        } else {
+            return $user[0];
+        }
+    }
+
+    public function setUserPassword($id, $password){
+        $query = <<<QUERY
+        UPDATE user SET password = '$password' WHERE `id_user`='$id'
+QUERY;
+        $this->execute($query);
+    }
 
     public function getUserURL($user_name){
         $user_name_url = $this->userNameToURL($user_name);

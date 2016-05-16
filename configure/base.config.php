@@ -55,6 +55,8 @@ $config['HomeListEditProductController']	    = PATH_CONTROLLERS . 'home/listEdit
 $config['HomeUserController']	                = PATH_CONTROLLERS . 'home/user.ctrl.php';
 $config['HomeMyCommentsController']	            = PATH_CONTROLLERS . 'home/myComments.ctrl.php';
 $config['HomeEditCommentController']	        = PATH_CONTROLLERS . 'home/editComment.ctrl.php';
+$config['HomeForgotPasswordController']	        = PATH_CONTROLLERS . 'home/forgotPassword.ctrl.php';
+$config['HomeRecoverPasswordController']	    = PATH_CONTROLLERS . 'home/recoverPassword.ctrl.php';
 
 // Shared controllers
 $config['SharedHeadController']		            = PATH_CONTROLLERS . 'shared/head.ctrl.php';

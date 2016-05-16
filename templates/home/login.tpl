@@ -27,6 +27,12 @@
 			<a href="{$url.global}/register">Register</a>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col s6">
+			<a href="{$url.global}/forgotPassword">Forgot your password?</a>
+		</div>
+	</div>
+
 	<div class="modal-footer">
 		<input class="deep-orange lighten-1 btn waves-effect waves-ripple"
 			   type="submit" id ="submit" name="submit" value="Log in">
