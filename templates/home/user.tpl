@@ -35,7 +35,7 @@
         {foreach from=$comments item=c}
             <li class="collection-item avatar">
                 <img src="/img/profile_img/{$c.user.image}" alt="" class="circle">
-                <a href="#" class="title">{$c.user.username}</a>
+                <a href="{$c.user_url}" class="title">{$c.user.username}</a>
                 <p>{$c.date}</p>
                 <p>{$c.comment|truncate:50}</p>
                 {if $c.editable eq true}

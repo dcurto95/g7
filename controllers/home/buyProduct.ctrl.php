@@ -38,6 +38,25 @@ class HomeBuyProductController extends Controller
 
                     $this->assign('name', $product['name']);
 
+                    $productname = $product['name'];
+                    $email = $modelUsuaris->getUser($user);
+                    $email = $email['email'];
+
+                    //echo $email;
+
+                    // Mail:
+                    $subject = "Barrets.com - Product purchase";
+
+                    $message = "<html><body><p>Thank you for purchasing the product: $productname<p>";
+                    $message .= "</body></html>";
+
+                    $headers = "From: Barrets.com\r\n";
+                    $headers .= "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+                    $retval = mail($email, $subject, $message, $headers);
+
+
                     $this->setLayout($this->view);
                 }else if($model->getStock($product_id) >= 1){
                     $this->setLayout($this->error_money);

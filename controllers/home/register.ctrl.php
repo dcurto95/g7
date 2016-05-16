@@ -52,16 +52,7 @@ class HomeRegisterController extends Controller
 
 		if($is_submit){
 
-			$path = $_FILES["inputFile"]["name"];
-			$ext = pathinfo($path, PATHINFO_EXTENSION);
 
-
-			if (strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
-
-				$isValid = false;
-			}else{
-				$isValid = true;
-			}
 
 			if ($isValid) {
 				$image_manager = $this->getClass('HomeImageManagerModel');
@@ -71,6 +62,18 @@ class HomeRegisterController extends Controller
 
 				if (Filter::getString('img_path') != '') {
 					$image_manager->AddProfileImage("inputFile");
+					$path = $_FILES["inputFile"]["name"];
+					$ext = pathinfo($path, PATHINFO_EXTENSION);
+
+
+					if (strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
+
+						$isValid = false;
+					}else{
+						$isValid = true;
+					}
+				}else{
+					$img_name ="default.jpg";
 				}
 
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);

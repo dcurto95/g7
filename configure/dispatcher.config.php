@@ -23,6 +23,8 @@ $config['listEditProduct']      = 'HomeListEditProductController';
 $config['u']                    = 'HomeUserController';
 $config['myComments']           = 'HomeMyCommentsController';
 $config['editComment']          = 'HomeEditCommentController';
+$config['forgotPassword']       = 'HomeForgotPasswordController';
+$config['recoverPassword']      = 'HomeRecoverPasswordController';
 
 $config['requireMoney']		    = 'ErrorErrorMoneyController';
 $config['error']                = 'ErrorErrorInsertCoinController';

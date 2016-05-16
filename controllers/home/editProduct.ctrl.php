@@ -88,6 +88,15 @@ class HomeEditProductController extends Controller
 						$isValid = false;
 					}
 
+					$path = $_FILES["inputFile"]["name"];
+					$ext = pathinfo($path, PATHINFO_EXTENSION);
+
+
+					if (strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
+
+						$isValid = false;
+					}
+
 					if ($session->get('saldo') == 0) {
 						// Anem a una pantalla d'error! -> Falta de diners.
 						header('Location:' . URL_ABSOLUTE . '/requireMoney');

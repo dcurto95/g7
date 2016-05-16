@@ -13,12 +13,16 @@ class HomeProductController extends Controller
         //header("HTTP/1.1 200 OK");
 
         $model = $this->getClass('HomeProductManagerModel');
-        $modelUsuaris = $this->getClass('HomeUserManagerModel');
+        $modelUser = $this->getClass('HomeUserManagerModel');
+        $modelComments = $this->getClass('HomeCommentsManagerModel');
+
         $info = $this->getParams();
         $info = $info['url_arguments'];
 
         $session = Session::getInstance();
         $log_user = $session->get('id_user');
+
+
 
         if(!empty($info[0])) {
             $product_name = $model->productURLToName($info[0]);
@@ -64,7 +68,7 @@ class HomeProductController extends Controller
 
             $this->assign('img_path', $product_img);
 
-            $user = $modelUsuaris->getUser($product['id_user']);
+            $user = $modelUser->getUser($product['id_user']);
 
             $this->assign('user', $user['username']);
             $user_img = '/img/profile_img/'.$user['image'];
@@ -86,6 +90,18 @@ class HomeProductController extends Controller
                 $exit_factor = 0;
             }
             $this->assign('exit_factor', $exit_factor);
+
+
+            $comments = $modelComments->getUserComments($user['id_user']);
+            $id_usr_src = $session->get('id_user');
+            for ($i = 0; $i < sizeof($comments); $i++) {
+                $user = $modelUser->getUser($comments[$i]['id_usr_src']);
+                $comments[$i]['user'] = $user;
+                $comments[$i]['user_url'] = $modelUser->getUserURL($user['username']);
+                $comments[$i]['editable'] = ($id_usr_src == $comments[$i]['id_usr_src']);
+            }
+
+            $this->assign('comments', $comments);
 
             $this->setLayout($this->view);
         }else{
