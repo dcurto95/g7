@@ -389,5 +389,39 @@ QUERY;
         $this->execute($query);
     }
 
+    public function hasBought($id_usuari, $id_producte){
+        $query = <<<QUERY
+        SELECT * FROM `compres` WHERE `comprador`= '$id_usuari' AND `producte`='$id_producte'
+QUERY;
+        $products = $this->getAll($query);
+
+        if(sizeof($products)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function addPositiva($id_product){
+        $product = $this->getProduct($id_product);
+        $vots = $product['valoracioPositiva'];
+        $vots = $vots+1;
+        $query = <<<QUERY
+        UPDATE `product` SET `valoracioPositiva`='$vots' WHERE `id_product`='$id_product'
+QUERY;
+
+        $this->execute($query);
+    }
+
+    public function addNegativa($id_product){
+        $product = $this->getProduct($id_product);
+        $vots = $product['valoracioNegativa'];
+        $vots = $vots+1;
+        $query = <<<QUERY
+        UPDATE `product` SET `valoracioNegativa`='$vots' WHERE `id_product`='$id_product'
+QUERY;
+
+        $this->execute($query);
+    }
 
 }

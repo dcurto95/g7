@@ -43,12 +43,29 @@ class HomeProductController extends Controller
 
             $model->increaseView($product_id);
 
+            $review = Filter::getString('review');
+            if(strcmp($review,'like')==0){
+                $model->addPositiva($product_id);
+            }else if(strcmp($review,'dislike')==0){
+                $model->addNegativa($product_id);
+            }
+
+
             $product = $model->getProduct($product_id);
             $this->assign('name', $product['name']);
             $this->assign('preu', $product['price']);
             $this->assign('stock', $product['stock']);
             $this->assign('descripcio', $product['description']);
             $this->assign('views', $product['views']);
+
+            $this->assign('likes', $product['valoracioPositiva']);
+            $this->assign('dislikes', $product['valoracioNegativa']);
+
+            if($model->hasBought($log_user, $product_id)){
+                $this->assign('bought', 1);
+            }else{
+                $this->assign('bought', 0);
+            }
 
             $date = (new \DateTime())->format('Y-m-d H:i:s');
 
@@ -102,6 +119,7 @@ class HomeProductController extends Controller
             }
 
             $this->assign('comments', $comments);
+
 
             $this->setLayout($this->view);
         }else{

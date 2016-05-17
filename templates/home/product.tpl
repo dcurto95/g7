@@ -23,9 +23,10 @@
 
         <p><b>Price:</b> {$preu}€</p>
         <p><b>Expiry day:</b> {$date}. {$left_days} day(s) left.</p>
-        <p><b>Aviable stock:</b> {$stock}</p>
+        <p><b>Available stock:</b> {$stock}</p>
         <p><b>Description:</b> {$descripcio}</p>
         <p><b>Views:</b> {$views}</p>
+
         <p><b>Exit factor:</b>
 
         {if $exit_factor >= 1}
@@ -58,10 +59,21 @@
             <i id="factor_no" class="tiny material-icons">stars</i>
         {/if}
 
+        <p><b>Opinions: </b>{$likes} <i class="material-icons tiny light-green-text">thumb_up</i>/ {$dislikes} <i class="material-icons tiny red-text">thumb_down</i></p>
+
         </p>
         {if $isLogged gt 0}
+            {if $bought eq 1}
+                <p><b>Did you like this product?</b>
+                    <form method="post">
+                        <button class="btn-floating waves-effect waves-light light-green" type="post" name="review" value="like">Yes!</button>
+                        <button class="btn-floating waves-effect waves-light red" type="post" name="review" value="dislike">No!</button>
+                    </form>
+                </p>
+            {/if}
             <a class="waves-effect waves-light btn" href="{$url.global}/buyProduct/{$id_product}"><i class="material-icons right">shopping_basket</i>Buy</a>
         {/if}
+
     </div>
 </div>
 

@@ -22,8 +22,6 @@ class HomeMyCommentsController extends Controller
         if ($is_logged == false){
             header('Location:' . URL_ABSOLUTE.'/errorComment');
         } else {
-
-
                 $modelComments = $this->getClass('HomeCommentsManagerModel');
 
                 $user_info = $modelUser->getUser($id_usr);
