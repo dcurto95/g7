@@ -38,13 +38,45 @@
             <div class="card hoverable">
                 <div class="card-image">
                     <img src="/img/product_img_big/{$s.id_user}_{$s.image_big}">
-                    <a href="{$s.url}" class="card-title deep-orange lighten-1">{$s.name}</a>
+                    <a href="{$s.url}" class="card-title deep-orange lighten-1">{$s.name|truncate:20}</a>
 
                 </div>
                 <div class="card-content">
                     <p><b>Description:</b>{$s.description|truncate:50}</p><br>
                     <p><b>Price: </b> {$s.price} &#8364</p><br>
-                    <p> <b> Expiry Date:</b>{$s.date}</p>
+                    <p><b> Expiry Date:</b>{$s.date}</p><br>
+                    <p><b>Exit factor:</b>
+                        {if $s.exit_factor >= 1}
+                            <i id="factor_si" class="tiny material-icons">stars</i>
+                        {else}
+                            <i id="factor_no" class="tiny material-icons">stars</i>
+                        {/if}
+
+                        {if $s.exit_factor >= 2}
+                            <i id="factor_si" class="tiny material-icons">stars</i>
+                        {else}
+                            <i id="factor_no" class="tiny material-icons">stars</i>
+                        {/if}
+
+                        {if $s.exit_factor >= 3}
+                            <i id="factor_si" class="tiny material-icons">stars</i>
+                        {else}
+                            <i id="factor_no" class="tiny material-icons">stars</i>
+                        {/if}
+
+                        {if $s.exit_factor >= 4}
+                            <i id="factor_si" class="tiny material-icons">stars</i>
+                        {else}
+                            <i id="factor_no" class="tiny material-icons">stars</i>
+                        {/if}
+
+                        {if $s.exit_factor >= 5}
+                            <i id="factor_si" class="tiny material-icons">stars</i>
+                        {else}
+                            <i id="factor_no" class="tiny material-icons">stars</i>
+                        {/if}
+
+                    </p>
                 </div>
                 <div class="card-action center-align">
                     <a href="{$s.url}"><b>View the product</b></a>

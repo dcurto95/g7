@@ -16,7 +16,7 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
-				<input id="password" type="password" name="password" class="validate password-meter" required length="8" maxlength="8" minlength="6" value="{$password}">
+				<input id="password" type="password" name="password" class="validate password-meter" required length="10" maxlength="10" minlength="6" value="{$password}">
 				<label for="password">Password</label>
 
 			</div>

@@ -11,6 +11,9 @@ class HomeSearchProductsController extends Controller
     public function build()
     {
         $model = $this->getClass('HomeProductManagerModel');
+        $modelUser = $this->getClass('HomeUserManagerModel');
+
+
         $name = Filter::getString('search');
         $sort = Filter::getString("sortby");
 
@@ -54,9 +57,29 @@ class HomeSearchProductsController extends Controller
         for ($i = 0 ; $i < $numProducts; $i++){
 
             $product[$i]['url'] = $model->getProductURL($product[$i]['id_product']);
+            $user = $modelUser->getUser($product[$i]['id_user']);
+            $exit_factor = $user['sold_products'];
+
+            if($exit_factor > 20){
+                $exit_factor = 5;
+            }else if($exit_factor > 15){
+                $exit_factor = 4;
+            }else if($exit_factor > 10){
+                $exit_factor = 3;
+            }else if($exit_factor > 5){
+                $exit_factor = 2;
+            }else if($exit_factor > 0){
+                $exit_factor = 1;
+            }else{
+                $exit_factor = 0;
+            }
+            $product[$i]['exit_factor'] = $exit_factor;
+
         }
         $this->assign("search",$product);
-       // $this->assign("lastSearch",$name);
+
+
+
         $this->setLayout($this->view);
     }
 

@@ -27,7 +27,7 @@ class HomeRecoverPasswordController extends Controller
         if($is_submit) {
 
             $password = Filter::getString('password');
-            $isValid = (strlen($password) <= 8) && (strlen($password) >= 6);
+            $isValid = (strlen($password) <= 10) && (strlen($password) >= 6);
 
             if($isValid){
                 $model->setUserPassword($id, $password);

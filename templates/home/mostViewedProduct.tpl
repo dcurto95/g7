@@ -8,9 +8,9 @@
             <li class="collection-item avatar">
                 <img src="/img/product_img_big/{$p.id_user}_{$p.image_big}" alt="" class="circle">
                 <a href="{$p.url}" class="title">{$p.name}</a>
-                <p>{$p.description} <br>
-                    {$p.date} <br>
-                    Visites  {$p.views_percentage}%
+                <p><b>Description:</b>{$p.description}
+                    <br><b>Expiricy Date:</b>{$p.date}
+                    <br><b>Percentage Views:</b>{$p.views_percentage}%
                 </p>
                 <p class="secondary-content"> {$p.views} <i class="material-icons">visibility</i><br>
                     {$p.ventes}<i class="material-icons">shopping_cart</i>

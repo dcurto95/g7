@@ -64,4 +64,22 @@
         {/if}
     </div>
 </div>
+
+<div class = "row center-align">
+    <ul class="collection with-header">
+        {foreach from=$comments item=c}
+            <li class="collection-item avatar">
+                <img src="/img/profile_img/{$c.user.image}" alt="" class="circle">
+                <a href="{$c.user_url}" class="title">{$c.user.username}</a>
+                <p>{$c.date}</p>
+                <p>{$c.comment|truncate:50}</p>
+                {if $c.editable eq true}
+                    <p class="secondary-content"><a href="{$url.global}/editComment/{$c.id}" class="secondary-content">Edit/Remove <i class="material-icons">send</i></a></p>
+                {/if}
+
+            </li>
+
+        {/foreach}
+    </ul>
+</div>
 {$modules.footer}

@@ -7,7 +7,7 @@
 <form>
 	<div class="row">
 		<div class="input-field col s12">
-			<input id="password" type="password" name="password" class="validate password-meter" required length="8" maxlength="8" minlength="6">
+			<input id="password" type="password" name="password" class="validate password-meter" required length="10" maxlength="10" minlength="6">
 			<label for="password">New Password</label>
 
 		</div>

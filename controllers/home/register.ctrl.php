@@ -13,7 +13,7 @@ class HomeRegisterController extends Controller
 
 		$model = $this->getClass('HomeUserManagerModel');
 
-		$username_regex = '([A-Za-z]{6,})';
+		$username_regex = '([A-Za-z0-9]{6,})';
 		$this->assign('username_regex', $username_regex);
 
 		$twitter_regex = '(@\w+)';
@@ -41,14 +41,19 @@ class HomeRegisterController extends Controller
 
 		$password = Filter::getString('password');
 		if ($isValid) {
-			$isValid = (strlen($password) <= 8) && (strlen($password) >= 6);
+			$isValid = (strlen($password) <= 10) && (strlen($password) >= 6);
 		}
+
+
 
 		$activation_code = uniqid('AC');
 
 		$is_submit = Filter::getString('submit');
 
 		if($is_submit){
+
+
+
 			if ($isValid) {
 				$image_manager = $this->getClass('HomeImageManagerModel');
 
@@ -57,6 +62,18 @@ class HomeRegisterController extends Controller
 
 				if (Filter::getString('img_path') != '') {
 					$image_manager->AddProfileImage("inputFile");
+					$path = $_FILES["inputFile"]["name"];
+					$ext = pathinfo($path, PATHINFO_EXTENSION);
+
+
+					if (strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
+
+						$isValid = false;
+					}else{
+						$isValid = true;
+					}
+				}else{
+					$img_name ="default.jpg";
 				}
 
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
