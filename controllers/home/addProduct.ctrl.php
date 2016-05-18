@@ -1,8 +1,8 @@
 <?php
 /**
  * Home Controller: Controller example.
-
  */
+
 class HomeAddProductController extends Controller
 {
 
