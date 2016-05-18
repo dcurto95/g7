@@ -13,12 +13,14 @@ class HomeSearchProductsController extends Controller
         $model = $this->getClass('HomeProductManagerModel');
         $modelUser = $this->getClass('HomeUserManagerModel');
 
-
+        $info = $this->getParams();
         if(empty($info['url_arguments'])){
             $which = 1;
         }else{
             $which = $info['url_arguments'][0];
         }
+
+        echo $which;
 
         $name = Filter::getString('search');
         $sort = Filter::getString("sortby");
@@ -55,7 +57,7 @@ class HomeSearchProductsController extends Controller
         $product = $model->searchProduct($name,$option,$order);
 
         if($is_submit){
-
+            $which = 1;
             $product = $model->searchProduct($name,$option,$order);
 
         }
