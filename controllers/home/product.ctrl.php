@@ -21,7 +21,11 @@ class HomeProductController extends Controller
 
         $session = Session::getInstance();
         $log_user = $session->get('id_user');
-
+        if ($session->get('id_user')!= null){
+            $is_log = 1;
+        }else{
+            $is_log = 0;
+        }
 
 
         if(!empty($info[0])) {
@@ -39,6 +43,7 @@ class HomeProductController extends Controller
             }
         }
 
+        $this->assign('isLogged', $is_log);
         if($product_id > 0 && $model->checkDateAndStock($product_id)) {
 
             $model->increaseView($product_id);
@@ -79,7 +84,7 @@ class HomeProductController extends Controller
             $this->assign('left_days', $days);
             $this->assign('id_product', $product['id_product']);
 
-            $this->assign('isLogged', $log_user);
+
 
             $product_img = '/img/product_img_big/'.$product['id_user'].'_'.$product['image_big'];
 

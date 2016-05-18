@@ -62,7 +62,7 @@
         <p><b>Opinions: </b>{$likes} <i class="material-icons tiny light-green-text">thumb_up</i>/ {$dislikes} <i class="material-icons tiny red-text">thumb_down</i></p>
 
         </p>
-        {if $isLogged gt 0}
+        {if $isLogged eq 1}
             {if $bought eq 1}
                 <p><b>Did you like this product?</b>
                     <form method="post">
