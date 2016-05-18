@@ -20,6 +20,7 @@ class HomeSearchProductsController extends Controller
             $which = $info['url_arguments'][0];
         }
 
+        echo $which;
 
         $name = Filter::getString('search');
         $sort = Filter::getString("sortby");
