@@ -95,7 +95,6 @@ class HomeAddProductController extends Controller
 
 				$isImgEqual = empty(Filter::getString('product_image_name'));
 
-				echo 'Es imatge igual? ' .$isImgEqual .'Es imatge? ' .$isImg;
 
 				if (!$isValid && $isImg == true) {
 					if ($isImgEqual == false){
@@ -159,7 +158,7 @@ class HomeAddProductController extends Controller
 
 						$url_product = $modelProduct->getProductURL($id_product);
 
-						//header('Location:' . URL_ABSOLUTE .$url_product);
+						header('Location:' . URL_ABSOLUTE .$url_product);
 
 					} else {
 
