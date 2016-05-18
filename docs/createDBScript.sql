@@ -7,6 +7,8 @@
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 5.6.10
 
+-- Script creador de la BDD:
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
