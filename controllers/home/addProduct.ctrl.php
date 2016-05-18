@@ -69,6 +69,7 @@ class HomeAddProductController extends Controller
 
 				if ($session->get('image_fail_flag') == null || $session->get('image_fail_flag') == false){
 					$session->set('image_fail_flag',false);
+
 					if ($_FILES["inputFile"]["size"] > 2 * 1024 * 1024 ) {
 						$isValid = false;
 					}
@@ -84,8 +85,17 @@ class HomeAddProductController extends Controller
 						$session->set('not_image',false);
 					}
 				}
-				$isImg = ($session->get('not_image') !=null && $session->get('not_image')== false );
+
+				if (($session->get('image_fail_flag') == null || $session->get('image_fail_flag') == false) && ($session->get('not_image') != null) && ($session->get('not_image') == false)){
+					$isImg = false;
+				} else {
+					$isImg = true;
+				}
+
+
 				$isImgEqual = empty(Filter::getString('product_image_name'));
+
+				echo 'Es imatge igual? ' .$isImgEqual .'Es imatge? ' .$isImg;
 
 				if (!$isValid && $isImg == true) {
 					if ($isImgEqual == false){
@@ -102,9 +112,11 @@ class HomeAddProductController extends Controller
 					$session->set('image_fail_flag', true);
 
 				}
+
 				if($session->get('not_img') != null && $session->get('not_img') == true){
 					$isValid = false;
 				}
+
 				$modelUser = $this->getClass('HomeUserManagerModel');
 				$availableMoney = $modelUser->getMoney($user);
 				if ($availableMoney < $info['stock']){
@@ -147,7 +159,7 @@ class HomeAddProductController extends Controller
 
 						$url_product = $modelProduct->getProductURL($id_product);
 
-						header('Location:' . URL_ABSOLUTE .$url_product);
+						//header('Location:' . URL_ABSOLUTE .$url_product);
 
 					} else {
 
@@ -158,7 +170,7 @@ class HomeAddProductController extends Controller
 						$this->assign('product_description', $info['description']);
 						$this->assign('product_date', $info['date']);
 
-						$session->set('image_fail_name',$info['image_small']);
+						//$session->set('image_fail_name',$info['image_small']);
 
 						// Agafa la string a partir de la '_'
 						$img_name = $session->get('image_fail_name');
