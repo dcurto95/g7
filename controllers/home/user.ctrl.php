@@ -20,7 +20,7 @@ class HomeUserController extends Controller
         $session = Session::getInstance();
         $id_usr_src = $user = $session->get('id_user');
 
-        $is_logged = ($id_usr_src != null);
+        $is_logged = ($id_usr_src > 0);
 
         if ($is_logged == false){
             header('Location:' . URL_ABSOLUTE.'/errorComment');
@@ -44,7 +44,9 @@ class HomeUserController extends Controller
                 $this->assign('user_name', $user_info['username']);
                 $this->assign('user_img', $user_img);
 
-                $this->assign('isLogged', $is_logged);
+                $is_commentable = $modelComments->ValidateComment($id_usr_src, $id_user);
+
+                $this->assign('isLogged', $is_commentable);
 
                 $is_submit = Filter::getString('submit');
 
@@ -52,6 +54,8 @@ class HomeUserController extends Controller
                     $comment = Filter::getString('comment');
                     $id_usr_dst = $id_user;
                     $modelComments->addComment($id_usr_src, $id_usr_dst, $comment);
+
+                    header('Location:' . URL_ABSOLUTE . '/u/'.$info[0]);
                 }
 
                 $comments = $modelComments->getUserComments($id_user);
@@ -66,6 +70,7 @@ class HomeUserController extends Controller
                 $this->assign('comments', $comments);
 
                 $this->setLayout($this->view);
+
             } else {
                 header('Location:' . URL_ABSOLUTE . '/error404');
             }

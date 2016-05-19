@@ -65,12 +65,14 @@ class HomeEditProductController extends Controller
 
 					$info['name'] = Filter::getString('product_name');
 					if (strlen($info['name']) > 50) {
+
 						$isValid = false;
 					}
 
 					$info['price'] = Filter::getString('price');
-					if ($info['price'] <= 0.) {
+					if ($info['price'] < 0.) {
 						$isValid = false;
+
 					}
 
 					$info['stock'] = Filter::getString('stock');
@@ -82,18 +84,29 @@ class HomeEditProductController extends Controller
 
 					$info['date'] = Filter::getString('date');
 
+					$date = (new \DateTime())->format('Y-m-d H:i:s');
+
+					$givenDate = strtotime($info['date']);
+					$today =strtotime($date);
+
+					if ($givenDate < $today){
+						$isValid = false;
+					}
+
+
 					$info['image_small'] = $_FILES["inputFile"]["name"];
 					$info['image_big'] = $_FILES["inputFile"]["name"];
-					if ($_FILES["inputFile"]["size"] > 2 * 1024 * 1024 ) {
+					$img_name = Filter::getString('img_path');
+					if ($img_name != '' && $_FILES["inputFile"]["size"] > 2 * 1024 * 1024 ) {
+
 						$isValid = false;
 					}
 
 					$path = $_FILES["inputFile"]["name"];
 					$ext = pathinfo($path, PATHINFO_EXTENSION);
 
-
-					if (strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
-
+					if ($img_name != '' && strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
+						echo "-->Extensio img";
 						$isValid = false;
 					}
 

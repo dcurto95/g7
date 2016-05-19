@@ -15,10 +15,20 @@ class HomeValidateController extends Controller
         $info = $info['url_arguments'];
 
         if(!empty($info)){
-            $correcte = $model->validateUser($info[0]);
-            if($correcte){
+            $id_user = $model->validateUser($info[0]);
+            if($id_user > 0){
                 //Validacio OK
                 $this->assign('result', "Welcome!.");
+
+                $session = Session::getInstance();
+
+                $user_info = $model->getUser($id_user);
+
+                $session->set('id_user', 	$user_info['id_user']);
+                $session->set('username', 	$user_info['username']);
+                $session->set('email', 		$user_info['email']);
+                $session->set('image', 		$user_info['image']);
+                $session->set('saldo', 		$user_info['saldo']);
             }else{
                 //Validacio KO
                 header("HTTP/1.1 403 Forbidden");

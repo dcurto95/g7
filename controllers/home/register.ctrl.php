@@ -52,9 +52,8 @@ class HomeRegisterController extends Controller
 
 		if($is_submit){
 
-
-
 			if ($isValid) {
+
 				$image_manager = $this->getClass('HomeImageManagerModel');
 
 				//Creem usuari
@@ -75,7 +74,6 @@ class HomeRegisterController extends Controller
 				}else{
 					$img_name ="default.jpg";
 				}
-
 
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 

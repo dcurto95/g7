@@ -20,6 +20,23 @@ QUERY;
 
     }
 
+    public function ValidateComment($id_src, $id_dst){
+
+        $query = <<<QUERY
+        SELECT * FROM `comments` WHERE `id_usr_dst` = '$id_dst' AND `id_usr_src` = '$id_src'
+QUERY;
+
+        $comments = $this->getAll($query);
+
+        if (empty($comments)){
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
     public function getUserComments($id_dst){
         $query = <<<QUERY
         SELECT * FROM `comments` WHERE `id_usr_dst` = '$id_dst'
