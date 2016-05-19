@@ -42,10 +42,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insertCoin.ctrl.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="insertCoin.ctrl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/home/insertCoin.ctrl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34304932">
+            <state vertical-scroll-proportion="-11.769231">
               <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
               <folding />
             </state>
@@ -57,6 +57,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-20.461538">
               <caret line="63" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createDBScript.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/createDBScript.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -119,7 +129,6 @@
         <option value="$PROJECT_DIR$/model/home/product_manager.model.php" />
         <option value="$PROJECT_DIR$/controllers/home/product.ctrl.php" />
         <option value="$PROJECT_DIR$/templates/home/product.tpl" />
-        <option value="$PROJECT_DIR$/docs/createDBScript.sql" />
         <option value="$PROJECT_DIR$/controllers/home/addProduct.ctrl.php" />
         <option value="$PROJECT_DIR$/model/home/user_manager.model.php" />
         <option value="$PROJECT_DIR$/controllers/home/validate.ctrl.php" />
@@ -128,6 +137,7 @@
         <option value="$PROJECT_DIR$/controllers/home/user.ctrl.php" />
         <option value="$PROJECT_DIR$/templates/home/editProduct.tpl" />
         <option value="$PROJECT_DIR$/controllers/home/editProduct.ctrl.php" />
+        <option value="$PROJECT_DIR$/docs/createDBScript.sql" />
       </list>
     </option>
   </component>
@@ -757,14 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/createDBScript.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="226" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/home/editComment.ctrl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028026905">
@@ -863,8 +865,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/home/insertCoin.ctrl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34304932">
+        <state vertical-scroll-proportion="-11.769231">
           <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/createDBScript.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
           <folding />
         </state>
       </provider>
