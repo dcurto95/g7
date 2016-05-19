@@ -76,7 +76,9 @@ class HomeRegisterController extends Controller
 					$img_name ="default.jpg";
 				}
 
+
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
+
 
 				// Mail:
 				$subject = "Welcome to Barrets.com";
@@ -98,6 +100,7 @@ class HomeRegisterController extends Controller
 					//print_r(error_get_last());
 					echo "Message could not be sent...";
 				}*/
+
 
 				header('Location:' . URL_ABSOLUTE);
 				//header('Location:' . URL_ABSOLUTE.'/validateInfo/'.$activation_code);
