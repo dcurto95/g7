@@ -1,0 +1,2 @@
+INSERT INTO product (name,price,stock,description,date,image_small,image_big,views,id_user)
+VALUES ("p1",30,4,"Lorem Ipsum és un text de farciment usat per la indústria de la tipografia i la impremta. Lorem Ipsum ha estat el text estàndard de la indústria des de any 1500 quan un impressor desconegut va fer servir una galerada de text i la va mesclar per crear un llibre de mostres tipogràfiques.","2 May2016","S2 Horari.png", "S2 Horari.png",10,1);

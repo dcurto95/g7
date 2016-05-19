@@ -44,9 +44,9 @@ QUERY;
             UPDATE user SET valid = true WHERE `activation_code`='$activation_code'
 QUERY;
             $this->execute($query);
-            return true;
+            return $temp[0]['id_user'];
         }else{
-            return false;
+            return (-1);
         }
     }
 

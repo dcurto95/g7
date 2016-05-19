@@ -80,13 +80,14 @@ class HomeAddProductController extends Controller
 
 					if (strcmp($ext,"png")!=0 && strcmp($ext,"jpg") !=0 && strcmp($ext,"png")!=0){
 						$session->set('not_image',true);
+						echo "No es una imatge";
 						$isValid = false;
 					}else{
 						$session->set('not_image',false);
 					}
 				}
 
-				if (($session->get('image_fail_flag') == null || $session->get('image_fail_flag') == false) && ($session->get('not_image') != null) && ($session->get('not_image') == false)){
+				if (($session->get('not_image') != null) && ($session->get('not_image') == true)){
 					$isImg = false;
 				} else {
 					$isImg = true;

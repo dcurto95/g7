@@ -52,9 +52,8 @@ class HomeRegisterController extends Controller
 
 		if($is_submit){
 
-
-
 			if ($isValid) {
+
 				$image_manager = $this->getClass('HomeImageManagerModel');
 
 				//Creem usuari
@@ -78,6 +77,7 @@ class HomeRegisterController extends Controller
 
 				$model->createUser($username, $email, $twitter, $password, $img_name, $activation_code);
 
+
 				// Mail:
 				$subject = "Welcome to Barrets.com";
 
@@ -98,6 +98,7 @@ class HomeRegisterController extends Controller
 					//print_r(error_get_last());
 					echo "Message could not be sent...";
 				}*/
+
 
 				header('Location:' . URL_ABSOLUTE);
 				//header('Location:' . URL_ABSOLUTE.'/validateInfo/'.$activation_code);
